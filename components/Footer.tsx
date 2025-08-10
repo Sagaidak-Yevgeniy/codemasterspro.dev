@@ -1,0 +1,279 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { 
+  MessageCircle, 
+  Instagram, 
+  MapPin, 
+  Phone, 
+  Mail,
+  ArrowUp,
+  Heart
+} from 'lucide-react'
+
+interface FooterProps {
+  language: 'ru' | 'kk'
+}
+
+const translations = {
+  ru: {
+    description: 'CodeMastersPRO - современная школа программирования в Павлодаре. Обучаем Python, Golang, JavaScript и аналитике данных.',
+    quickLinks: {
+      title: 'Быстрые ссылки',
+      home: 'Главная',
+      courses: 'Курсы',
+      about: 'О нас',
+      contact: 'Контакты'
+    },
+    courses: {
+      title: 'Направления',
+      python: 'Python',
+      golang: 'Golang',
+      javascript: 'JavaScript',
+      analytics: 'Аналитика данных'
+    },
+    contact: {
+      title: 'Контакты',
+      phone: '+7 777 332 36 76',
+      email: 'info@codemasterspro.kz',
+      location: 'Павлодар, ул. Е. Бекмаханова 115/2 (угол улиц Назарбаева и Естая)'
+    },
+    social: {
+      title: 'Социальные сети',
+      whatsapp: 'WhatsApp',
+      instagram: 'Instagram'
+    },
+    copyright: '© 2024 - 2025 CodeMastersPRO. Все права защищены.',
+    madeWith: 'Сделано с',
+    inKazakhstan: 'в Казахстане'
+  },
+  kk: {
+    description: 'CodeMastersPRO - Павлодардағы заманауи бағдарламалау мектебі. Python, Golang, JavaScript және деректер талдауын оқытамыз.',
+    quickLinks: {
+      title: 'Жылдам сілтемелер',
+      home: 'Басты бет',
+      courses: 'Курстар',
+      about: 'Біз туралы',
+      contact: 'Байланыс'
+    },
+    courses: {
+      title: 'Бағыттар',
+      python: 'Python',
+      golang: 'Golang',
+      javascript: 'JavaScript',
+      analytics: 'Деректер талдауы'
+    },
+    contact: {
+      title: 'Байланыс',
+      phone: '+7 777 332 36 76',
+      email: 'info@codemasterspro.kz',
+      location: 'Павлодар, көш. Е. Бекмаханова 115/2 (Назарбаев және Естая көшелерінің қиылысы)'
+    },
+    social: {
+      title: 'Әлеуметтік желілер',
+      whatsapp: 'WhatsApp',
+      instagram: 'Instagram'
+    },
+    copyright: '© 2024 - 2025 CodeMastersPRO. Барлық құқықтар қорғалған.',
+    madeWith: 'Жасалған',
+    inKazakhstan: 'Қазақстанда'
+  }
+}
+
+export default function Footer({ language }: FooterProps) {
+  const t = translations[language]
+  
+  // Получаем текущий год
+  const currentYear = new Date().getFullYear()
+  
+  // Вычисляем годы опыта с 2024 года, округляя к большему
+  const startYear = 2024
+  const yearsOfExperience = Math.ceil((currentYear - startYear) + (new Date().getMonth() + 1) / 12)
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  return (
+    <footer className="bg-gray-900 text-white">
+      <div className="container-custom">
+        {/* Main Footer Content */}
+        <div className="py-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="lg:col-span-1"
+            >
+                             <div className="flex items-center space-x-3 mb-6">
+                 <div className="w-12 h-12 lg:w-14 lg:h-14">
+                   <img 
+                     src="/images/Logo.png" 
+                     alt="CodeMasters PRO Logo" 
+                     className="w-full h-full object-contain"
+                   />
+                 </div>
+                 <div>
+                   <h3 className="text-xl font-bold">CodeMastersPRO</h3>
+                   <p className="text-sm text-gray-400">
+                     {language === 'ru' ? 'Школа программирования' : 'Бағдарламалау мектебі'}
+                   </p>
+                 </div>
+               </div>
+              <p className="text-gray-400 leading-relaxed mb-6">
+                {t.description}
+              </p>
+              
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-300"
+                  onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+                >
+                  <MessageCircle className="w-5 h-5" />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-700 transition-all duration-300"
+                  onClick={() => window.open('https://www.instagram.com/code_masterspro?igsh=M2NxcW4zc2Jhd3l5&utm_source=qr', '_blank')}
+                >
+                  <Instagram className="w-5 h-5" />
+                </motion.button>
+              </div>
+            </motion.div>
+
+            {/* Quick Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold mb-6">{t.quickLinks.title}</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#home" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {t.quickLinks.home}
+                  </a>
+                </li>
+                <li>
+                  <a href="#courses" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {t.quickLinks.courses}
+                  </a>
+                </li>
+                <li>
+                  <a href="#about" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {t.quickLinks.about}
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {t.quickLinks.contact}
+                  </a>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* Courses */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold mb-6">{t.courses.title}</h4>
+              <ul className="space-y-3">
+                <li>
+                  <span className="text-gray-400">{t.courses.python}</span>
+                </li>
+                <li>
+                  <span className="text-gray-400">{t.courses.golang}</span>
+                </li>
+                <li>
+                  <span className="text-gray-400">{t.courses.javascript}</span>
+                </li>
+                <li>
+                  <span className="text-gray-400">{t.courses.analytics}</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold mb-6">{t.contact.title}</h4>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Phone className="w-5 h-5 text-primary-400" />
+                  <a 
+                    href="tel:+77773323676" 
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    {t.contact.phone}
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-5 h-5 text-primary-400" />
+                  <a 
+                    href="mailto:info@codemasterspro.kz" 
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    {t.contact.email}
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <MapPin className="w-5 h-5 text-primary-400" />
+                  <span className="text-gray-400">{t.contact.location}</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="border-t border-gray-800 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex items-center space-x-2 text-gray-400"
+            >
+              <span>© 2024 - {currentYear} CodeMastersPRO. {language === 'ru' ? 'Все права защищены.' : 'Барлық құқықтар қорғалған.'}</span>
+              <span>•</span>
+              <span className="flex items-center space-x-1">
+                <span>{t.madeWith}</span>
+                <Heart className="w-4 h-4 text-red-500" />
+                <span>{t.inKazakhstan}</span>
+              </span>
+            </motion.div>
+
+            <motion.button
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={scrollToTop}
+              className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300"
+            >
+              <ArrowUp className="w-5 h-5" />
+            </motion.button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
