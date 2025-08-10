@@ -108,7 +108,15 @@ export default function Footer({ language }: FooterProps) {
               viewport={{ once: true }}
               className="lg:col-span-1"
             >
-                             <div className="flex items-center space-x-3 mb-6">
+                             <motion.a
+                 href="#home"
+                 whileHover={{ scale: 1.05 }}
+                 className="flex items-center space-x-3 mb-6 cursor-pointer"
+                 onClick={(e) => {
+                   e.preventDefault()
+                   window.scrollTo({ top: 0, behavior: 'smooth' })
+                 }}
+               >
                  <div className="w-12 h-12 lg:w-14 lg:h-14">
                    <img 
                      src="/images/Logo.png" 
@@ -122,7 +130,7 @@ export default function Footer({ language }: FooterProps) {
                      {language === 'ru' ? 'Школа программирования' : 'Бағдарламалау мектебі'}
                    </p>
                  </div>
-               </div>
+               </motion.a>
               <p className="text-gray-400 leading-relaxed mb-6">
                 {t.description}
               </p>

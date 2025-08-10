@@ -95,6 +95,21 @@ export default function Hero({ language }: HeroProps) {
               {t.subtitle}
             </motion.p>
 
+            {/* Free Trial Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="mb-6"
+            >
+              <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full inline-flex items-center space-x-2 shadow-lg">
+                <Award className="w-5 h-5" />
+                <span className="font-semibold">
+                  {language === 'ru' ? '🎉 Первое пробное занятие БЕСПЛАТНО!' : '🎉 Алғашқы сынақ сабағы ТЕГІН!'}
+                </span>
+              </div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

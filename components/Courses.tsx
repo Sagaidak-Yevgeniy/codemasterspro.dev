@@ -130,9 +130,34 @@ export default function Courses({ language }: CoursesProps) {
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             {t.title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             {t.subtitle}
           </p>
+          
+          {/* Free Trial Banner */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="inline-block"
+          >
+            <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                  <Star className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-lg">
+                    {language === 'ru' ? '🎉 Первое пробное занятие БЕСПЛАТНО!' : '🎉 Алғашқы сынақ сабағы ТЕГІН!'}
+                  </div>
+                  <div className="text-sm opacity-90">
+                    {language === 'ru' ? 'Попробуйте любой курс без обязательств' : 'Кез келген курсты міндеттемесіз сынап көріңіз'}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

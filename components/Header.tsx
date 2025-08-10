@@ -51,9 +51,14 @@ export default function Header({ language, setLanguage }: HeaderProps) {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <motion.div
+          <motion.a
+            href="#home"
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-3 cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
           >
             <div className="w-12 h-12 lg:w-14 lg:h-14">
               <img 
@@ -67,10 +72,10 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 CodeMastersPRO
               </h1>
               <p className="text-xs text-gray-600 hidden sm:block">
-                {language === 'ru' ? 'Школа программирования' : 'Бағдарламалау мектебі'}
+                {language === 'ru' ? 'Школа программирования' : 'Бағдарламау мектебі'}
               </p>
             </div>
-          </motion.div>
+          </motion.a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">

@@ -131,6 +131,31 @@ export default function About({ language }: AboutProps) {
               ))}
             </motion.div>
 
+            {/* Free Trial Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mb-6"
+            >
+              <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 rounded-xl shadow-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <Star className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-lg">
+                      {language === 'ru' ? '🎉 Первое пробное занятие БЕСПЛАТНО!' : '🎉 Алғашқы сынақ сабағы ТЕГІН!'}
+                    </div>
+                    <div className="text-sm opacity-90">
+                      {language === 'ru' ? 'Убедитесь в качестве обучения' : 'Оқыту сапасына көз жеткізіңіз'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
             {/* CTA */}
             <motion.button
               initial={{ opacity: 0, y: 20 }}
@@ -264,7 +289,7 @@ export default function About({ language }: AboutProps) {
                   </p>
                   <div className="text-sm">
                     <div className="font-semibold">{language === 'ru' ? 'Марат, Python разработчик' : 'Марат, Python дамушы'}</div>
-                    <div className="text-white/70">{language === 'ru' ? 'Выпускник 2025' : '2023 түлегі'}</div>
+                    <div className="text-white/70">{language === 'ru' ? 'Выпускник 2025' : '2025 түлегі'}</div>
                   </div>
                 </div>
               </div>
