@@ -79,7 +79,7 @@ export default function Contact({ language }: ContactProps) {
   const t = translations[language]
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="contact" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,10 +88,10 @@ export default function Contact({ language }: ContactProps) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {t.title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t.subtitle}
           </p>
         </motion.div>
@@ -106,8 +106,8 @@ export default function Contact({ language }: ContactProps) {
             className="space-y-8"
           >
             {/* Contact Info */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 {t.contactInfo.title}
               </h3>
               
@@ -117,8 +117,19 @@ export default function Contact({ language }: ContactProps) {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{t.contactInfo.location}</h4>
-                    <p className="text-gray-600 text-sm">{t.contactInfo.locationDesc}</p>
+                    <h4 
+                      className="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
+                      onClick={() => {
+                        const address = language === 'ru' 
+                          ? 'Павлодар, ул. Е. Бекмаханова 115/2'
+                          : 'Павлодар, көш. Е. Бекмаханова 115/2';
+                        const encodedAddress = encodeURIComponent(address);
+                        window.open(`https://2gis.kz/pavlodar/search/${encodedAddress}`, '_blank');
+                      }}
+                    >
+                      {t.contactInfo.location}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t.contactInfo.locationDesc}</p>
                   </div>
                 </div>
 
@@ -127,8 +138,8 @@ export default function Contact({ language }: ContactProps) {
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{t.contactInfo.schedule}</h4>
-                    <p className="text-gray-600 text-sm">{t.contactInfo.scheduleDesc}</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">{t.contactInfo.schedule}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t.contactInfo.scheduleDesc}</p>
                   </div>
                 </div>
 
@@ -137,8 +148,8 @@ export default function Contact({ language }: ContactProps) {
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{t.contactInfo.phone}</h4>
-                    <p className="text-gray-600 text-sm">{t.contactInfo.phoneDesc}</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">{t.contactInfo.phone}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t.contactInfo.phoneDesc}</p>
                   </div>
                 </div>
 
@@ -147,16 +158,16 @@ export default function Contact({ language }: ContactProps) {
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{t.contactInfo.email}</h4>
-                    <p className="text-gray-600 text-sm">{t.contactInfo.emailDesc}</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">{t.contactInfo.email}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t.contactInfo.emailDesc}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Social Media */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 {t.social.title}
               </h3>
               
@@ -165,7 +176,13 @@ export default function Contact({ language }: ContactProps) {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 px-6 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group"
-                  onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+                  onClick={() => {
+                    const message = language === 'ru' 
+                      ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                      : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                    const encodedMessage = encodeURIComponent(message);
+                    window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                  }}
                 >
                   <div className="flex items-center space-x-3">
                     <MessageCircle className="w-6 h-6" />
@@ -219,7 +236,13 @@ export default function Contact({ language }: ContactProps) {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="w-full bg-white text-primary-600 font-semibold py-4 px-6 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 group"
-                    onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+                    onClick={() => {
+                      const message = language === 'ru' 
+                        ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                        : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                      const encodedMessage = encodeURIComponent(message);
+                      window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                    }}
                   >
                     <Send className="w-5 h-5" />
                     <span>{t.cta.buttonWhatsapp}</span>
@@ -230,7 +253,13 @@ export default function Contact({ language }: ContactProps) {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="w-full bg-white/20 text-white font-semibold py-4 px-6 rounded-xl hover:bg-white/30 transition-all duration-300 border border-white/30"
-                    onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+                    onClick={() => {
+                      const message = language === 'ru' 
+                        ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                        : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                      const encodedMessage = encodeURIComponent(message);
+                      window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                    }}
                   >
                     {t.cta.button}
                   </motion.button>
@@ -239,8 +268,8 @@ export default function Contact({ language }: ContactProps) {
             </div>
 
             {/* Quick Info */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h4 className="text-xl font-bold text-gray-900 mb-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
                 {language === 'ru' ? 'Быстрый старт' : 'Жылдам бастау'}
               </h4>
               
@@ -249,7 +278,7 @@ export default function Contact({ language }: ContactProps) {
                   <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
                     <span className="text-primary-600 font-bold text-sm">1</span>
                   </div>
-                  <span className="text-gray-700">
+                  <span className="text-gray-700 dark:text-gray-200">
                     {language === 'ru' ? 'Свяжитесь с нами' : 'Бізбен байланысыңыз'}
                   </span>
                 </div>
@@ -258,7 +287,7 @@ export default function Contact({ language }: ContactProps) {
                   <div className="w-8 h-8 bg-secondary-100 rounded-full flex items-center justify-center">
                     <span className="text-secondary-600 font-bold text-sm">2</span>
                   </div>
-                  <span className="text-gray-700">
+                  <span className="text-gray-700 dark:text-gray-200">
                     {language === 'ru' ? 'Выберите курс' : 'Курсты таңдаңыз'}
                   </span>
                 </div>
@@ -267,7 +296,7 @@ export default function Contact({ language }: ContactProps) {
                   <div className="w-8 h-8 bg-accent-100 rounded-full flex items-center justify-center">
                     <span className="text-accent-600 font-bold text-sm">3</span>
                   </div>
-                  <span className="text-gray-700">
+                  <span className="text-gray-700 dark:text-gray-200">
                     {language === 'ru' ? 'Начните обучение' : 'Оқуға бастаңыз'}
                   </span>
                 </div>
@@ -275,16 +304,16 @@ export default function Contact({ language }: ContactProps) {
             </div>
 
             {/* Emergency Contact */}
-            <div className="bg-gradient-to-r from-accent-50 to-orange-50 rounded-2xl p-6 border border-accent-200">
+            <div className="bg-gradient-to-r from-accent-50 to-orange-50 dark:from-accent-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-accent-200 dark:border-accent-700">
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-accent-500 rounded-xl flex items-center justify-center">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900">
+                  <h4 className="font-semibold text-gray-900 dark:text-white">
                     {language === 'ru' ? 'Срочные вопросы?' : 'Шұғыл сұрақтар?'}
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
                     {language === 'ru' ? 'Звоните прямо сейчас' : 'Қазір қоңырау шалыңыз'}
                   </p>
                 </div>

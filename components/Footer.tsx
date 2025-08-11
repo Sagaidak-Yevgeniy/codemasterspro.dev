@@ -7,7 +7,6 @@ import {
   MapPin, 
   Phone, 
   Mail,
-  ArrowUp,
   Heart
 } from 'lucide-react'
 
@@ -90,9 +89,7 @@ export default function Footer({ language }: FooterProps) {
   const startYear = 2024
   const yearsOfExperience = Math.ceil((currentYear - startYear) + (new Date().getMonth() + 1) / 12)
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -141,7 +138,13 @@ export default function Footer({ language }: FooterProps) {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-300"
-                  onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+                  onClick={() => {
+                const message = language === 'ru' 
+                  ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                  : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+              }}
                 >
                   <MessageCircle className="w-5 h-5" />
                 </motion.button>
@@ -165,11 +168,7 @@ export default function Footer({ language }: FooterProps) {
             >
               <h4 className="text-lg font-semibold mb-6">{t.quickLinks.title}</h4>
               <ul className="space-y-3">
-                <li>
-                  <a href="#home" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    {t.quickLinks.home}
-                  </a>
-                </li>
+
                 <li>
                   <a href="#courses" className="text-gray-400 hover:text-white transition-colors duration-300">
                     {t.quickLinks.courses}
@@ -181,8 +180,28 @@ export default function Footer({ language }: FooterProps) {
                   </a>
                 </li>
                 <li>
+                  <a href="#team" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {language === 'ru' ? 'Команда' : 'Команда'}
+                  </a>
+                </li>
+                <li>
+                  <a href="#timeline" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {language === 'ru' ? 'История' : 'Тарих'}
+                  </a>
+                </li>
+                <li>
+                  <a href="#faq" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {language === 'ru' ? 'FAQ' : 'FAQ'}
+                  </a>
+                </li>
+                <li>
                   <a href="#contact" className="text-gray-400 hover:text-white transition-colors duration-300">
                     {t.quickLinks.contact}
+                  </a>
+                </li>
+                <li>
+                  <a href="#reviews" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {language === 'ru' ? 'Отзывы' : 'Пікірлер'}
                   </a>
                 </li>
               </ul>
@@ -241,7 +260,18 @@ export default function Footer({ language }: FooterProps) {
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-primary-400" />
-                  <span className="text-gray-400">{t.contact.location}</span>
+                  <span 
+                    className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
+                    onClick={() => {
+                      const address = language === 'ru' 
+                        ? 'Павлодар, ул. Е. Бекмаханова 115/2'
+                        : 'Павлодар, көш. Е. Бекмаханова 115/2';
+                      const encodedAddress = encodeURIComponent(address);
+                      window.open(`https://2gis.kz/pavlodar/search/${encodedAddress}`, '_blank');
+                    }}
+                  >
+                    {t.contact.location}
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -267,18 +297,7 @@ export default function Footer({ language }: FooterProps) {
               </span>
             </motion.div>
 
-            <motion.button
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={scrollToTop}
-              className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300"
-            >
-              <ArrowUp className="w-5 h-5" />
-            </motion.button>
+
           </div>
         </div>
       </div>

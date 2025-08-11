@@ -71,7 +71,7 @@ export default function About({ language }: AboutProps) {
   const yearsOfExperience = Math.ceil((currentYear - startYear) + (new Date().getMonth() + 1) / 12)
 
   return (
-    <section id="about" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="about" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -88,10 +88,10 @@ export default function About({ language }: AboutProps) {
               viewport={{ once: true }}
               className="mb-6"
             >
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 {t.title}
               </h2>
-              <p className="text-xl text-primary-600 font-semibold mb-6">
+              <p className="text-xl text-primary-600 dark:text-primary-400 font-semibold mb-6">
                 {t.subtitle}
               </p>
             </motion.div>
@@ -101,7 +101,7 @@ export default function About({ language }: AboutProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-lg text-gray-600 mb-8 leading-relaxed"
+              className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
             >
               {t.description}
             </motion.p>
@@ -126,7 +126,7 @@ export default function About({ language }: AboutProps) {
                   <div className="w-6 h-6 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <CheckCircle className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-gray-700">{feature}</span>
+                  <span className="text-gray-700 dark:text-gray-200">{feature}</span>
                 </motion.div>
               ))}
             </motion.div>
@@ -165,7 +165,13 @@ export default function About({ language }: AboutProps) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-primary"
-              onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+              onClick={() => {
+                const message = language === 'ru' 
+                  ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                  : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+              }}
             >
               {t.cta}
             </motion.button>
@@ -186,13 +192,13 @@ export default function About({ language }: AboutProps) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Award className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{yearsOfExperience}+</div>
-                <div className="text-sm text-gray-600">{t.stats.yearsText}</div>
+                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{yearsOfExperience}+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t.stats.yearsText}</div>
               </motion.div>
 
               <motion.div
@@ -200,13 +206,13 @@ export default function About({ language }: AboutProps) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="w-12 h-12 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Users className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{t.stats.students}</div>
-                <div className="text-sm text-gray-600">{t.stats.studentsText}</div>
+                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{t.stats.students}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t.stats.studentsText}</div>
               </motion.div>
 
               <motion.div
@@ -214,13 +220,13 @@ export default function About({ language }: AboutProps) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="w-12 h-12 bg-gradient-to-r from-accent-500 to-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Star className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{t.stats.projects}</div>
-                <div className="text-sm text-gray-600">{t.stats.projectsText}</div>
+                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{t.stats.projects}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t.stats.projectsText}</div>
               </motion.div>
 
               <motion.div
@@ -228,13 +234,13 @@ export default function About({ language }: AboutProps) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{t.stats.satisfaction}</div>
-                <div className="text-sm text-gray-600">{t.stats.satisfactionText}</div>
+                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{t.stats.satisfaction}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t.stats.satisfactionText}</div>
               </motion.div>
             </div>
 
@@ -244,7 +250,7 @@ export default function About({ language }: AboutProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0, duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-6 shadow-lg"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
             >
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -252,8 +258,19 @@ export default function About({ language }: AboutProps) {
                     <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{t.location}</h4>
-                    <p className="text-sm text-gray-600">{language === 'ru' ? 'Удобное расположение' : 'Ыңғайлы орналасу'}</p>
+                    <h4 
+                      className="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
+                      onClick={() => {
+                        const address = language === 'ru' 
+                          ? 'Павлодар, ул. Е. Бекмаханова 115/2'
+                          : 'Павлодар, көш. Е. Бекмаханова 115/2';
+                        const encodedAddress = encodeURIComponent(address);
+                        window.open(`https://2gis.kz/pavlodar/search/${encodedAddress}`, '_blank');
+                      }}
+                    >
+                      {t.location}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{language === 'ru' ? 'Удобное расположение' : 'Ыңғайлы орналасу'}</p>
                   </div>
                 </div>
                 
@@ -262,38 +279,14 @@ export default function About({ language }: AboutProps) {
                     <Clock className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{t.schedule}</h4>
-                    <p className="text-sm text-gray-600">{language === 'ru' ? 'Утренние и вечерние группы' : 'Таңертеңгі және кешкі топтар'}</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">{t.schedule}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{language === 'ru' ? 'Утренние и вечерние группы' : 'Таңертеңгі және кешкі топтар'}</p>
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Testimonial */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-6 text-white"
-            >
-              <div className="flex items-start space-x-3">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                  <Star className="w-6 h-6" />
-                </div>
-                <div>
-                  <p className="text-white/90 mb-3 italic">
-                    "{language === 'ru' 
-                      ? 'CodeMastersPRO помог мне стать профессиональным разработчиком. Отличные преподаватели и практический подход!' 
-                      : 'CodeMastersPRO кәсіби дамушы болуға көмектесті. Керемет оқытушылар мен практикалық көзқарас!'}"
-                  </p>
-                  <div className="text-sm">
-                    <div className="font-semibold">{language === 'ru' ? 'Марат, Python разработчик' : 'Марат, Python дамушы'}</div>
-                    <div className="text-white/70">{language === 'ru' ? 'Выпускник 2025' : '2025 түлегі'}</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+
           </motion.div>
         </div>
       </div>

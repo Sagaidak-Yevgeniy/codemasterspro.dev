@@ -203,7 +203,13 @@ export default function Benefits({ language }: BenefitsProps) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-primary text-lg px-8 py-4"
-              onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+              onClick={() => {
+                const message = language === 'ru' 
+                  ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                  : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+              }}
             >
               {language === 'ru' ? 'Начать обучение сейчас' : 'Қазір оқуға бастау'}
             </motion.button>

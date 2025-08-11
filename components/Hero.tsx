@@ -1,7 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Play, Star, Users, Award } from 'lucide-react'
+import { ArrowRight, Play, Star, Users, Award, Gift } from 'lucide-react'
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import DiscountPopup from './DiscountPopup'
 
 interface HeroProps {
   language: 'ru' | 'kk'
@@ -44,6 +47,23 @@ const translations = {
 
 export default function Hero({ language }: HeroProps) {
   const t = translations[language]
+  const [showDiscountPopup, setShowDiscountPopup] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50" />
+        <div className="text-center">
+          <div className="text-4xl font-bold text-gray-300">Loading...</div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -119,21 +139,30 @@ export default function Hero({ language }: HeroProps) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary flex items-center justify-center space-x-2"
-                onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+                className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
+                onClick={() => setShowDiscountPopup(true)}
               >
-                <span>{t.cta}</span>
-                <ArrowRight className="w-5 h-5" />
+                <Gift className="w-5 h-5" />
+                <span>🎁 Получить скидку</span>
               </motion.button>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-secondary flex items-center justify-center space-x-2"
+                className="btn-primary flex items-center justify-center space-x-2"
+                onClick={() => {
+                  const message = language === 'ru' 
+                    ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                    : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                  const encodedMessage = encodeURIComponent(message);
+                  window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                }}
               >
-                <Play className="w-5 h-5" />
-                <span>{t.watchVideo}</span>
+                <span>{t.cta}</span>
+                <ArrowRight className="w-5 h-5" />
               </motion.button>
+              
+
             </motion.div>
 
             {/* Stats */}
@@ -165,74 +194,150 @@ export default function Hero({ language }: HeroProps) {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative bg-white rounded-3xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+            <div className="relative bg-white rounded-3xl shadow-2xl p-4 md:p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="absolute -top-4 -right-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                 <Star className="w-4 h-4 inline mr-1" />
                 {language === 'ru' ? 'Лучшая школа' : 'Үздік мектеп'}
               </div>
               
-                             <div className="space-y-6">
-                 <div className="flex items-center space-x-3">
-                   <div className="w-14 h-14 flex items-center justify-center">
+              <div className="relative">
+                {/* Background Logo */}
+                <div className="absolute top-1/2 right-0 transform -translate-y-1/2 hidden md:block z-30">
+                  {/* Animated rings around logo */}
+                  <div className="relative">
+                    <div className="absolute inset-0 w-32 h-32 lg:w-64 lg:h-64 border-2 border-primary-200 rounded-full animate-ping opacity-20"></div>
+                    <div className="absolute inset-0 w-32 h-32 lg:w-64 lg:h-64 border-2 border-secondary-200 rounded-full animate-ping opacity-20" style={{ animationDelay: '1s' }}></div>
+                    <div className="absolute inset-0 w-32 h-32 lg:w-64 lg:h-64 border-2 border-accent-200 rounded-full animate-ping opacity-20" style={{ animationDelay: '2s' }}></div>
+                    
+                    {/* Rotating gradient ring */}
+                    <div className="absolute inset-0 w-32 h-32 lg:w-64 lg:h-64 rounded-full bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 opacity-20 animate-spin" style={{ animationDuration: '8s' }}></div>
+                    
+                    {/* Logo */}
+                    <img 
+                      src="/images/Logo.png" 
+                      alt="CMPro Logo" 
+                      className="w-32 h-32 lg:w-64 lg:h-64 object-contain relative z-20"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                
+                {/* Directions */}
+                <div className="space-y-4 md:space-y-6 relative z-1">
+                 <Link href="/courses/python">
+                   <motion.div 
+                     className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 cursor-pointer"
+                     whileHover={{ scale: 1.02, x: 5 }}
+                     whileTap={{ scale: 0.98 }}
+                     initial={{ opacity: 0, x: -20 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.5, delay: 0.1 }}
+                   >
+                   <motion.div 
+                     className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg shadow-sm"
+                     whileHover={{ rotate: 5, scale: 1.1 }}
+                     transition={{ duration: 0.2 }}
+                   >
                      <img 
                        src="/images/Python.png" 
                        alt="Python" 
-                       className="w-10 h-10 object-contain"
+                       className="w-8 h-8 md:w-10 md:h-10 object-contain"
                      />
-                   </div>
+                   </motion.div>
                    <div>
-                     <h3 className="font-semibold text-gray-900">Python</h3>
-                     <p className="text-sm text-gray-600">{language === 'ru' ? 'Веб-разработка' : 'Веб-даму'}</p>
+                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm md:text-base">Python</h3>
+                     <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">{language === 'ru' ? 'Веб-разработка' : 'Веб-даму'}</p>
                    </div>
-                 </div>
+                   </motion.div>
+                 </Link>
                  
-                 <div className="flex items-center space-x-3">
-                   <div className="w-14 h-14 flex items-center justify-center">
+                 <Link href="/courses/golang">
+                   <motion.div 
+                     className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 cursor-pointer"
+                     whileHover={{ scale: 1.02, x: 5 }}
+                     whileTap={{ scale: 0.98 }}
+                     initial={{ opacity: 0, x: -20 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.5, delay: 0.2 }}
+                   >
+                   <motion.div 
+                     className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-to-br from-cyan-50 to-cyan-100 dark:from-cyan-900/20 dark:to-cyan-800/20 rounded-lg shadow-sm"
+                     whileHover={{ rotate: 5, scale: 1.1 }}
+                     transition={{ duration: 0.2 }}
+                   >
                      <img 
                        src="/images/Go.png" 
                        alt="Golang" 
-                       className="w-10 h-10 object-contain"
+                       className="w-8 h-8 md:w-10 md:h-10 object-contain"
                      />
-                   </div>
+                   </motion.div>
                    <div>
-                     <h3 className="font-semibold text-gray-900">Golang</h3>
-                     <p className="text-sm text-gray-600">{language === 'ru' ? 'Серверная разработка' : 'Серверлік даму'}</p>
+                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm md:text-base">Golang</h3>
+                     <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">{language === 'ru' ? 'Серверная разработка' : 'Серверлік даму'}</p>
                    </div>
-                 </div>
+                   </motion.div>
+                 </Link>
                  
-                 <div className="flex items-center space-x-3">
-                   <div className="w-14 h-14 flex items-center justify-center">
+                 <Link href="/courses/javascript">
+                   <motion.div 
+                     className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 cursor-pointer"
+                     whileHover={{ scale: 1.02, x: 5 }}
+                     whileTap={{ scale: 0.98 }}
+                     initial={{ opacity: 0, x: -20 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.5, delay: 0.3 }}
+                   >
+                   <motion.div 
+                     className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 rounded-lg shadow-sm"
+                     whileHover={{ rotate: 5, scale: 1.1 }}
+                     transition={{ duration: 0.2 }}
+                   >
                      <img 
                        src="/images/JavaScript.png" 
                        alt="JavaScript" 
-                       className="w-10 h-10 object-contain"
+                       className="w-8 h-8 md:w-10 md:h-10 object-contain"
                      />
-                   </div>
+                   </motion.div>
                    <div>
-                     <h3 className="font-semibold text-gray-900">JavaScript</h3>
-                     <p className="text-sm text-gray-600">{language === 'ru' ? 'Фронтенд разработка' : 'Фронтенд даму'}</p>
+                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm md:text-base">JavaScript</h3>
+                     <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">{language === 'ru' ? 'Фронтенд разработка' : 'Фронтенд даму'}</p>
                    </div>
-                 </div>
+                   </motion.div>
+                 </Link>
                  
-                 <div className="flex items-center space-x-3">
-                   <div className="w-14 h-14 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center">
-                     <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                 <Link href="/courses/analytics">
+                   <motion.div 
+                     className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 cursor-pointer"
+                     whileHover={{ scale: 1.02, x: 5 }}
+                     whileTap={{ scale: 0.98 }}
+                     initial={{ opacity: 0, x: -20 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.5, delay: 0.4 }}
+                   >
+                   <motion.div 
+                     className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center shadow-sm"
+                     whileHover={{ rotate: 5, scale: 1.1 }}
+                     transition={{ duration: 0.2 }}
+                   >
+                     <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                      </svg>
-                   </div>
+                   </motion.div>
                    <div>
-                     <h3 className="font-semibold text-gray-900">{language === 'ru' ? 'Аналитика данных' : 'Деректер талдауы'}</h3>
-                     <p className="text-sm text-gray-600">{language === 'ru' ? 'Data Science' : 'Data Science'}</p>
+                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm md:text-base">{language === 'ru' ? 'Аналитика данных' : 'Деректер талдауы'}</h3>
+                     <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">{language === 'ru' ? 'Data Science' : 'Data Science'}</p>
                    </div>
-                 </div>
+                   </motion.div>
+                 </Link>
                </div>
+              </div>
               
-              <div className="mt-6 pt-6 border-t border-gray-200">
+              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">{language === 'ru' ? 'Павлодар' : 'Павлодар'}</span>
+                  <span className="text-gray-600 dark:text-gray-300">{language === 'ru' ? 'Павлодар' : 'Павлодар'}</span>
                   <div className="flex items-center space-x-1">
-                    <Users className="w-4 h-4 text-primary-500" />
-                    <span className="text-primary-600 font-medium">Офлайн</span>
+                    <Users className="w-4 h-4 text-primary-500 dark:text-primary-400" />
+                    <span className="text-primary-600 dark:text-primary-400 font-medium">Офлайн</span>
                   </div>
                 </div>
               </div>
@@ -240,6 +345,13 @@ export default function Hero({ language }: HeroProps) {
           </motion.div>
         </div>
       </div>
+      
+      {/* Discount Popup */}
+      <DiscountPopup 
+        language={language}
+        isVisible={showDiscountPopup}
+        onClose={() => setShowDiscountPopup(false)}
+      />
     </section>
   )
 }

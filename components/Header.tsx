@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, Globe } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 interface HeaderProps {
   language: 'ru' | 'kk'
@@ -27,8 +28,10 @@ const translations = {
 export default function Header({ language, setLanguage }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
@@ -38,17 +41,30 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
   const t = translations[language]
 
+  if (!mounted) {
+    return (
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg">
+        <div className="container-custom relative">
+          <div className="flex items-center justify-between h-16 lg:h-20">
+            <div className="w-32 h-8 bg-gray-200 rounded animate-pulse"></div>
+            <div className="w-24 h-8 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+        </div>
+      </header>
+    )
+  }
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-lg' 
+          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
       }`}
     >
-      <div className="container-custom">
+      <div className="container-custom relative">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <motion.a
@@ -71,7 +87,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               <h1 className="text-xl lg:text-2xl font-bold gradient-text">
                 CodeMastersPRO
               </h1>
-              <p className="text-xs text-gray-600 hidden sm:block">
+              <p className="text-xs text-gray-600 dark:text-gray-400 hidden sm:block">
                 {language === 'ru' ? 'Школа программирования' : 'Бағдарламау мектебі'}
               </p>
             </div>
@@ -79,36 +95,59 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-              {t.home}
-            </a>
-            <a href="#courses" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+
+            <a href="#courses" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {t.courses}
             </a>
-            <a href="#about" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+            <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {t.about}
             </a>
-            <a href="#contact" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+            <a href="#team" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+              {language === 'ru' ? 'Команда' : 'Команда'}
+            </a>
+            <a href="#timeline" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+              {language === 'ru' ? 'История' : 'Тарих'}
+            </a>
+            <a href="#faq" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+              {language === 'ru' ? 'FAQ' : 'FAQ'}
+            </a>
+            <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {t.contact}
+            </a>
+            <a href="#reviews" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+              {language === 'ru' ? 'Отзывы' : 'Пікірлер'}
             </a>
             
             {/* Language Switcher */}
             <div className="flex items-center space-x-2">
               <Globe className="w-4 h-4 text-gray-600" />
               <button
-                onClick={() => setLanguage(language === 'ru' ? 'kk' : 'ru')}
+                onClick={() => {
+                  const newLanguage = language === 'ru' ? 'kk' : 'ru'
+                  setLanguage(newLanguage)
+                  localStorage.setItem('selectedLanguage', newLanguage)
+                }}
                 className="px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary-50"
               >
                 {language === 'ru' ? 'KK' : 'RU'}
               </button>
             </div>
 
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             {/* CTA Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-primary"
-              onClick={() => window.open('https://wa.me/77773323676', '_blank')}
+              onClick={() => {
+                const message = language === 'ru' 
+                  ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                  : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+              }}
             >
               {language === 'ru' ? 'Записаться' : 'Тіркелу'}
             </motion.button>
@@ -117,9 +156,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-6 h-6 text-gray-900 dark:text-white" /> : <Menu className="w-6 h-6 text-gray-900 dark:text-white" />}
           </button>
         </div>
 
@@ -129,53 +168,84 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t"
+            className="lg:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 absolute top-full left-0 right-0 z-50 shadow-lg"
           >
-            <div className="py-4 space-y-4">
-              <a
-                href="#home"
-                className="block px-4 py-2 text-gray-700 hover:text-primary-600 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {t.home}
-              </a>
+            <div className="py-4 space-y-2 max-h-[70vh] overflow-y-auto">
               <a
                 href="#courses"
-                className="block px-4 py-2 text-gray-700 hover:text-primary-600 font-medium"
+                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {t.courses}
               </a>
               <a
                 href="#about"
-                className="block px-4 py-2 text-gray-700 hover:text-primary-600 font-medium"
+                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {t.about}
               </a>
               <a
+                href="#team"
+                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {language === 'ru' ? 'Команда' : 'Команда'}
+              </a>
+              <a
+                href="#timeline"
+                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {language === 'ru' ? 'История' : 'Тарих'}
+              </a>
+              <a
+                href="#faq"
+                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {language === 'ru' ? 'FAQ' : 'FAQ'}
+              </a>
+              <a
                 href="#contact"
-                className="block px-4 py-2 text-gray-700 hover:text-primary-600 font-medium"
+                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {t.contact}
               </a>
+              <a
+                href="#reviews"
+                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {language === 'ru' ? 'Отзывы' : 'Пікірлер'}
+              </a>
               
-              <div className="px-4 py-2 flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Globe className="w-4 h-4 text-gray-600" />
-                  <button
-                    onClick={() => setLanguage(language === 'ru' ? 'kk' : 'ru')}
-                    className="px-3 py-1 rounded-full text-sm font-medium bg-primary-50"
-                  >
-                    {language === 'ru' ? 'KK' : 'RU'}
-                  </button>
+              <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-600">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-2">
+                    <Globe className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                    <button
+                      onClick={() => {
+                        const newLanguage = language === 'ru' ? 'kk' : 'ru'
+                        setLanguage(newLanguage)
+                        localStorage.setItem('selectedLanguage', newLanguage)
+                      }}
+                      className="px-3 py-1 rounded-full text-sm font-medium bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 transition-colors"
+                    >
+                      {language === 'ru' ? 'KK' : 'RU'}
+                    </button>
+                  </div>
                 </div>
                 <button
-                  className="btn-primary"
+                  className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 text-sm"
                   onClick={() => {
-                    window.open('https://wa.me/77773323676', '_blank')
-                    setIsOpen(false)
+                    const message = language === 'ru' 
+                      ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                      : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                    const encodedMessage = encodeURIComponent(message);
+                    window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                    setIsOpen(false);
                   }}
                 >
                   {language === 'ru' ? 'Записаться' : 'Тіркелу'}
