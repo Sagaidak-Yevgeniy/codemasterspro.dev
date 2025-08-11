@@ -114,9 +114,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {t.contact}
             </a>
-            <a href="#reviews" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-              {language === 'ru' ? 'Отзывы' : 'Пікірлер'}
-            </a>
             
             {/* Language Switcher */}
             <div className="flex items-center space-x-2">
@@ -144,7 +141,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               onClick={() => {
                 const message = language === 'ru' 
                   ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                  : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                  : 'Сәлем! CMPro-да бағдарламау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
                 const encodedMessage = encodeURIComponent(message);
                 window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
               }}
@@ -212,13 +209,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 onClick={() => setIsOpen(false)}
               >
                 {t.contact}
-              </a>
-              <a
-                href="#reviews"
-                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {language === 'ru' ? 'Отзывы' : 'Пікірлер'}
               </a>
               
               <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-600">

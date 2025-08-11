@@ -8,7 +8,6 @@ import Courses from '@/components/Courses'
 import About from '@/components/About'
 import Benefits from '@/components/Benefits'
 import Contact from '@/components/Contact'
-import Reviews from '@/components/Reviews'
 import FAQ from '@/components/FAQ'
 import Team from '@/components/Team'
 import Timeline from '@/components/Timeline'
@@ -64,7 +63,6 @@ export default function Home() {
       <Timeline language={language} />
       <FAQ language={language} />
       <Contact language={language} />
-      <Reviews language={language} />
       <Footer language={language} />
       
       {/* Toast Notifications */}

@@ -9,7 +9,8 @@ import {
   Phone, 
   Mail,
   ArrowRight,
-  Send
+  Send,
+  Star
 } from 'lucide-react'
 
 interface ContactProps {
@@ -86,39 +87,38 @@ export default function Contact({ language }: ContactProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {t.title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-3 gap-6">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="lg:col-span-1"
           >
-            {/* Contact Info */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg h-full">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 {t.contactInfo.title}
               </h3>
               
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-white" />
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h4 
-                      className="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
+                      className="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 text-sm"
                       onClick={() => {
                         const address = language === 'ru' 
                           ? 'Павлодар, ул. Е. Бекмаханова 115/2'
@@ -129,53 +129,61 @@ export default function Contact({ language }: ContactProps) {
                     >
                       {t.contactInfo.location}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t.contactInfo.locationDesc}</p>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs">{t.contactInfo.locationDesc}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-white" />
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{t.contactInfo.schedule}</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t.contactInfo.scheduleDesc}</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{t.contactInfo.schedule}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs">{t.contactInfo.scheduleDesc}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-accent-500 to-primary-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-white" />
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-r from-accent-500 to-primary-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{t.contactInfo.phone}</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t.contactInfo.phoneDesc}</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{t.contactInfo.phone}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs">{t.contactInfo.phoneDesc}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-white" />
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{t.contactInfo.email}</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">{t.contactInfo.emailDesc}</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{t.contactInfo.email}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs">{t.contactInfo.emailDesc}</p>
                   </div>
                 </div>
               </div>
             </div>
+          </motion.div>
 
-            {/* Social Media */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          {/* Social Media */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="lg:col-span-1"
+          >
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg h-full">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 {t.social.title}
               </h3>
               
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 px-6 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group"
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
                   onClick={() => {
                     const message = language === 'ru' 
                       ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
@@ -184,30 +192,30 @@ export default function Contact({ language }: ContactProps) {
                     window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
                   }}
                 >
-                  <div className="flex items-center space-x-3">
-                    <MessageCircle className="w-6 h-6" />
+                  <div className="flex items-center space-x-2">
+                    <MessageCircle className="w-5 h-5" />
                     <div className="text-left">
                       <div className="font-semibold">{t.social.whatsapp}</div>
-                      <div className="text-sm text-green-100">{t.social.whatsappDesc}</div>
+                      <div className="text-xs text-green-100">{t.social.whatsappDesc}</div>
                     </div>
                   </div>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
-
+                
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group"
+                  className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
                   onClick={() => window.open('https://www.instagram.com/code_masterspro?igsh=M2NxcW4zc2Jhd3l5&utm_source=qr', '_blank')}
                 >
-                  <div className="flex items-center space-x-3">
-                    <Instagram className="w-6 h-6" />
+                  <div className="flex items-center space-x-2">
+                    <Instagram className="w-5 h-5" />
                     <div className="text-left">
                       <div className="font-semibold">{t.social.instagram}</div>
-                      <div className="text-sm text-pink-100">{t.social.instagramDesc}</div>
+                      <div className="text-xs text-pink-100">{t.social.instagramDesc}</div>
                     </div>
                   </div>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </div>
             </div>
@@ -217,25 +225,24 @@ export default function Contact({ language }: ContactProps) {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="lg:col-span-1"
           >
-            {/* Main CTA */}
-            <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-8 lg:p-12 text-white">
+            <div className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl p-6 text-white h-full flex flex-col justify-center">
               <div className="text-center">
-                <h3 className="text-3xl font-bold mb-4">
+                <h3 className="text-xl font-bold mb-3">
                   {t.cta.title}
                 </h3>
-                <p className="text-xl text-white/90 mb-8">
+                <p className="text-sm text-white/90 mb-4">
                   {t.cta.subtitle}
                 </p>
                 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-white text-primary-600 font-semibold py-4 px-6 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 group"
+                    className="w-full bg-white text-primary-600 font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 group text-sm"
                     onClick={() => {
                       const message = language === 'ru' 
                         ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
@@ -244,15 +251,15 @@ export default function Contact({ language }: ContactProps) {
                       window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
                     }}
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4" />
                     <span>{t.cta.buttonWhatsapp}</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </motion.button>
                   
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-white/20 text-white font-semibold py-4 px-6 rounded-xl hover:bg-white/30 transition-all duration-300 border border-white/30"
+                    className="w-full bg-white/20 text-white font-semibold py-3 px-4 rounded-xl hover:bg-white/30 transition-all duration-300 border border-white/30 text-sm"
                     onClick={() => {
                       const message = language === 'ru' 
                         ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
@@ -266,54 +273,64 @@ export default function Contact({ language }: ContactProps) {
                 </div>
               </div>
             </div>
+          </motion.div>
+        </div>
 
-            {/* Quick Info */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-                {language === 'ru' ? 'Быстрый старт' : 'Жылдам бастау'}
-              </h4>
-              
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
-                    <span className="text-primary-600 font-bold text-sm">1</span>
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-200">
-                    {language === 'ru' ? 'Свяжитесь с нами' : 'Бізбен байланысыңыз'}
-                  </span>
+        {/* Bottom Section */}
+        <div className="grid md:grid-cols-2 gap-6 mt-6">
+          {/* Reviews CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl p-6 text-white text-center">
+              <div className="flex items-center justify-center space-x-3 mb-3">
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-4 h-4" />
                 </div>
-                
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-secondary-100 rounded-full flex items-center justify-center">
-                    <span className="text-secondary-600 font-bold text-sm">2</span>
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-200">
-                    {language === 'ru' ? 'Выберите курс' : 'Курсты таңдаңыз'}
-                  </span>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-accent-100 rounded-full flex items-center justify-center">
-                    <span className="text-accent-600 font-bold text-sm">3</span>
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-200">
-                    {language === 'ru' ? 'Начните обучение' : 'Оқуға бастаңыз'}
-                  </span>
-                </div>
+                <h3 className="text-lg font-bold">
+                  {language === 'ru' ? 'Поделитесь своим опытом!' : 'Тәжірибеңізді бөлісіңіз!'}
+                </h3>
               </div>
+              <p className="text-white/90 mb-4 text-sm">
+                {language === 'ru' 
+                  ? 'Оставьте отзыв в 2GIS и помогите другим сделать правильный выбор'
+                  : '2GIS-те пікір қалдырыңыз және басқаларға дұрыс таңдау жасауға көмектесіңіз'
+                }
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-orange-600 font-semibold py-2 px-4 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center space-x-2 mx-auto text-xs"
+                onClick={() => {
+                  window.open('https://2gis.kz/pavlodar/search/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D1%8B%D0%B5%20%D0%BA%D1%83%D1%80%D1%81%D1%8B/rubricId/678/page/2/firm/70000001083544695/76.968865%2C52.283134/tab/reviews/addreview?m=76.9667%2C52.283504%2F10.72', '_blank');
+                }}
+              >
+                <Star className="w-3 h-3" />
+                <span>{language === 'ru' ? 'Оставить отзыв' : 'Пікір қалдыру'}</span>
+              </motion.button>
             </div>
+          </motion.div>
 
-            {/* Emergency Contact */}
+          {/* Emergency Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             <div className="bg-gradient-to-r from-accent-50 to-orange-50 dark:from-accent-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-accent-200 dark:border-accent-700">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-accent-500 rounded-xl flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-white" />
+              <div className="flex items-center space-x-3 mb-3">
+                <div className="w-10 h-10 bg-accent-500 rounded-lg flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">
+                  <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
                     {language === 'ru' ? 'Срочные вопросы?' : 'Шұғыл сұрақтар?'}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-xs text-gray-600 dark:text-gray-300">
                     {language === 'ru' ? 'Звоните прямо сейчас' : 'Қазір қоңырау шалыңыз'}
                   </p>
                 </div>
@@ -321,7 +338,7 @@ export default function Contact({ language }: ContactProps) {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full mt-4 bg-accent-500 text-white font-semibold py-3 px-4 rounded-xl hover:bg-accent-600 transition-colors duration-300"
+                className="w-full bg-accent-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-accent-600 transition-colors duration-300 text-sm"
                 onClick={() => window.open('tel:+77773323676', '_blank')}
               >
                 +7 777 332 36 76

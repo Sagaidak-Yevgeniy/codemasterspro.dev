@@ -19,8 +19,7 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
       team: 'Команда',
       timeline: 'История',
       faq: 'FAQ',
-      contact: 'Контакты',
-      reviews: 'Отзывы'
+      contact: 'Контакты'
     },
     kk: {
       home: 'Басты бет',
@@ -29,8 +28,7 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
       team: 'Команда',
       timeline: 'Тарих',
       faq: 'Сұрақтар',
-      contact: 'Байланыс',
-      reviews: 'Пікірлер'
+      contact: 'Байланыс'
     }
   }
 

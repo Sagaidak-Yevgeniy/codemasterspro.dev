@@ -199,11 +199,6 @@ export default function Footer({ language }: FooterProps) {
                     {t.quickLinks.contact}
                   </a>
                 </li>
-                <li>
-                  <a href="#reviews" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    {language === 'ru' ? 'Отзывы' : 'Пікірлер'}
-                  </a>
-                </li>
               </ul>
             </motion.div>
 
