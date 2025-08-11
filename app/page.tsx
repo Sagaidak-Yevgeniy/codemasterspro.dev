@@ -14,7 +14,6 @@ import Timeline from '@/components/Timeline'
 import Footer from '@/components/Footer'
 import { ToastContainer, useToast } from '@/components/Toast'
 import MainFloatingNav from '@/components/MainFloatingNav'
-import ProgressBar from '@/components/ProgressBar'
 import ExitIntentPopup from '@/components/ExitIntentPopup'
 import ChatSupport from '@/components/ChatSupport'
 
@@ -22,7 +21,7 @@ import ChatSupport from '@/components/ChatSupport'
 
 export default function Home() {
   const [language, setLanguage] = useState<'ru' | 'kk'>('ru')
-  const { toasts, removeToast } = useToast()
+  const { toasts, removeToast, success, info } = useToast()
   const [mounted, setMounted] = useState(false)
 
   // Load language from localStorage on component mount
@@ -34,6 +33,28 @@ export default function Home() {
     }
   }, [])
 
+  // Add global toast function to window
+  useEffect(() => {
+    if (!mounted) return
+
+    // Add global toast function to window
+    if (typeof window !== 'undefined') {
+      window.showToast = (type: 'success' | 'error' | 'info' | 'warning', message: string) => {
+        if (type === 'success') {
+          success(message)
+        } else if (type === 'error') {
+          // error function not imported, so we'll use success for now
+          success(message)
+        } else if (type === 'info') {
+          info(message)
+        } else if (type === 'warning') {
+          // warning function not imported, so we'll use info for now
+          info(message)
+        }
+      }
+    }
+  }, [mounted, success, info])
+
   // Save language to localStorage when it changes
   const handleLanguageChange = (newLanguage: 'ru' | 'kk') => {
     setLanguage(newLanguage)
@@ -44,7 +65,11 @@ export default function Home() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-4xl font-bold text-gray-300">Loading...</div>
+          <img 
+            src="/images/Logo.png" 
+            alt="CMPro Logo" 
+            className="w-32 h-32 animate-ping"
+          />
         </div>
       </div>
     )
@@ -52,7 +77,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
-      <ProgressBar />
       <Header language={language} setLanguage={handleLanguageChange} />
       <Hero language={language} />
       <Courses language={language} />

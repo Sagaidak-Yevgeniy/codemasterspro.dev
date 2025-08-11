@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Analytics from '@/components/Analytics'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import ProgressBar from '@/components/ProgressBar'
 
 export const metadata: Metadata = {
   title: 'CodeMastersPRO - Школа программирования в Павлодаре',
@@ -154,6 +155,7 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
           <Analytics />
+          <ProgressBar />
         </ThemeProvider>
       </body>
     </html>

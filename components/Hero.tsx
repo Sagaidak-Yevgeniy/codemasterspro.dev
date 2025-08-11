@@ -12,36 +12,38 @@ interface HeroProps {
 
 const translations = {
   ru: {
-    title: 'Стань',
+    title: 'Станьте',
     titleHighlight: 'PRO',
     titleEnd: 'программистом',
-    subtitle: 'Обучаем Python, Golang, JavaScript и аналитике данных в Павлодаре. Офлайн занятия с опытными преподавателями.',
-    cta: 'Начать обучение',
+    subtitle: 'Изучите современные технологии программирования с опытными преподавателями',
+    description: 'Получите практические навыки разработки и станьте востребованным специалистом в IT-индустрии',
+    cta: 'Пробное занятие',
+    trial: 'Пробное занятие',
     stats: {
-      students: '100+',
+      students: '150+',
       studentsText: 'студентов',
       courses: '4',
-      coursesText: 'направления',
+      coursesText: 'курса',
       success: '95%',
-      successText: 'успешных выпускников',
-    },
-    watchVideo: 'Смотреть видео',
+      successText: 'успешных'
+    }
   },
   kk: {
-    title: 'Бағдарламашы',
+    title: 'Болыңыз',
     titleHighlight: 'PRO',
-    titleEnd: 'бол',
-    subtitle: 'Павлодарда Python, Golang, JavaScript және деректер талдауын оқытамыз. Тәжірибелі оқытушылармен жүзбелі сабақтар.',
-    cta: 'Оқуға бастау',
+    titleEnd: 'бағдарламашы',
+    subtitle: 'Тәжірибелі оқытушылармен заманауи бағдарламалау технологияларын үйреніңіз',
+    description: 'Дамудың практикалық дағдыларын алыңыз және IT-өнеркәсібінде сұранысты маман болыңыз',
+    cta: 'Сынақ сабағы',
+    trial: 'Сынақ сабағы',
     stats: {
-      students: '100+',
+      students: '150+',
       studentsText: 'студент',
       courses: '4',
-      coursesText: 'бағыт',
+      coursesText: 'курс',
       success: '95%',
-      successText: 'сәтті түлектер',
-    },
-    watchVideo: 'Бейнені көру',
+      successText: 'сәтті'
+    }
   }
 }
 
@@ -59,10 +61,30 @@ export default function Hero({ language }: HeroProps) {
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50" />
         <div className="text-center">
-          <div className="text-4xl font-bold text-gray-300">Loading...</div>
+          <img 
+            src="/images/Logo.png" 
+            alt="CMPro Logo" 
+            className="w-32 h-32 animate-ping"
+          />
         </div>
       </section>
     )
+  }
+
+  const handleGetDiscount = () => {
+    setShowDiscountPopup(true)
+    // Show toast notification only for discount
+    if (typeof window !== 'undefined' && window.showToast) {
+      window.showToast('success', language === 'ru' ? '🎉 Скидка 20% активирована!' : '🎉 20% жеңілдік белсендірілді!')
+    }
+  }
+
+  const handleTrialLesson = () => {
+    const message = language === 'ru' 
+      ? 'Привет! Хочу записаться на пробное занятие по программированию в CMPro. Можете рассказать подробнее?'
+      : 'Сәлем! CMPro-да бағдарламалау бойынша сынақ сабағына тіркелгім келеді. Толығырақ айта аласыз ба?';
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
   }
 
   return (
@@ -140,7 +162,7 @@ export default function Hero({ language }: HeroProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
-                onClick={() => setShowDiscountPopup(true)}
+                onClick={handleGetDiscount}
               >
                 <Gift className="w-5 h-5" />
                 <span>🎁 Получить скидку</span>
@@ -150,13 +172,7 @@ export default function Hero({ language }: HeroProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-primary flex items-center justify-center space-x-2"
-                onClick={() => {
-                  const message = language === 'ru' 
-                    ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                    : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
-                  const encodedMessage = encodeURIComponent(message);
-                  window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
-                }}
+                onClick={handleTrialLesson}
               >
                 <span>{t.cta}</span>
                 <ArrowRight className="w-5 h-5" />

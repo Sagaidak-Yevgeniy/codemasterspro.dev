@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 import FloatingNav from '@/components/FloatingNav'
+import ProgressBar from '@/components/ProgressBar'
 
 export default function AnalyticsCourse() {
   const [language, setLanguage] = useState<'ru' | 'kk'>('ru')
@@ -148,9 +149,10 @@ export default function AnalyticsCourse() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+      <ProgressBar />
 
-            {/* Navigation */}
+      {/* Navigation */}
       <nav className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-end">

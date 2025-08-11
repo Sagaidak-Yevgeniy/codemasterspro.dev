@@ -42,15 +42,19 @@ export default function NotFound() {
   const t = translations[language]
 
   // Prevent hydration mismatch
-  if (!mounted) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl font-bold text-gray-300">404</div>
-        </div>
-      </div>
-    )
-  }
+           if (!mounted) {
+           return (
+             <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+               <div className="text-center">
+                 <img 
+                   src="/images/Logo.png" 
+                   alt="CMPro Logo" 
+                   className="w-32 h-32 animate-ping"
+                 />
+               </div>
+             </div>
+           )
+         }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">

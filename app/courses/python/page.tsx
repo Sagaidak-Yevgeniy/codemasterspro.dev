@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 import FloatingNav from '@/components/FloatingNav'
+import ProgressBar from '@/components/ProgressBar'
 
 export default function PythonCourse() {
   const [language, setLanguage] = useState<'ru' | 'kk'>('ru')
@@ -149,7 +150,8 @@ export default function PythonCourse() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
-
+      <ProgressBar />
+      
       {/* Navigation */}
       <nav className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-4">

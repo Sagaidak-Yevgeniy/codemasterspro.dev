@@ -286,9 +286,9 @@ export default function Courses({ language }: CoursesProps) {
                         whileTap={{ scale: 0.98 }}
                         className="w-full bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-semibold py-3 px-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 hover:border-primary-500 dark:hover:border-primary-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 flex items-center justify-center space-x-2 shadow-sm"
                         onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          window.location.href = `/courses/${key}`;
+                          e.preventDefault()
+                          e.stopPropagation()
+                          window.location.href = `/courses/${key}`
                         }}
                       >
                         <span>{t.learnMore}</span>
