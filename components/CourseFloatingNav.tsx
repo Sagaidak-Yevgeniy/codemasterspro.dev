@@ -1,64 +1,34 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronUp, Home, BookOpen, Users, Award, MessageCircle, HelpCircle, Clock, Menu, X, Sparkles } from 'lucide-react'
-import { useNavigation } from './NavigationContext'
+import { Menu, X, Home, BookOpen, Target, MessageCircle, ArrowUp, Code, Sparkles } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
-interface MainFloatingNavProps {
+interface CourseFloatingNavProps {
   language: 'ru' | 'kk'
+  courseColor: string
+  courseName: string
 }
 
-export default function MainFloatingNav({ language }: MainFloatingNavProps) {
-  const { isNavigationVisible } = useNavigation()
+export default function CourseFloatingNav({ language, courseColor, courseName }: CourseFloatingNavProps) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
 
-  const translations = {
-    ru: {
-      home: 'Главная',
-      courses: 'Курсы',
-      about: 'О нас',
-      team: 'Команда',
-      timeline: 'История',
-      faq: 'FAQ',
-      contact: 'Контакты',
-      menu: 'Меню',
-      close: 'Закрыть',
-      backToTop: 'Наверх'
-    },
-    kk: {
-      home: 'Басты бет',
-      courses: 'Курстар',
-      about: 'Біз туралы',
-      team: 'Команда',
-      timeline: 'Тарих',
-      faq: 'Сұрақтар',
-      contact: 'Байланыс',
-      menu: 'Меню',
-      close: 'Жабу',
-      backToTop: 'Жоғары'
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsVisible(window.scrollY > 200)
     }
-  }
-
-  const t = translations[language]
-
-  const navItems = [
-    { id: 'home', icon: Home, color: 'from-blue-500 to-blue-600', title: t.home },
-    { id: 'courses', icon: BookOpen, color: 'from-emerald-500 to-emerald-600', title: t.courses },
-    { id: 'about', icon: Award, color: 'from-purple-500 to-purple-600', title: t.about },
-    { id: 'team', icon: Users, color: 'from-yellow-500 to-yellow-600', title: t.team },
-    { id: 'timeline', icon: Clock, color: 'from-indigo-500 to-indigo-600', title: t.timeline },
-    { id: 'faq', icon: HelpCircle, color: 'from-pink-500 to-pink-600', title: t.faq },
-    { id: 'contact', icon: MessageCircle, color: 'from-orange-500 to-orange-600', title: t.contact }
-  ]
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
-      setIsExpanded(false)
     }
+    setIsExpanded(false)
   }
 
   const scrollToTop = () => {
@@ -66,28 +36,45 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
     setIsExpanded(false)
   }
 
-  // Auto-hide on mobile when scrolling
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout
-    const handleScroll = () => {
-      if (isExpanded) {
-        clearTimeout(timeoutId)
-        timeoutId = setTimeout(() => {
-          setIsExpanded(false)
-        }, 3000)
-      }
-    }
+  const navItems = [
+    { id: 'home', icon: Home, label: language === 'ru' ? 'Главная' : 'Басты бет' },
+    { id: 'features', icon: Code, label: language === 'ru' ? 'Технологии' : 'Технологиялар' },
+    { id: 'curriculum', icon: BookOpen, label: language === 'ru' ? 'Программа' : 'Бағдарлама' },
+    { id: 'benefits', icon: Target, label: language === 'ru' ? 'Преимущества' : 'Артықшылықтар' },
+    { id: 'enroll', icon: MessageCircle, label: language === 'ru' ? 'Записаться' : 'Тіркелу' }
+  ]
 
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      clearTimeout(timeoutId)
+  const translations = {
+    ru: {
+      menu: 'Меню',
+      close: 'Закрыть',
+      backToTop: 'Наверх'
+    },
+    kk: {
+      menu: 'Мәзір',
+      close: 'Жабу',
+      backToTop: 'Жоғары'
     }
-  }, [isExpanded])
+  }
+
+  const t = translations[language]
+
+  // Get color values for animations
+  const getColorValues = () => {
+    const colorMap: { [key: string]: { bg: string, hover: string } } = {
+      'bg-emerald-600': { bg: 'rgba(5, 150, 105, 0.1)', hover: 'rgba(5, 150, 105, 0.2)' },
+      'bg-yellow-600': { bg: 'rgba(202, 138, 4, 0.1)', hover: 'rgba(202, 138, 4, 0.2)' },
+      'bg-blue-600': { bg: 'rgba(37, 99, 235, 0.1)', hover: 'rgba(37, 99, 235, 0.2)' },
+      'bg-purple-600': { bg: 'rgba(147, 51, 234, 0.1)', hover: 'rgba(147, 51, 234, 0.2)' }
+    }
+    return colorMap[courseColor] || { bg: 'rgba(59, 130, 246, 0.1)', hover: 'rgba(59, 130, 246, 0.2)' }
+  }
+
+  const colorValues = getColorValues()
 
   return (
     <AnimatePresence>
-      {isNavigationVisible && (
+      {isVisible && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -99,15 +86,15 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
         >
           {/* Main floating button */}
           <motion.div
-            className="relative bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full p-3 shadow-2xl cursor-pointer backdrop-blur-sm border-2 border-white/20 transition-opacity duration-300"
+            className={`relative ${courseColor} rounded-full p-3 shadow-2xl cursor-pointer backdrop-blur-sm border-2 border-white/20 transition-opacity duration-300`}
             style={{ opacity: 0.85 }}
             whileHover={{ scale: 1.1, rotate: 5, opacity: 1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsExpanded(!isExpanded)}
             animate={{
               boxShadow: isHovered
-                ? '0 20px 40px rgba(59, 130, 246, 0.4)'
-                : '0 10px 30px rgba(59, 130, 246, 0.3)'
+                ? `0 20px 40px ${courseColor.replace('bg-', '').replace('-', '-')}40`
+                : `0 10px 30px ${courseColor.replace('bg-', '').replace('-', '-')}30`
             }}
             transition={{ duration: 0.3 }}
           >
@@ -176,16 +163,16 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="absolute bottom-full right-0 mb-3 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-3 min-w-[180px]"
               >
-                {/* Header */}
+                {/* Course name header */}
                 <div className="text-center mb-3 pb-2 border-b border-gray-200 dark:border-gray-600">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.2, type: "spring" }}
-                    className="inline-flex items-center bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-2 py-1 rounded-full text-xs font-medium mb-1"
+                    className={`inline-flex items-center ${courseColor} text-white px-2 py-1 rounded-full text-xs font-medium mb-1`}
                   >
                     <Sparkles className="w-3 h-3 mr-1" />
-                    {language === 'ru' ? 'Навигация' : 'Навигация'}
+                    {courseName}
                   </motion.div>
                 </div>
 
@@ -200,16 +187,16 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
                       whileHover={{
                         scale: 1.05,
                         x: 5,
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)'
+                        backgroundColor: colorValues.hover
                       }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => scrollToSection(item.id)}
                       className="w-full flex items-center space-x-2 px-2 py-1.5 rounded-lg text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-300 group text-sm"
                     >
-                      <div className={`p-1.5 rounded-md bg-gradient-to-r ${item.color} text-white group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`p-1.5 rounded-md ${courseColor} text-white group-hover:scale-110 transition-transform duration-300`}>
                         <item.icon className="w-3 h-3" />
                       </div>
-                      <span className="font-medium">{item.title}</span>
+                      <span className="font-medium">{item.label}</span>
                     </motion.button>
                   ))}
                 </div>
@@ -222,9 +209,9 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={scrollToTop}
-                  className="w-full mt-2 flex items-center justify-center space-x-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-1.5 px-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 text-sm"
+                  className={`w-full mt-2 flex items-center justify-center space-x-2 ${courseColor} text-white py-1.5 px-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 text-sm`}
                 >
-                  <ChevronUp className="w-3 h-3" />
+                  <ArrowUp className="w-3 h-3" />
                   <span>{t.backToTop}</span>
                 </motion.button>
               </motion.div>
@@ -239,8 +226,9 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 rounded-full blur-xl opacity-30 pointer-events-none bg-gradient-to-r from-primary-500 to-secondary-500"
+                className="absolute inset-0 rounded-full blur-xl opacity-30 pointer-events-none"
                 style={{
+                  background: courseColor.replace('bg-', '').replace('-', '-'),
                   transform: 'scale(2)'
                 }}
               />

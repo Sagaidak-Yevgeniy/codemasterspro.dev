@@ -14,21 +14,21 @@ const translations = {
     testimonials: [
       {
         name: 'Александр Ким',
-        course: 'Python Developer',
+        course: 'Python разработчик',
         rating: 5,
         text: 'Отличная школа! Преподаватели объясняют все доступно, много практики. Уже нашел работу в IT компании.',
         avatar: '/images/testimonials/student1.jpg'
       },
       {
         name: 'Мария Нурланова',
-        course: 'JavaScript Developer',
+        course: 'JavaScript разработчик',
         rating: 5,
         text: 'Благодаря CodeMastersPRO я смогла сменить профессию и стать разработчиком. Очень довольна обучением!',
         avatar: '/images/testimonials/student2.jpg'
       },
       {
         name: 'Дмитрий Соколов',
-        course: 'Go Developer',
+        course: 'Go разработчик',
         rating: 5,
         text: 'Качественное обучение, современные технологии, отличная поддержка. Рекомендую всем!',
         avatar: '/images/testimonials/student3.jpg'
@@ -41,21 +41,21 @@ const translations = {
     testimonials: [
       {
         name: 'Александр Ким',
-        course: 'Python Developer',
+        course: 'Python разработчик',
         rating: 5,
         text: 'Керемет мектеп! Оқытушылар бәрін түсінікті түрде түсіндіреді, көп практика. IT компаниясында жұмыс таптым.',
         avatar: '/images/testimonials/student1.jpg'
       },
       {
         name: 'Мария Нурланова',
-        course: 'JavaScript Developer',
+        course: 'JavaScript разработчик',
         rating: 5,
         text: 'CodeMastersPRO-ға алғысым шексіз, кәсіп ауыстырып дамушы болдым. Оқудан өте қуаныштымын!',
         avatar: '/images/testimonials/student2.jpg'
       },
       {
         name: 'Дмитрий Соколов',
-        course: 'Go Developer',
+        course: 'Go разработчик',
         rating: 5,
         text: 'Сапалы оқыту, заманауи технологиялар, керемет қолдау. Барлығына ұсынамын!',
         avatar: '/images/testimonials/student3.jpg'

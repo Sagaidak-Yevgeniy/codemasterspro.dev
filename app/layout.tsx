@@ -3,6 +3,7 @@ import './globals.css'
 import Analytics from '@/components/Analytics'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import ProgressBar from '@/components/ProgressBar'
+import { NavigationProvider } from '@/components/NavigationContext'
 
 export const metadata: Metadata = {
   title: 'CodeMastersPRO - Школа программирования в Павлодаре',
@@ -153,9 +154,11 @@ export default function RootLayout({
       </head>
                      <body className="antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <ThemeProvider>
-          {children}
-          <Analytics />
-          <ProgressBar />
+          <NavigationProvider>
+            {children}
+            <Analytics />
+            <ProgressBar />
+          </NavigationProvider>
         </ThemeProvider>
       </body>
     </html>

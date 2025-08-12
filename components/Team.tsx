@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Globe } from 'lucide-react'
 
 interface TeamProps {
   language: 'ru' | 'kk'
@@ -15,14 +14,11 @@ const translations = {
     team: [
       {
         name: 'Сагайдак Евгений Александрович',
-        position: 'Senior Full-Stack Developer',
+        position: 'Senior Full-Stack разработчик',
         experience: '10+ лет опыта',
         description: 'Опытный разработчик с экспертизой в Python, JavaScript, Go и современных веб-технологиях. Создал множество успешных проектов и обучил сотни студентов.',
         skills: ['Python', 'JavaScript', 'Go', 'React', 'Django', 'Node.js'],
-        image: '/images/Sagaidak.jpeg.jpg',
-        linkedin: '#',
-        github: '#',
-        website: '#'
+        image: '/images/Sagaidak.jpeg.jpg'
       }
     ]
   },
@@ -33,14 +29,11 @@ const translations = {
     team: [
       {
         name: 'Сагайдак Евгений Александрович',
-        position: 'Senior Full-Stack Developer',
+        position: 'Senior Full-Stack разработчик',
         experience: '10+ жыл тәжірибе',
         description: 'Python, JavaScript, Go және заманауи веб-технологиялар бойынша тәжірибелі дамушы. Көптеген сәтті жобалар жасаған және жүздеген студент оқытқан.',
         skills: ['Python', 'JavaScript', 'Go', 'React', 'Django', 'Node.js'],
-        image: '/images/Sagaidak.jpeg.jpg',
-        linkedin: '#',
-        github: '#',
-        website: '#'
+        image: '/images/Sagaidak.jpeg.jpg'
       }
     ]
   }
@@ -50,7 +43,7 @@ export default function Team({ language }: TeamProps) {
   const t = translations[language]
 
   return (
-    <section id="team" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="team" className="section-padding bg-gradient-secondary">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,13 +52,13 @@ export default function Team({ language }: TeamProps) {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-primary-dark mb-6">
             {t.title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+          <p className="text-xl text-secondary-dark max-w-3xl mx-auto mb-4">
             {t.subtitle}
           </p>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-dark max-w-2xl mx-auto">
             {t.description}
           </p>
         </motion.div>
@@ -82,57 +75,37 @@ export default function Team({ language }: TeamProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="card-dark rounded-2xl shadow-custom overflow-hidden hover:shadow-custom-hover transition-shadow duration-300"
             >
               {/* Member Image */}
-              <div className="relative h-80 bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
+              <div className="relative h-96 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30 flex items-center justify-center">
                 <img 
                   src={member.image} 
                   alt={member.name}
-                  className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg"
+                  className="w-64 h-64 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg hover:scale-105 transition-transform duration-300"
                 />
               </div>
 
               {/* Member Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-primary-600 font-semibold mb-2">{member.position}</p>
-                <p className="text-sm text-gray-500 mb-3">{member.experience}</p>
-                <p className="text-gray-600 text-sm mb-4">{member.description}</p>
+                <h3 className="text-xl font-bold text-primary-dark mb-1">{member.name}</h3>
+                <p className="text-primary-600 dark:text-primary-400 font-semibold mb-2">{member.position}</p>
+                <p className="text-sm text-muted-dark mb-3">{member.experience}</p>
+                <p className="text-secondary-dark text-sm mb-4">{member.description}</p>
 
                 {/* Skills */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {member.skills.map((skill, skillIndex) => (
                     <span
                       key={skillIndex}
-                      className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                      className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
 
-                {/* Social Links */}
-                <div className="flex space-x-3">
-                  <a
-                    href={member.linkedin}
-                    className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors"
-                  >
-                    <Linkedin className="w-4 h-4 text-white" />
-                  </a>
-                  <a
-                    href={member.github}
-                    className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-900 transition-colors"
-                  >
-                    <Github className="w-4 h-4 text-white" />
-                  </a>
-                  <a
-                    href={member.website}
-                    className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center hover:bg-green-700 transition-colors"
-                  >
-                    <Globe className="w-4 h-4 text-white" />
-                  </a>
-                </div>
+
               </div>
             </motion.div>
           ))}

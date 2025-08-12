@@ -35,14 +35,15 @@ const translations = {
     social: {
       title: 'Мы в социальных сетях',
       whatsapp: 'Написать в WhatsApp',
+      telegram: 'Написать в Telegram',
       instagram: 'Подписаться в Instagram',
       whatsappDesc: 'Быстрые ответы на вопросы',
+      telegramDesc: 'Быстрые ответы на вопросы',
       instagramDesc: 'Новости и проекты студентов'
     },
     cta: {
       title: 'Начните обучение прямо сейчас!',
       subtitle: 'Оставьте заявку и получите бесплатную консультацию',
-      button: 'Оставить заявку',
       buttonWhatsapp: 'Написать в WhatsApp'
     }
   },
@@ -63,14 +64,15 @@ const translations = {
     social: {
       title: 'Әлеуметтік желілерде',
       whatsapp: 'WhatsApp-та жазу',
+      telegram: 'Telegram-да жазу',
       instagram: 'Instagram-да жазылу',
       whatsappDesc: 'Сұрақтарға жылдам жауаптар',
+      telegramDesc: 'Сұрақтарға жылдам жауаптар',
       instagramDesc: 'Жаңалықтар мен студенттердің жобалары'
     },
     cta: {
       title: 'Қазір оқуға бастаңыз!',
       subtitle: 'Өтініш қалдырыңыз және тегін кеңес алыңыз',
-      button: 'Өтініш қалдыру',
       buttonWhatsapp: 'WhatsApp-та жазу'
     }
   }
@@ -80,7 +82,7 @@ export default function Contact({ language }: ContactProps) {
   const t = translations[language]
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+    <section id="contact" className="section-padding bg-gradient-secondary">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,10 +91,10 @@ export default function Contact({ language }: ContactProps) {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-primary-dark mb-4">
             {t.title}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-secondary-dark max-w-2xl mx-auto">
             {t.subtitle}
           </p>
         </motion.div>
@@ -106,8 +108,8 @@ export default function Contact({ language }: ContactProps) {
             viewport={{ once: true }}
             className="lg:col-span-1"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg h-full">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            <div className="card-dark rounded-2xl p-6 shadow-custom h-full">
+              <h3 className="text-xl font-bold text-primary-dark mb-4">
                 {t.contactInfo.title}
               </h3>
               
@@ -118,7 +120,7 @@ export default function Contact({ language }: ContactProps) {
                   </div>
                   <div>
                     <h4 
-                      className="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 text-sm"
+                      className="font-semibold text-primary-dark cursor-pointer hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 text-sm"
                       onClick={() => {
                         const address = language === 'ru' 
                           ? 'Павлодар, ул. Е. Бекмаханова 115/2'
@@ -129,7 +131,7 @@ export default function Contact({ language }: ContactProps) {
                     >
                       {t.contactInfo.location}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-xs">{t.contactInfo.locationDesc}</p>
+                    <p className="text-secondary-dark text-xs">{t.contactInfo.locationDesc}</p>
                   </div>
                 </div>
 
@@ -138,8 +140,8 @@ export default function Contact({ language }: ContactProps) {
                     <Clock className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{t.contactInfo.schedule}</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-xs">{t.contactInfo.scheduleDesc}</p>
+                    <h4 className="font-semibold text-primary-dark text-sm">{t.contactInfo.schedule}</h4>
+                    <p className="text-secondary-dark text-xs">{t.contactInfo.scheduleDesc}</p>
                   </div>
                 </div>
 
@@ -148,8 +150,8 @@ export default function Contact({ language }: ContactProps) {
                     <Phone className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{t.contactInfo.phone}</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-xs">{t.contactInfo.phoneDesc}</p>
+                    <h4 className="font-semibold text-primary-dark text-sm">{t.contactInfo.phone}</h4>
+                    <p className="text-secondary-dark text-xs">{t.contactInfo.phoneDesc}</p>
                   </div>
                 </div>
 
@@ -158,8 +160,8 @@ export default function Contact({ language }: ContactProps) {
                     <Mail className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm">{t.contactInfo.email}</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-xs">{t.contactInfo.emailDesc}</p>
+                    <h4 className="font-semibold text-primary-dark text-sm">{t.contactInfo.email}</h4>
+                    <p className="text-secondary-dark text-xs">{t.contactInfo.emailDesc}</p>
                   </div>
                 </div>
               </div>
@@ -174,8 +176,8 @@ export default function Contact({ language }: ContactProps) {
             viewport={{ once: true }}
             className="lg:col-span-1"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg h-full">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            <div className="card-dark rounded-2xl p-6 shadow-custom h-full">
+              <h3 className="text-xl font-bold text-primary-dark mb-4">
                 {t.social.title}
               </h3>
               
@@ -197,6 +199,30 @@ export default function Contact({ language }: ContactProps) {
                     <div className="text-left">
                       <div className="font-semibold">{t.social.whatsapp}</div>
                       <div className="text-xs text-green-100">{t.social.whatsappDesc}</div>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+                
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
+                  onClick={() => {
+                    const message = language === 'ru' 
+                      ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                      : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                    const encodedMessage = encodeURIComponent(message);
+                    window.open(`https://t.me/+77773323676?text=${encodedMessage}`, '_blank');
+                  }}
+                >
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    <div className="text-left">
+                      <div className="font-semibold">{t.social.telegram}</div>
+                      <div className="text-xs text-blue-100">{t.social.telegramDesc}</div>
                     </div>
                   </div>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -256,20 +282,7 @@ export default function Contact({ language }: ContactProps) {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </motion.button>
                   
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full bg-white/20 text-white font-semibold py-3 px-4 rounded-xl hover:bg-white/30 transition-all duration-300 border border-white/30 text-sm"
-                    onClick={() => {
-                      const message = language === 'ru' 
-                        ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                        : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
-                      const encodedMessage = encodeURIComponent(message);
-                      window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
-                    }}
-                  >
-                    {t.cta.button}
-                  </motion.button>
+
                 </div>
               </div>
             </div>
@@ -321,7 +334,7 @@ export default function Contact({ language }: ContactProps) {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gradient-to-r from-accent-50 to-orange-50 dark:from-accent-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-accent-200 dark:border-accent-700">
+            <div className="bg-gradient-to-r from-accent-50 to-orange-50 dark:from-accent-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-accent-200 dark:border-accent-700 h-full flex flex-col justify-center">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-10 h-10 bg-accent-500 rounded-lg flex items-center justify-center">
                   <Phone className="w-5 h-5 text-white" />

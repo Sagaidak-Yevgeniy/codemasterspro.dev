@@ -44,12 +44,14 @@ export default function NotFound() {
   // Prevent hydration mismatch
            if (!mounted) {
            return (
-             <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+             <div className="min-h-screen bg-gradient-primary flex items-center justify-center">
                <div className="text-center">
-                 <img 
+                 <motion.img 
                    src="/images/Logo.png" 
                    alt="CMPro Logo" 
-                   className="w-32 h-32 animate-ping"
+                   className="w-32 h-32"
+                   animate={{ rotate: 360 }}
+                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                  />
                </div>
              </div>
@@ -57,7 +59,7 @@ export default function NotFound() {
          }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-primary flex items-center justify-center">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
           {/* Animated 404 */}

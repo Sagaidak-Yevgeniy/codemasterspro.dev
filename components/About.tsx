@@ -1,7 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle, Award, Users, Clock, MapPin, Star } from 'lucide-react'
+import { 
+  Brain, 
+  Code, 
+  Users, 
+  Target, 
+  Zap, 
+  Star,
+  TrendingUp,
+  Lightbulb,
+  Rocket,
+  Shield
+} from 'lucide-react'
 
 interface AboutProps {
   language: 'ru' | 'kk'
@@ -9,286 +20,363 @@ interface AboutProps {
 
 const translations = {
   ru: {
-    title: 'Почему CodeMastersPRO?',
-    subtitle: 'Мы создаем будущих IT-специалистов с 2024 года',
-    description: 'CodeMastersPRO - это современная школа программирования в Павлодаре, где мы обучаем студентов самым востребованным технологиям в IT-индустрии.',
-    features: [
-      'Опытные преподаватели с реальным опытом работы',
-      'Практические проекты и портфолио',
-      'Офлайн занятия в удобном формате',
-      'Поддержка после выпуска',
-      'Современные технологии и инструменты',
-      'Индивидуальный подход к каждому студенту'
+    title: 'Наша методология обучения',
+    subtitle: 'Современный подход к образованию в IT',
+    description: 'Мы используем инновационные методы обучения, которые позволяют студентам быстро освоить программирование и стать востребованными специалистами.',
+    methodology: [
+      {
+        icon: Brain,
+        title: 'Практико-ориентированный подход',
+        description: '80% времени - практика, 20% - теория. Вы сразу создаете реальные проекты.',
+        color: 'from-blue-500 to-indigo-500'
+      },
+      {
+        icon: Code,
+        title: 'Проектное обучение',
+        description: 'Каждый модуль завершается созданием полноценного проекта для портфолио.',
+        color: 'from-green-500 to-emerald-500'
+      },
+      {
+        icon: Users,
+        title: 'Менторская поддержка',
+        description: 'Персональный ментор сопровождает вас на протяжении всего обучения.',
+        color: 'from-purple-500 to-pink-500'
+      },
+      {
+        icon: Target,
+        title: 'Целевое обучение',
+        description: 'Программа адаптируется под ваши цели: фриланс, работа в компании или стартап.',
+        color: 'from-orange-500 to-red-500'
+      }
+    ],
+    advantages: [
+      {
+        icon: Zap,
+        title: 'Быстрый старт',
+        description: 'Первые результаты уже через 2 недели обучения'
+      },
+      {
+        icon: TrendingUp,
+        title: 'Постоянное развитие',
+        description: 'Обновляем программы под актуальные требования рынка'
+      },
+      {
+        icon: Lightbulb,
+        title: 'Инновационные методы',
+        description: 'Используем AI-инструменты и современные технологии обучения'
+      },
+      {
+        icon: Rocket,
+        title: 'Карьерный рост',
+        description: 'Помогаем с трудоустройством и развитием карьеры'
+      }
     ],
     stats: {
-      years: '2+',
-      yearsText: 'года опыта',
-      students: '50+',
-      studentsText: 'выпускников',
-      projects: '10+',
-      projectsText: 'реализованных проектов',
-      satisfaction: '98%',
-      satisfactionText: 'довольных студентов'
+      success: '95%',
+      successText: 'студентов находят работу',
+      speed: '3-6',
+      speedText: 'месяцев до первой работы',
+      projects: '15+',
+      projectsText: 'проектов в портфолио',
+      salary: '2-5x',
+      salaryText: 'рост зарплаты после курса'
     },
-    location: 'Павлодар, ул. Е. Бекмаханова 115/2 (угол улиц Назарбаева и Естая)',
-    schedule: 'Гибкий график занятий',
-    cta: 'Присоединиться к нам',
+    cta: 'Начать обучение'
   },
   kk: {
-    title: 'Неге CodeMastersPRO?',
-    subtitle: '2024 жылдан бері болашақ IT мамандарын дайындаймыз',
-    description: 'CodeMastersPRO - Павлодардағы заманауи бағдарламалау мектебі, мұнда біз студенттерді IT саласындағы ең сұранысты технологиялармен оқытамыз.',
-    features: [
-      'Нақты жұмыс тәжірибесі бар тәжірибелі оқытушылар',
-      'Практикалық жобалар мен портфолио',
-      'Ыңғайлы форматтағы жүзбелі сабақтар',
-      'Түлеу кейінгі қолдау',
-      'Заманауи технологиялар мен құралдар',
-      'Әр студентке жеке көзқарас'
+    title: 'Біздің оқу әдістемесі',
+    subtitle: 'IT-тағы заманауи білім беру тәсілі',
+    description: 'Біз студенттерге бағдарламалауды жылдам меңгеруге және сұранысты мамандарға айналуға мүмкіндік беретін инновациялық оқу әдістерін қолданамыз.',
+    methodology: [
+      {
+        icon: Brain,
+        title: 'Практикалық бағытталған тәсіл',
+        description: '80% уақыт - практика, 20% - теория. Сіз бірден нақты жобалар жасайсыз.',
+        color: 'from-blue-500 to-indigo-500'
+      },
+      {
+        icon: Code,
+        title: 'Жобалық оқу',
+        description: 'Әр модуль портфолиоға арналған толық жоба жасаумен аяқталады.',
+        color: 'from-green-500 to-emerald-500'
+      },
+      {
+        icon: Users,
+        title: 'Менторлық қолдау',
+        description: 'Жеке ментор сізді бүкіл оқу барысында қамтамасыз етеді.',
+        color: 'from-purple-500 to-pink-500'
+      },
+      {
+        icon: Target,
+        title: 'Мақсатты оқу',
+        description: 'Бағдарлама сіздің мақсаттарыңызға сәйкес бейімделеді: фриланс, компанияда жұмыс немесе стартап.',
+        color: 'from-orange-500 to-red-500'
+      }
+    ],
+    advantages: [
+      {
+        icon: Zap,
+        title: 'Жылдам бастау',
+        description: 'Алғашқы нәтижелер оқу басталғаннан кейін 2 апта ішінде'
+      },
+      {
+        icon: TrendingUp,
+        title: 'Үздіксіз даму',
+        description: 'Бағдарламаларды нарықтың ағымдағы талаптарына сәйкес жаңартамыз'
+      },
+      {
+        icon: Lightbulb,
+        title: 'Инновациялық әдістер',
+        description: 'AI-құралдар мен заманауи оқу технологияларын қолданамыз'
+      },
+      {
+        icon: Rocket,
+        title: 'Мансаптық өсу',
+        description: 'Жұмысқа орналасу мен мансапты дамытуға көмектесеміз'
+      }
     ],
     stats: {
-      years: '2+',
-      yearsText: 'жыл тәжірибе',
-      students: '50+',
-      studentsText: 'түлек',
-      projects: '10+',
-      projectsText: 'жүзеге асырылған жоба',
-      satisfaction: '98%',
-      satisfactionText: 'қанағаттанарлық студент'
+      success: '95%',
+      successText: 'студенттер жұмыс табады',
+      speed: '3-6',
+      speedText: 'ай бірінші жұмысқа дейін',
+      projects: '15+',
+      projectsText: 'портфолиодағы жоба',
+      salary: '2-5x',
+      salaryText: 'курс кейінгі жалақы өсуі'
     },
-    location: 'Павлодар, көш. Е. Бекмаханова 115/2 (Назарбаев және Естая көшелерінің қиылысы)',
-    schedule: 'Икемді сабақ кестесі',
-    cta: 'Бізге қосылыңыз',
+    cta: 'Оқуға бастау'
   }
 }
 
 export default function About({ language }: AboutProps) {
   const t = translations[language]
-  
-  // Вычисляем годы опыта с 2024 года, округляя к большему
-  const startYear = 2024
-  const currentYear = new Date().getFullYear()
-  const yearsOfExperience = Math.ceil((currentYear - startYear) + (new Date().getMonth() + 1) / 12)
 
   return (
-    <section id="about" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+    <section id="about" className="section-padding bg-gradient-to-br from-gray-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.6, type: 'spring' }}
             viewport={{ once: true }}
+            className="inline-block mb-6"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="mb-6"
-            >
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                {t.title}
-              </h2>
-              <p className="text-xl text-primary-600 dark:text-primary-400 font-semibold mb-6">
-                {t.subtitle}
-              </p>
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
-            >
-              {t.description}
-            </motion.p>
-
-            {/* Features */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-4 mb-8"
-            >
-              {t.features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="flex items-center space-x-3"
-                >
-                  <div className="w-6 h-6 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-200">{feature}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Free Trial Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="mb-6"
-            >
-              <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 rounded-xl shadow-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                    <Star className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-lg">
-                      {language === 'ru' ? '🎉 Первое пробное занятие БЕСПЛАТНО!' : '🎉 Алғашқы сынақ сабағы ТЕГІН!'}
-                    </div>
-                    <div className="text-sm opacity-90">
-                      {language === 'ru' ? 'Убедитесь в качестве обучения' : 'Оқыту сапасына көз жеткізіңіз'}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* CTA */}
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary"
-              onClick={() => {
-                const message = language === 'ru' 
-                  ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                  : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
-                const encodedMessage = encodeURIComponent(message);
-                window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
-              }}
-            >
-              {t.cta}
-            </motion.button>
+            <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center shadow-2xl">
+              <Brain className="w-10 h-10 text-white" />
+            </div>
           </motion.div>
+          
+          <h2 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
+            {t.title}
+          </h2>
+          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
+            {t.subtitle}
+          </p>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            {t.description}
+          </p>
+        </motion.div>
 
-          {/* Right Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
+        {/* Methodology Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {t.methodology.map((item, index) => {
+            const IconComponent = item.icon
+            return (
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
+                whileHover={{ y: -5 }}
+                className="group"
               >
-                <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-6 h-6 text-white" />
+                <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 h-full">
+                  {/* Background gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`} />
+                  
+                  {/* Icon */}
+                  <div className={`relative w-16 h-16 bg-gradient-to-r ${item.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{yearsOfExperience}+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{t.stats.yearsText}</div>
               </motion.div>
+            )
+          })}
+        </div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{t.stats.students}</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{t.stats.studentsText}</div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-accent-500 to-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{t.stats.projects}</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{t.stats.projectsText}</div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{t.stats.satisfaction}</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{t.stats.satisfactionText}</div>
-              </motion.div>
+        {/* Advantages Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="bg-gradient-to-r from-purple-50 via-pink-50 to-indigo-50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-indigo-900/20 rounded-2xl p-8 lg:p-12 border border-purple-200 dark:border-purple-700/30">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                {language === 'ru' ? 'Наши преимущества' : 'Біздің артықшылықтарымыз'}
+              </h3>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                {language === 'ru' 
+                  ? 'Почему наша методология работает лучше традиционных подходов'
+                  : 'Неге біздің әдістеме дәстүрлі тәсілдерден жақсырақ жұмыс істейді'
+                }
+              </p>
             </div>
 
-            {/* Location & Schedule */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 
-                      className="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
-                      onClick={() => {
-                        const address = language === 'ru' 
-                          ? 'Павлодар, ул. Е. Бекмаханова 115/2'
-                          : 'Павлодар, көш. Е. Бекмаханова 115/2';
-                        const encodedAddress = encodeURIComponent(address);
-                        window.open(`https://2gis.kz/pavlodar/search/${encodedAddress}`, '_blank');
-                      }}
-                    >
-                      {t.location}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {t.advantages.map((advantage, index) => {
+                const IconComponent = advantage.icon
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                  >
+                    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                      {advantage.title}
                     </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{language === 'ru' ? 'Удобное расположение' : 'Ыңғайлы орналасу'}</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-lg flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{t.schedule}</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{language === 'ru' ? 'Утренние и вечерние группы' : 'Таңертеңгі және кешкі топтар'}</p>
-                  </div>
-                </div>
-              </div>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      {advantage.description}
+                    </p>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center border border-gray-100 dark:border-gray-700"
+            >
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">{t.stats.success}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">{t.stats.successText}</div>
             </motion.div>
 
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center border border-gray-100 dark:border-gray-700"
+            >
+              <div className="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">{t.stats.speed}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">{t.stats.speedText}</div>
+            </motion.div>
 
-          </motion.div>
-        </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center border border-gray-100 dark:border-gray-700"
+            >
+              <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">{t.stats.projects}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">{t.stats.projectsText}</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center border border-gray-100 dark:border-gray-700"
+            >
+              <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">{t.stats.salary}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">{t.stats.salaryText}</div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <div className="relative bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 rounded-3xl p-8 lg:p-12 text-white overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20" />
+            <div className="absolute top-0 left-0 w-full h-full">
+              <div className="absolute top-4 left-4 w-2 h-2 bg-white/30 rounded-full animate-ping" />
+              <div className="absolute top-8 right-8 w-3 h-3 bg-white/20 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+              <div className="absolute bottom-6 left-8 w-2 h-2 bg-white/25 rounded-full animate-ping" style={{ animationDelay: '2s' }} />
+            </div>
+            
+            <div className="relative z-10">
+              <h3 className="text-3xl lg:text-4xl font-bold mb-6">
+                {language === 'ru' 
+                  ? 'Готовы изменить свою жизнь?' 
+                  : 'Өміріңізді өзгертуге дайынсыз ба?'
+                }
+              </h3>
+              <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+                {language === 'ru'
+                  ? 'Присоединяйтесь к CMPro и станьте востребованным IT-специалистом'
+                  : 'CMPro-ға қосылыңыз және сұранысты IT-маманға айналыңыз'
+                }
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-purple-600 font-bold text-lg px-8 py-4 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center space-x-3 mx-auto"
+                onClick={() => {
+                  const message = language === 'ru' 
+                    ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
+                    : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                  const encodedMessage = encodeURIComponent(message);
+                  window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                }}
+              >
+                <Rocket className="w-5 h-5" />
+                <span>{t.cta}</span>
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

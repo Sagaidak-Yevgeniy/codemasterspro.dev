@@ -96,7 +96,7 @@ export default function FAQ({ language }: FAQProps) {
   }
 
   return (
-    <section id="faq" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+    <section id="faq" className="section-padding bg-gradient-secondary">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -105,10 +105,10 @@ export default function FAQ({ language }: FAQProps) {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-primary-dark mb-6">
             {t.title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-secondary-dark max-w-3xl mx-auto">
             {t.subtitle}
           </p>
         </motion.div>
@@ -122,7 +122,7 @@ export default function FAQ({ language }: FAQProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+                className="card-dark rounded-2xl shadow-custom overflow-hidden"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
@@ -132,9 +132,9 @@ export default function FAQ({ language }: FAQProps) {
                     <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center flex-shrink-0">
                       <HelpCircle className="w-4 h-4 text-white" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {faq.question}
-                    </h3>
+                                      <h3 className="text-lg font-semibold text-primary-dark">
+                    {faq.question}
+                  </h3>
                   </div>
                   <ChevronDown 
                     className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
@@ -153,7 +153,7 @@ export default function FAQ({ language }: FAQProps) {
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-4">
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        <p className="text-secondary-dark leading-relaxed">
                           {faq.answer}
                         </p>
                       </div>

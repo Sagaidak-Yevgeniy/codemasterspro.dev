@@ -92,7 +92,7 @@ export default function Timeline({ language }: TimelineProps) {
   const t = translations[language]
 
   return (
-    <section id="timeline" className="section-padding bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="timeline" className="section-padding bg-gradient-secondary">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -101,13 +101,13 @@ export default function Timeline({ language }: TimelineProps) {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-primary-dark mb-6">
             {t.title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+          <p className="text-xl text-secondary-dark max-w-3xl mx-auto mb-4">
             {t.subtitle}
           </p>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-dark max-w-2xl mx-auto">
             {t.description}
           </p>
         </motion.div>
@@ -162,7 +162,7 @@ export default function Timeline({ language }: TimelineProps) {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
                         viewport={{ once: true }}
-                        className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        className="card-dark rounded-2xl p-6 shadow-custom hover:shadow-custom-hover transition-shadow duration-300"
                       >
                         {/* Header */}
                         <div className="flex items-center space-x-3 mb-4">
@@ -173,14 +173,14 @@ export default function Timeline({ language }: TimelineProps) {
                             <div className="text-sm text-primary-600 font-semibold">
                               {event.month} {event.year}
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900">
+                            <h3 className="text-xl font-bold text-primary-dark">
                               {event.title}
                             </h3>
                           </div>
                         </div>
 
                         {/* Description */}
-                        <p className="text-gray-600 mb-4">
+                        <p className="text-secondary-dark mb-4">
                           {event.description}
                         </p>
 
@@ -189,7 +189,7 @@ export default function Timeline({ language }: TimelineProps) {
                           {event.achievements.map((achievement, achievementIndex) => (
                             <div key={achievementIndex} className="flex items-center space-x-2">
                               <div className="w-2 h-2 bg-primary-500 rounded-full" />
-                              <span className="text-sm text-gray-700">{achievement}</span>
+                              <span className="text-sm text-primary-dark">{achievement}</span>
                             </div>
                           ))}
                         </div>

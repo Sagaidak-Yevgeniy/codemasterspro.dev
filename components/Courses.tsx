@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Database, Globe, Zap, Clock, Users, Star, ArrowRight } from 'lucide-react'
+import { Code, Database, Globe, Zap, Clock, Users, Star, ArrowRight, CheckCircle, Play, Gift } from 'lucide-react'
 import Link from 'next/link'
 
 interface CoursesProps {
@@ -119,7 +119,7 @@ export default function Courses({ language }: CoursesProps) {
   const t = translations[language]
 
   return (
-    <section id="courses" className="section-padding bg-white">
+    <section id="courses" className="section-padding bg-section-light">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -128,10 +128,10 @@ export default function Courses({ language }: CoursesProps) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-primary-dark mb-6">
             {t.title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-secondary-dark max-w-3xl mx-auto mb-8">
             {t.subtitle}
           </p>
           
@@ -143,21 +143,150 @@ export default function Courses({ language }: CoursesProps) {
             viewport={{ once: true }}
             className="inline-block"
           >
-            <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                  <Star className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="font-bold text-lg">
-                    {language === 'ru' ? '🎉 Первое пробное занятие БЕСПЛАТНО!' : '🎉 Алғашқы сынақ сабағы ТЕГІН!'}
+            <motion.div
+              whileHover={{ scale: 1.02, y: -2 }}
+              className="relative overflow-hidden bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 text-white px-4 sm:px-6 py-4 sm:py-5 rounded-xl shadow-xl border border-white/20 backdrop-blur-sm"
+            >
+              {/* Animated background elements */}
+              <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+                <motion.div
+                  animate={{ 
+                    x: [0, 60, 0],
+                    y: [0, -30, 0],
+                    rotate: [0, 180, 360]
+                  }}
+                  transition={{ 
+                    duration: 8, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  className="absolute top-3 right-3 w-12 h-12 bg-white/10 rounded-full"
+                />
+                <motion.div
+                  animate={{ 
+                    x: [0, -40, 0],
+                    y: [0, 20, 0],
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{ 
+                    duration: 6, 
+                    repeat: Infinity, 
+                    ease: "easeInOut",
+                    delay: 1
+                  }}
+                  className="absolute bottom-3 left-3 w-8 h-8 bg-white/10 rounded-full"
+                />
+              </div>
+
+              <div className="relative z-10">
+                <div className="flex flex-col xl:flex-row items-center justify-between space-y-4 xl:space-y-0 xl:space-x-6">
+                  {/* Left side - Main content */}
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-3 sm:space-y-0 sm:space-x-4 text-center sm:text-left w-full xl:w-auto">
+                    <motion.div
+                      animate={{ 
+                        rotate: 360,
+                        scale: [1, 1.1, 1]
+                      }}
+                      transition={{ 
+                        rotate: { duration: 6, repeat: Infinity, ease: "linear" },
+                        scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                      className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center shadow-lg flex-shrink-0"
+                    >
+                      <Gift className="w-6 h-6 text-white" />
+                    </motion.div>
+                    
+                    <div className="flex-1">
+                      <motion.div
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="font-bold text-base sm:text-lg mb-1"
+                      >
+                        {language === 'ru' ? '🎉 Первое занятие БЕСПЛАТНО!' : '🎉 Алғашқы сабақ ТЕГІН!'}
+                      </motion.div>
+                      <div className="text-xs sm:text-sm opacity-90 mb-2">
+                        {language === 'ru' ? 'Без обязательств • Без скрытых платежей' : 'Міндеттемесіз • Жасырын төлемдерсіз'}
+                      </div>
+                      <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs opacity-80">
+                        <div className="flex items-center space-x-1">
+                          <CheckCircle className="w-3 h-3 text-green-300" />
+                          <span>{language === 'ru' ? 'Практика' : 'Тәжірибе'}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <CheckCircle className="w-3 h-3 text-green-300" />
+                          <span>{language === 'ru' ? 'Сертификат' : 'Сертификат'}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <CheckCircle className="w-3 h-3 text-green-300" />
+                          <span>{language === 'ru' ? 'Поддержка' : 'Қолдау'}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-sm opacity-90">
-                    {language === 'ru' ? 'Попробуйте любой курс без обязательств' : 'Кез келген курсты міндеттемесіз сынап көріңіз'}
-                  </div>
+
+                  {/* Right side - CTA button */}
+                  <motion.button
+                    whileHover={{ 
+                      scale: 1.05, 
+                      x: 2,
+                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white font-bold py-2.5 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 text-sm w-full sm:w-auto sm:min-w-[200px] relative overflow-hidden group"
+                    onClick={() => {
+                      const message = language === 'ru' 
+                        ? 'Привет! Хочу записаться на бесплатное пробное занятие'
+                        : 'Сәлем! Тегін сынақ сабағына жазылғым келеді';
+                      const encodedMessage = encodeURIComponent(message);
+                      window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                    }}
+                  >
+                    {/* Animated background shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <Play className="w-4 h-4" />
+                    </motion.div>
+                    <motion.span
+                      animate={{ x: [0, 2, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      {language === 'ru' ? 'Попробовать бесплатно' : 'Тегін сынап көріңіз'}
+                    </motion.span>
+                  </motion.button>
                 </div>
               </div>
-            </div>
+
+              {/* Floating particles */}
+              <motion.div
+                animate={{ 
+                  y: [0, -8, 0],
+                  opacity: [0.5, 1, 0.5]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute top-2 right-6 w-1.5 h-1.5 bg-white/60 rounded-full"
+              />
+              <motion.div
+                animate={{ 
+                  y: [0, -12, 0],
+                  opacity: [0.3, 0.8, 0.3]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+                className="absolute bottom-4 right-12 w-1 h-1 bg-white/40 rounded-full"
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
 
@@ -177,7 +306,7 @@ export default function Courses({ language }: CoursesProps) {
                   <motion.div 
                     whileHover={{ y: -10, scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 card-hover border border-gray-100 dark:border-gray-700 overflow-hidden h-full flex flex-col cursor-pointer"
+                    className="card-dark card-dark-hover rounded-2xl shadow-custom hover:shadow-custom-hover transition-all duration-500 overflow-hidden h-full flex flex-col cursor-pointer"
                   >
                   {/* Header */}
                   <div className={`bg-gradient-to-r ${course.color} p-6 text-white relative overflow-hidden`}>
@@ -217,7 +346,7 @@ export default function Courses({ language }: CoursesProps) {
 
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col">
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    <p className="text-secondary-dark mb-6 text-sm leading-relaxed">
                       {course.description}
                     </p>
 
@@ -225,11 +354,11 @@ export default function Courses({ language }: CoursesProps) {
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="flex items-center space-x-2 text-sm">
                         <Clock className="w-4 h-4 text-primary-500 dark:text-primary-400" />
-                        <span className="text-gray-600 dark:text-gray-300">{course.duration}</span>
+                        <span className="text-secondary-dark">{course.duration}</span>
                       </div>
                       <div className="flex items-center space-x-2 text-sm">
                         <Users className="w-4 h-4 text-secondary-500 dark:text-secondary-400" />
-                        <span className="text-gray-600 dark:text-gray-300">{course.students}</span>
+                        <span className="text-secondary-dark">{course.students}</span>
                       </div>
                     </div>
 
@@ -247,17 +376,17 @@ export default function Courses({ language }: CoursesProps) {
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-3 text-sm">
-                        {language === 'ru' ? 'Что изучаете:' : 'Не үйренесіз:'}
-                      </h4>
-                      <ul className="space-y-2">
-                        {course.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                            <div className="w-1.5 h-1.5 bg-primary-500 dark:bg-primary-400 rounded-full" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                                          <h4 className="font-semibold text-primary-dark mb-3 text-sm">
+                      {language === 'ru' ? 'Что изучаете:' : 'Не үйренесіз:'}
+                    </h4>
+                    <ul className="space-y-2">
+                      {course.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center space-x-2 text-sm text-secondary-dark">
+                          <div className="w-1.5 h-1.5 bg-primary-500 dark:bg-primary-400 rounded-full" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                     </div>
 
                     {/* CTA */}
@@ -284,7 +413,7 @@ export default function Courses({ language }: CoursesProps) {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-semibold py-3 px-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 hover:border-primary-500 dark:hover:border-primary-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 flex items-center justify-center space-x-2 shadow-sm"
+                        className="w-full bg-white dark:bg-gray-700 border-2 border-medium text-gray-700 dark:text-gray-200 font-semibold py-3 px-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 hover:border-primary-500 dark:hover:border-primary-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 flex items-center justify-center space-x-2 shadow-sm"
                         onClick={(e) => {
                           e.preventDefault()
                           e.stopPropagation()
@@ -311,14 +440,14 @@ export default function Courses({ language }: CoursesProps) {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-2xl p-8 border border-light">
+            <h3 className="text-2xl font-bold text-primary-dark mb-4">
               {language === 'ru' 
                 ? 'Не можете выбрать направление?' 
                 : 'Бағытты таңдай алмайсыз ба?'
               }
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-secondary-dark mb-6 max-w-2xl mx-auto">
               {language === 'ru'
                 ? 'Свяжитесь с нами, и мы поможем выбрать подходящий курс для ваших целей'
                 : 'Бізбен байланысыңыз, мақсаттарыңызға сәйкес курс таңдауға көмектесеміз'
@@ -344,3 +473,4 @@ export default function Courses({ language }: CoursesProps) {
     </section>
   )
 }
+

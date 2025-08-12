@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Globe } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 
@@ -43,11 +43,11 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
   if (!mounted) {
     return (
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg">
         <div className="container-custom relative">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            <div className="w-32 h-8 bg-gray-200 rounded animate-pulse"></div>
-            <div className="w-24 h-8 bg-gray-200 rounded animate-pulse"></div>
+            <div className="w-32 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+            <div className="w-24 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
           </div>
         </div>
       </header>
@@ -58,7 +58,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 safe-area-top ${
         scrolled 
           ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
@@ -83,48 +83,91 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 className="w-full h-full object-contain"
               />
             </div>
-            <div>
-              <h1 className="text-xl lg:text-2xl font-bold gradient-text">
+            <div className="relative">
+              <h1 className="text-xl lg:text-2xl font-bold gradient-text dark:gradient-text-dark">
                 CodeMastersPRO
               </h1>
-              <p className="text-xs text-gray-600 dark:text-gray-400 hidden sm:block">
+              <p className="text-xs text-muted-dark hidden sm:block">
                 {language === 'ru' ? 'Школа программирования' : 'Бағдарламау мектебі'}
               </p>
+              
+              {/* Rising bubbles from header title */}
+              {[
+                { left: '10%', size: 'w-1 h-1 lg:w-1.5 lg:h-1.5', color: 'from-blue-400 to-purple-400', delay: 0, duration: 3 },
+                { left: '20%', size: 'w-1.5 h-1.5 lg:w-2 lg:h-2', color: 'from-purple-400 to-pink-400', delay: 0.6, duration: 3.5 },
+                { left: '30%', size: 'w-1 h-1 lg:w-1.5 lg:h-1.5', color: 'from-cyan-400 to-blue-400', delay: 1.2, duration: 4 },
+                { left: '40%', size: 'w-1.5 h-1.5 lg:w-2 lg:h-2', color: 'from-pink-400 to-rose-400', delay: 0.3, duration: 3.8 },
+                { left: '50%', size: 'w-1 h-1 lg:w-1.5 lg:h-1.5', color: 'from-indigo-400 to-purple-400', delay: 0.9, duration: 3.2 },
+                { left: '60%', size: 'w-1.5 h-1.5 lg:w-2 lg:h-2', color: 'from-blue-400 to-cyan-400', delay: 1.5, duration: 4.2 },
+                { left: '70%', size: 'w-1 h-1 lg:w-1.5 lg:h-1.5', color: 'from-purple-400 to-pink-400', delay: 0.4, duration: 3.6 },
+                { left: '80%', size: 'w-1.5 h-1.5 lg:w-2 lg:h-2', color: 'from-rose-400 to-pink-400', delay: 1.1, duration: 3.9 },
+                { left: '90%', size: 'w-1 h-1 lg:w-1.5 lg:h-1.5', color: 'from-cyan-400 to-blue-400', delay: 0.7, duration: 3.4 },
+                { left: '15%', size: 'w-1.5 h-1.5 lg:w-2 lg:h-2', color: 'from-indigo-400 to-purple-400', delay: 1.8, duration: 4.1 },
+                { left: '25%', size: 'w-1 h-1 lg:w-1.5 lg:h-1.5', color: 'from-blue-400 to-purple-400', delay: 0.2, duration: 3.7 },
+                { left: '35%', size: 'w-1.5 h-1.5 lg:w-2 lg:h-2', color: 'from-purple-400 to-pink-400', delay: 1.3, duration: 3.3 },
+                { left: '45%', size: 'w-1 h-1 lg:w-1.5 lg:h-1.5', color: 'from-cyan-400 to-blue-400', delay: 0.8, duration: 4.3 },
+                { left: '55%', size: 'w-1.5 h-1.5 lg:w-2 lg:h-2', color: 'from-pink-400 to-rose-400', delay: 1.6, duration: 3.1 },
+                { left: '65%', size: 'w-1 h-1 lg:w-1.5 lg:h-1.5', color: 'from-indigo-400 to-purple-400', delay: 0.5, duration: 3.8 }
+              ].map((bubble, i) => (
+                <motion.div
+                  key={`header-bubble-${i}`}
+                  className={`absolute ${bubble.size} rounded-full bg-gradient-to-r ${bubble.color}`}
+                  style={{
+                    top: '50%',
+                    left: bubble.left,
+                    boxShadow: '0 0 4px rgba(59, 130, 246, 0.3)',
+                    filter: 'blur(0.3px)',
+                    zIndex: 10
+                  }}
+                  animate={{
+                    y: [0, -50, -100, -150],
+                    x: [0, Math.random() * 10 - 5, Math.random() * 15 - 7.5, Math.random() * 20 - 10],
+                    scale: [0, 1, 1.1, 0.7],
+                    opacity: [0, 1, 0.8, 0]
+                  }}
+                  transition={{
+                    duration: bubble.duration,
+                    repeat: Infinity,
+                    delay: bubble.delay,
+                    ease: "easeOut"
+                  }}
+                />
+              ))}
             </div>
           </motion.a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
 
-            <a href="#courses" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+            <a href="#courses" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {t.courses}
             </a>
-            <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+            <a href="#about" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {t.about}
             </a>
-            <a href="#team" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+            <a href="#team" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {language === 'ru' ? 'Команда' : 'Команда'}
             </a>
-            <a href="#timeline" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+            <a href="#timeline" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {language === 'ru' ? 'История' : 'Тарих'}
             </a>
-            <a href="#faq" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+            <a href="#faq" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {language === 'ru' ? 'FAQ' : 'FAQ'}
             </a>
-            <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
+            <a href="#contact" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
               {t.contact}
             </a>
             
             {/* Language Switcher */}
             <div className="flex items-center space-x-2">
-              <Globe className="w-4 h-4 text-gray-600" />
+              <Globe className="w-4 h-4 text-muted-dark" />
               <button
                 onClick={() => {
                   const newLanguage = language === 'ru' ? 'kk' : 'ru'
                   setLanguage(newLanguage)
                   localStorage.setItem('selectedLanguage', newLanguage)
                 }}
-                className="px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary-50"
+                className="px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 text-primary-dark"
               >
                 {language === 'ru' ? 'KK' : 'RU'}
               </button>
@@ -155,66 +198,67 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           >
-            {isOpen ? <X className="w-6 h-6 text-gray-900 dark:text-white" /> : <Menu className="w-6 h-6 text-gray-900 dark:text-white" />}
+            {isOpen ? <X className="w-6 h-6 text-primary-dark" /> : <Menu className="w-6 h-6 text-primary-dark" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 absolute top-full left-0 right-0 z-50 shadow-lg"
-          >
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-light absolute top-full left-0 right-0 z-50 shadow-lg safe-area-top"
+            >
             <div className="py-4 space-y-2 max-h-[70vh] overflow-y-auto">
               <a
                 href="#courses"
-                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {t.courses}
               </a>
               <a
                 href="#about"
-                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {t.about}
               </a>
               <a
                 href="#team"
-                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {language === 'ru' ? 'Команда' : 'Команда'}
               </a>
               <a
                 href="#timeline"
-                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {language === 'ru' ? 'История' : 'Тарих'}
               </a>
               <a
                 href="#faq"
-                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {language === 'ru' ? 'FAQ' : 'FAQ'}
               </a>
               <a
                 href="#contact"
-                className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {t.contact}
               </a>
               
-              <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-600">
+              <div className="px-4 py-3 border-t border-light">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <Globe className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                    <Globe className="w-4 h-4 text-muted-dark" />
                     <button
                       onClick={() => {
                         const newLanguage = language === 'ru' ? 'kk' : 'ru'
@@ -226,6 +270,8 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                       {language === 'ru' ? 'KK' : 'RU'}
                     </button>
                   </div>
+                  {/* Theme Toggle for Mobile */}
+                  <ThemeToggle />
                 </div>
                 <button
                   className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 text-sm"
@@ -244,6 +290,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </div>
           </motion.div>
         )}
+        </AnimatePresence>
       </div>
     </motion.header>
   )

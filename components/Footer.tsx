@@ -92,11 +92,11 @@ export default function Footer({ language }: FooterProps) {
 
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container-custom">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white">
+      <div className="container-custom px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {/* Company Info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -128,7 +128,7 @@ export default function Footer({ language }: FooterProps) {
                    </p>
                  </div>
                </motion.a>
-              <p className="text-gray-400 leading-relaxed mb-6">
+              <p className="text-gray-300 dark:text-gray-400 leading-relaxed mb-6">
                 {t.description}
               </p>
               
@@ -170,32 +170,32 @@ export default function Footer({ language }: FooterProps) {
               <ul className="space-y-3">
 
                 <li>
-                  <a href="#courses" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="#courses" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
                     {t.quickLinks.courses}
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="#about" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
                     {t.quickLinks.about}
                   </a>
                 </li>
                 <li>
-                  <a href="#team" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="#team" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
                     {language === 'ru' ? 'Команда' : 'Команда'}
                   </a>
                 </li>
                 <li>
-                  <a href="#timeline" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="#timeline" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
                     {language === 'ru' ? 'История' : 'Тарих'}
                   </a>
                 </li>
                 <li>
-                  <a href="#faq" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="#faq" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
                     {language === 'ru' ? 'FAQ' : 'FAQ'}
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="#contact" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
                     {t.quickLinks.contact}
                   </a>
                 </li>
@@ -212,16 +212,16 @@ export default function Footer({ language }: FooterProps) {
               <h4 className="text-lg font-semibold mb-6">{t.courses.title}</h4>
               <ul className="space-y-3">
                 <li>
-                  <span className="text-gray-400">{t.courses.python}</span>
+                  <span className="text-gray-300 dark:text-gray-400">{t.courses.python}</span>
                 </li>
                 <li>
-                  <span className="text-gray-400">{t.courses.golang}</span>
+                  <span className="text-gray-300 dark:text-gray-400">{t.courses.golang}</span>
                 </li>
                 <li>
-                  <span className="text-gray-400">{t.courses.javascript}</span>
+                  <span className="text-gray-300 dark:text-gray-400">{t.courses.javascript}</span>
                 </li>
                 <li>
-                  <span className="text-gray-400">{t.courses.analytics}</span>
+                  <span className="text-gray-300 dark:text-gray-400">{t.courses.analytics}</span>
                 </li>
               </ul>
             </motion.div>
@@ -239,7 +239,7 @@ export default function Footer({ language }: FooterProps) {
                   <Phone className="w-5 h-5 text-primary-400" />
                   <a 
                     href="tel:+77773323676" 
-                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300"
                   >
                     {t.contact.phone}
                   </a>
@@ -248,7 +248,7 @@ export default function Footer({ language }: FooterProps) {
                   <Mail className="w-5 h-5 text-primary-400" />
                   <a 
                     href="mailto:info@codemasterspro.kz" 
-                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300"
                   >
                     {t.contact.email}
                   </a>
@@ -256,7 +256,7 @@ export default function Footer({ language }: FooterProps) {
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-primary-400" />
                   <span 
-                    className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
+                    className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
                     onClick={() => {
                       const address = language === 'ru' 
                         ? 'Павлодар, ул. Е. Бекмаханова 115/2'
@@ -274,14 +274,14 @@ export default function Footer({ language }: FooterProps) {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-gray-800 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="border-t border-gray-800 dark:border-gray-700 py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex items-center space-x-2 text-gray-400"
+              className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 text-gray-300 dark:text-gray-400 text-center sm:text-left"
             >
               <span>© 2024 - {currentYear} CodeMastersPRO. {language === 'ru' ? 'Все права защищены.' : 'Барлық құқықтар қорғалған.'}</span>
               <span>•</span>
