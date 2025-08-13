@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Home, BookOpen, Target, MessageCircle, ArrowUp, Code, Sparkles } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface CourseFloatingNavProps {
   language: 'ru' | 'kk'
@@ -11,6 +12,7 @@ interface CourseFloatingNavProps {
 }
 
 export default function CourseFloatingNav({ language, courseColor, courseName }: CourseFloatingNavProps) {
+  const router = useRouter()
   const [isExpanded, setIsExpanded] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
@@ -24,6 +26,12 @@ export default function CourseFloatingNav({ language, courseColor, courseName }:
   }, [])
 
   const scrollToSection = (sectionId: string) => {
+    if (sectionId === 'home') {
+      // Navigate to main page for home button
+      router.push('/')
+      return
+    }
+    
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })

@@ -2,6 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Disable text selection and blinking cursor */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  caret-color: transparent;
+}
+
+/* Allow text selection only for specific elements */
+input, textarea, [contenteditable="true"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  caret-color: auto;
+}
+
+/* Disable focus outline for non-interactive elements */
+*:focus {
+  outline: none;
+}
+
+/* Remove focus outline for all elements */
+*:focus {
+  outline: none !important;
+}
+
+/* Remove focus outline for specific interactive elements */
+button:focus, a:focus, [tabindex]:focus, input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove focus ring for Tailwind */
+.focus\:outline-none:focus {
+  outline: none !important;
+}
+
+.focus\:ring-0:focus {
+  box-shadow: none !important;
+}
+
+/* Remove all possible focus styles */
+*:focus-visible {
+  outline: none !important;
+}
+
+*:focus-within {
+  outline: none !important;
+}
+
+/* Remove focus styles for all interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Modal isolation */
+.modal-isolated {
+  isolation: isolate;
+  contain: layout style paint;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {

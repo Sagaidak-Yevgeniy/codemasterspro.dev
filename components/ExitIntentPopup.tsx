@@ -179,10 +179,10 @@ export default function ExitIntentPopup({ language }: ExitIntentPopupProps) {
 
                 {/* CTA Button */}
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleGetDiscount}
-                  className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-6 rounded-xl hover:shadow-lg transition-all duration-300 text-sm sm:text-base"
+                  className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-2 px-3 rounded-lg hover:shadow-md transition-all duration-300 text-xs"
                 >
                   {t.cta}
                 </motion.button>

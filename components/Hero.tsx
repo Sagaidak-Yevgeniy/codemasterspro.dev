@@ -17,6 +17,7 @@ const translations = {
     titleEnd: 'программистом',
     subtitle: 'Изучите современные технологии программирования с опытными преподавателями',
     description: 'Получите практические навыки разработки и станьте востребованным специалистом в IT-индустрии',
+    audience: 'Для школьников и взрослых • Подготовка к ЕНТ и карьере в IT',
     cta: 'Пробное занятие',
     trial: 'Пробное занятие',
     stats: {
@@ -34,6 +35,7 @@ const translations = {
     titleEnd: 'бағдарламашы',
     subtitle: 'Тәжірибелі оқытушылармен заманауи бағдарламалау технологияларын үйреніңіз',
     description: 'Дамудың практикалық дағдыларын алыңыз және IT-өнеркәсібінде сұранысты маман болыңыз',
+    audience: 'Мектеп оқушылары және ересектер үшін • ЕНТ-ке және IT-дегі мансапқа дайындық',
     cta: 'Сынақ сабағы',
     trial: 'Сынақ сабағы',
     stats: {
@@ -134,9 +136,18 @@ export default function Hero({ language }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-base sm:text-lg md:text-xl text-secondary-dark mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0"
+              className="text-base sm:text-lg md:text-xl text-secondary-dark mb-4 max-w-2xl mx-auto lg:mx-0"
             >
               {t.subtitle}
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-sm sm:text-base text-primary-600 dark:text-primary-400 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 font-medium"
+            >
+              {t.audience}
             </motion.p>
 
             {/* Modern Free Trial Banner */}
@@ -144,18 +155,18 @@ export default function Hero({ language }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="mb-8"
+              className="mb-6"
             >
               <motion.div
-                whileHover={{ scale: 1.02, y: -2 }}
-                className="relative overflow-hidden bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 text-white p-4 sm:p-5 md:p-6 rounded-xl shadow-xl border border-white/20 backdrop-blur-sm"
+                whileHover={{ scale: 1.01, y: -1 }}
+                className="relative overflow-hidden bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 text-white p-3 sm:p-4 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm"
               >
                 {/* Animated background elements */}
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
                   <motion.div
                     animate={{ 
-                      x: [0, 60, 0],
-                      y: [0, -30, 0],
+                      x: [0, 40, 0],
+                      y: [0, -20, 0],
                       rotate: [0, 180, 360]
                     }}
                     transition={{ 
@@ -163,13 +174,13 @@ export default function Hero({ language }: HeroProps) {
                       repeat: Infinity, 
                       ease: "easeInOut" 
                     }}
-                    className="absolute top-3 right-3 w-12 h-12 bg-white/10 rounded-full"
+                    className="absolute top-2 right-2 w-8 h-8 bg-white/10 rounded-full"
                   />
                   <motion.div
                     animate={{ 
-                      x: [0, -40, 0],
-                      y: [0, 20, 0],
-                      scale: [1, 1.2, 1]
+                      x: [0, -30, 0],
+                      y: [0, 15, 0],
+                      scale: [1, 1.1, 1]
                     }}
                     transition={{ 
                       duration: 6, 
@@ -177,50 +188,50 @@ export default function Hero({ language }: HeroProps) {
                       ease: "easeInOut",
                       delay: 1
                     }}
-                    className="absolute bottom-3 left-3 w-8 h-8 bg-white/10 rounded-full"
+                    className="absolute bottom-2 left-2 w-6 h-6 bg-white/10 rounded-full"
                   />
                 </div>
 
                 <div className="relative z-10">
-                  <div className="flex flex-col xl:flex-row items-center justify-between space-y-4 xl:space-y-0 xl:space-x-6">
+                  <div className="flex flex-col lg:flex-row items-center justify-between space-y-3 lg:space-y-0 lg:space-x-4">
                     {/* Left side - Main content */}
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-3 sm:space-y-0 sm:space-x-4 text-center sm:text-left w-full xl:w-auto">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 text-center sm:text-left w-full lg:w-auto">
                       <motion.div
                         animate={{ 
                           rotate: 360,
-                          scale: [1, 1.1, 1]
+                          scale: [1, 1.05, 1]
                         }}
                         transition={{ 
                           rotate: { duration: 6, repeat: Infinity, ease: "linear" },
                           scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
                         }}
-                        className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center shadow-lg flex-shrink-0"
+                        className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
                       >
-                        <Gift className="w-6 h-6 text-white" />
+                        <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                       </motion.div>
                       
                       <div className="flex-1">
                         <motion.div
-                          animate={{ scale: [1, 1.05, 1] }}
+                          animate={{ scale: [1, 1.02, 1] }}
                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          className="font-bold text-base sm:text-lg md:text-xl mb-1"
+                          className="font-bold text-sm sm:text-base lg:text-lg mb-1"
                         >
                           {language === 'ru' ? '🎉 Первое занятие БЕСПЛАТНО!' : '🎉 Алғашқы сабақ ТЕГІН!'}
                         </motion.div>
-                        <div className="text-xs sm:text-sm opacity-90 mb-2">
-                          {language === 'ru' ? 'Без обязательств • Без скрытых платежей' : 'Міндеттемесіз • Жасырын төлемдерсіз'}
+                        <div className="text-xs opacity-90 mb-1">
+                          {language === 'ru' ? 'Для школьников и взрослых' : 'Мектеп оқушылары және ересектер үшін'}
                         </div>
-                        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs opacity-80">
+                        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 text-xs opacity-80">
                           <div className="flex items-center space-x-1">
-                            <CheckCircle className="w-3 h-3 text-green-300" />
+                            <CheckCircle className="w-2.5 h-2.5 text-green-300" />
                             <span>{language === 'ru' ? 'Практика' : 'Тәжірибе'}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <CheckCircle className="w-3 h-3 text-green-300" />
+                            <CheckCircle className="w-2.5 h-2.5 text-green-300" />
                             <span>{language === 'ru' ? 'Сертификат' : 'Сертификат'}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <CheckCircle className="w-3 h-3 text-green-300" />
+                            <CheckCircle className="w-2.5 h-2.5 text-green-300" />
                             <span>{language === 'ru' ? 'Поддержка' : 'Қолдау'}</span>
                           </div>
                         </div>
@@ -228,28 +239,28 @@ export default function Hero({ language }: HeroProps) {
                     </div>
 
                     {/* Right side - CTA buttons */}
-                    <div className="flex flex-col gap-2 w-full sm:w-auto sm:min-w-[200px]">
+                    <div className="flex flex-col gap-1.5 w-full sm:w-auto sm:min-w-[140px]">
                       <motion.button
                         whileHover={{ 
-                          scale: 1.05, 
-                          x: 2,
-                          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                          scale: 1.01, 
+                          y: -1,
+                          boxShadow: "0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 4px -2px rgba(0, 0, 0, 0.05)"
                         }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white font-bold py-2.5 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 text-sm w-full sm:w-auto relative overflow-hidden group"
+                        whileTap={{ scale: 0.99 }}
+                        className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white font-medium py-1.5 px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1.5 text-xs w-full sm:w-auto relative overflow-hidden group"
                         onClick={handleTrialLesson}
                       >
                         {/* Animated background shine effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         
                         <motion.div
-                          animate={{ rotate: [0, 10, -10, 0] }}
+                          animate={{ rotate: [0, 3, -3, 0] }}
                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         >
-                          <Play className="w-4 h-4" />
+                          <Play className="w-2.5 h-2.5" />
                         </motion.div>
                         <motion.span
-                          animate={{ x: [0, 2, 0] }}
+                          animate={{ x: [0, 0.5, 0] }}
                           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                         >
                           {language === 'ru' ? 'Попробовать бесплатно' : 'Тегін сынап көріңіз'}
@@ -258,25 +269,25 @@ export default function Hero({ language }: HeroProps) {
                       
                       <motion.button
                         whileHover={{ 
-                          scale: 1.05, 
-                          x: 2,
-                          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                          scale: 1.01, 
+                          y: -1,
+                          boxShadow: "0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 4px -2px rgba(0, 0, 0, 0.05)"
                         }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 hover:from-orange-600 hover:via-pink-600 hover:to-rose-600 text-white font-bold py-2.5 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 text-sm w-full sm:w-auto relative overflow-hidden group"
+                        whileTap={{ scale: 0.99 }}
+                        className="bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 hover:from-orange-600 hover:via-pink-600 hover:to-rose-600 text-white font-medium py-1.5 px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1.5 text-xs w-full sm:w-auto relative overflow-hidden group"
                         onClick={handleGetDiscount}
                       >
                         {/* Animated background shine effect */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         
                         <motion.div
-                          animate={{ scale: [1, 1.1, 1] }}
+                          animate={{ scale: [1, 1.03, 1] }}
                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         >
-                          <Gift className="w-4 h-4" />
+                          <Gift className="w-2.5 h-2.5" />
                         </motion.div>
                         <motion.span
-                          animate={{ x: [0, 2, 0] }}
+                          animate={{ x: [0, 0.5, 0] }}
                           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                         >
                           {language === 'ru' ? '🎁 Получить скидку' : '🎁 Жеңілдік алу'}
@@ -345,9 +356,25 @@ export default function Hero({ language }: HeroProps) {
             className="relative"
           >
             <div className="relative card-enhanced-dark rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 lg:p-8 transform rotate-1 sm:rotate-3 hover:rotate-0 transition-transform duration-500">
-              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                <Star className="w-4 h-4 inline mr-1" />
-                {language === 'ru' ? 'Лучшая школа' : 'Үздік мектеп'}
+              {/* Stickers Container */}
+              <div className="absolute -top-8 -right-4 flex flex-col gap-2 z-30">
+                {/* Best School Sticker */}
+                <div className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                  <Star className="w-3 h-3 inline mr-1" />
+                  {language === 'ru' ? 'Лучшая школа' : 'Үздік мектеп'}
+                </div>
+                
+                {/* Pavlodar Sticker */}
+                <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                  <div className="w-2 h-2 bg-white rounded-full inline mr-1" />
+                  {language === 'ru' ? '📍 Павлодар' : '📍 Павлодар'}
+                </div>
+                
+                {/* Offline Sticker */}
+                <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                  <Users className="w-3 h-3 inline mr-1" />
+                  {language === 'ru' ? '💻 Офлайн' : '💻 Офлайн'}
+                </div>
               </div>
               
               <div className="relative">
@@ -486,9 +513,14 @@ export default function Hero({ language }: HeroProps) {
                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
                      />
                    </motion.div>
-                   <div>
+                   <div className="flex-1">
                      <h3 className="font-semibold text-primary-dark text-xs sm:text-sm md:text-base">Python</h3>
-                     <p className="text-xs text-secondary-dark">{language === 'ru' ? 'Веб-разработка' : 'Веб-даму'}</p>
+                     <p className="text-xs text-secondary-dark mb-1">{language === 'ru' ? 'Веб-разработка' : 'Веб-даму'}</p>
+                     <div className="flex items-center space-x-2">
+                       <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">24 000 ₸</span>
+                       <span className="text-xs text-gray-400 dark:text-gray-500 line-through">30 000 ₸</span>
+                       <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1 py-0.5 rounded text-[10px]">-20%</span>
+                     </div>
                    </div>
                    </motion.div>
                  </Link>
@@ -513,9 +545,14 @@ export default function Hero({ language }: HeroProps) {
                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
                      />
                    </motion.div>
-                   <div>
+                   <div className="flex-1">
                      <h3 className="font-semibold text-primary-dark text-xs sm:text-sm md:text-base">Golang</h3>
-                     <p className="text-xs text-secondary-dark">{language === 'ru' ? 'Серверная разработка' : 'Серверлік даму'}</p>
+                     <p className="text-xs text-secondary-dark mb-1">{language === 'ru' ? 'Серверная разработка' : 'Серверлік даму'}</p>
+                     <div className="flex items-center space-x-2">
+                       <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400">24 000 ₸</span>
+                       <span className="text-xs text-gray-400 dark:text-gray-500 line-through">30 000 ₸</span>
+                       <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1 py-0.5 rounded text-[10px]">-20%</span>
+                     </div>
                    </div>
                    </motion.div>
                  </Link>
@@ -540,9 +577,14 @@ export default function Hero({ language }: HeroProps) {
                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
                      />
                    </motion.div>
-                   <div>
+                   <div className="flex-1">
                      <h3 className="font-semibold text-primary-dark text-xs sm:text-sm md:text-base">JavaScript</h3>
-                     <p className="text-xs text-secondary-dark">{language === 'ru' ? 'Фронтенд разработка' : 'Фронтенд даму'}</p>
+                     <p className="text-xs text-secondary-dark mb-1">{language === 'ru' ? 'Фронтенд разработка' : 'Фронтенд даму'}</p>
+                     <div className="flex items-center space-x-2">
+                       <span className="text-xs font-bold text-yellow-600 dark:text-yellow-400">24 000 ₸</span>
+                       <span className="text-xs text-gray-400 dark:text-gray-500 line-through">30 000 ₸</span>
+                       <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1 py-0.5 rounded text-[10px]">-20%</span>
+                     </div>
                    </div>
                    </motion.div>
                  </Link>
@@ -563,70 +605,21 @@ export default function Hero({ language }: HeroProps) {
                    >
                      <Database className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" />
                    </motion.div>
-                   <div>
+                   <div className="flex-1">
                      <h3 className="font-semibold text-primary-dark text-xs sm:text-sm md:text-base">{language === 'ru' ? 'Аналитика данных' : 'Деректер талдауы'}</h3>
-                     <p className="text-xs text-secondary-dark">{language === 'ru' ? 'Data Science' : 'Data Science'}</p>
+                     <p className="text-xs text-secondary-dark mb-1">{language === 'ru' ? 'Data Science' : 'Data Science'}</p>
+                     <div className="flex items-center space-x-2">
+                       <span className="text-xs font-bold text-purple-600 dark:text-purple-400">24 000 ₸</span>
+                       <span className="text-xs text-gray-400 dark:text-gray-500 line-through">30 000 ₸</span>
+                       <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1 py-0.5 rounded text-[10px]">-20%</span>
+                     </div>
                    </div>
                    </motion.div>
                  </Link>
                </div>
               </div>
               
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"
-              >
-                <div className="flex items-center justify-between">
-                  {/* Location Badge */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 px-3 py-2 rounded-full border border-blue-200 dark:border-blue-700/30"
-                  >
-                    <motion.div
-                      animate={{ 
-                        scale: [1, 1.1, 1],
-                        rotate: [0, 5, -5, 0]
-                      }}
-                      transition={{ 
-                        duration: 3, 
-                        repeat: Infinity, 
-                        ease: "easeInOut" 
-                      }}
-                      className="w-3 h-3 bg-blue-500 rounded-full"
-                    />
-                    <span className="text-blue-700 dark:text-blue-300 font-semibold text-sm">
-                      {language === 'ru' ? '📍 Павлодар' : '📍 Павлодар'}
-                    </span>
-                  </motion.div>
 
-                  {/* Offline Badge */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center space-x-2 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 px-3 py-2 rounded-full border border-emerald-200 dark:border-emerald-700/30"
-                  >
-                    <motion.div
-                      animate={{ 
-                        scale: [1, 1.2, 1],
-                        opacity: [0.7, 1, 0.7]
-                      }}
-                      transition={{ 
-                        duration: 2, 
-                        repeat: Infinity, 
-                        ease: "easeInOut" 
-                      }}
-                    >
-                      <Users className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    </motion.div>
-                    <span className="text-emerald-700 dark:text-emerald-300 font-semibold text-sm">
-                      {language === 'ru' ? '💻 Офлайн' : '💻 Офлайн'}
-                    </span>
-                  </motion.div>
-                </div>
-
-
-              </motion.div>
             </div>
           </motion.div>
         </div>

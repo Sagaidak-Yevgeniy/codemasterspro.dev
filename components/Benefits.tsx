@@ -23,7 +23,7 @@ interface BenefitsProps {
 const translations = {
   ru: {
     title: 'Почему выбирают CMPro',
-    subtitle: 'Современный подход к обучению программированию',
+    subtitle: 'Современный подход к обучению программированию для школьников и взрослых',
     benefits: [
       {
         icon: Monitor,
@@ -80,6 +80,20 @@ const translations = {
         description: 'Персональное внимание к каждому студенту. Помощь в решении любых вопросов.',
         color: 'from-indigo-500 to-purple-500',
         highlight: 'ПЕРСОНАЛЬНО'
+      },
+      {
+        icon: Sparkles,
+        title: 'Для школьников и взрослых',
+        description: 'Специальные программы для школьников (подготовка к ЕНТ) и взрослых (смена карьеры).',
+        color: 'from-pink-500 to-rose-500',
+        highlight: 'ВСЕ ВОЗРАСТЫ'
+      },
+      {
+        icon: BookOpen,
+        title: 'Менторство в информатике',
+        description: 'Индивидуальная помощь в разборе школьной информатики, подготовка к олимпиадам и ЕНТ.',
+        color: 'from-indigo-500 to-purple-500',
+        highlight: 'МЕНТОРСТВО'
       }
     ],
     equipmentTitle: 'Какое оборудование нужно для обучения?',
@@ -95,7 +109,7 @@ const translations = {
   },
   kk: {
     title: 'Неге CMPro-ны таңдайды',
-    subtitle: 'Бағдарламалау бойынша заманауи оқу тәсілі',
+    subtitle: 'Мектеп оқушылары және ересектер үшін бағдарламалау бойынша заманауи оқу тәсілі',
     benefits: [
       {
         icon: Monitor,
@@ -152,6 +166,20 @@ const translations = {
         description: 'Әр студентке жеке көңіл бөлу. Кез келген сұрақтарды шешуге көмек.',
         color: 'from-indigo-500 to-purple-500',
         highlight: 'ЖЕКЕ'
+      },
+      {
+        icon: Sparkles,
+        title: 'Мектеп оқушылары және ересектер үшін',
+        description: 'Мектеп оқушылары үшін арнайы бағдарламалар (ЕНТ-ке дайындық) және ересектер үшін (мансапты өзгерту).',
+        color: 'from-pink-500 to-rose-500',
+        highlight: 'БАРЛЫҚ ЖАСТАР'
+      },
+      {
+        icon: BookOpen,
+        title: 'Информатика бойынша менторлық',
+        description: 'Мектеп информатикасын талдауда жеке көмек, олимпиадалар мен ЕНТ-ке дайындық.',
+        color: 'from-indigo-500 to-purple-500',
+        highlight: 'МЕНТОРЛЫҚ'
       }
     ],
     equipmentTitle: 'Оқу үшін қандай жабдықтар қажет?',
@@ -171,7 +199,7 @@ export default function Benefits({ language }: BenefitsProps) {
   const t = translations[language]
 
   return (
-    <section className="section-padding bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section id="benefits" className="section-padding bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -339,9 +367,9 @@ export default function Benefits({ language }: BenefitsProps) {
                 }
               </p>
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-primary-600 font-bold text-lg px-8 py-4 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center space-x-3 mx-auto"
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white text-primary-600 font-semibold text-sm px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2 mx-auto"
                 onClick={() => {
                   const message = language === 'ru' 
                     ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
@@ -350,7 +378,7 @@ export default function Benefits({ language }: BenefitsProps) {
                   window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
                 }}
               >
-                <Zap className="w-5 h-5" />
+                <Zap className="w-3 h-3" />
                 <span>{language === 'ru' ? 'Начать обучение сейчас' : 'Қазір оқуға бастау'}</span>
               </motion.button>
             </div>

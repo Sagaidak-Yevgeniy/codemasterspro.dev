@@ -18,7 +18,9 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
     ru: {
       home: 'Главная',
       courses: 'Курсы',
+      mentorship: 'Менторство',
       about: 'О нас',
+      benefits: 'Преимущества',
       team: 'Команда',
       timeline: 'История',
       faq: 'FAQ',
@@ -30,7 +32,9 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
     kk: {
       home: 'Басты бет',
       courses: 'Курстар',
+      mentorship: 'Менторлық',
       about: 'Біз туралы',
+      benefits: 'Артықшылықтар',
       team: 'Команда',
       timeline: 'Тарих',
       faq: 'Сұрақтар',
@@ -46,7 +50,9 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
   const navItems = [
     { id: 'home', icon: Home, color: 'from-blue-500 to-blue-600', title: t.home },
     { id: 'courses', icon: BookOpen, color: 'from-emerald-500 to-emerald-600', title: t.courses },
+    { id: 'mentorship', icon: Sparkles, color: 'from-indigo-500 to-indigo-600', title: t.mentorship },
     { id: 'about', icon: Award, color: 'from-purple-500 to-purple-600', title: t.about },
+    { id: 'benefits', icon: Users, color: 'from-cyan-500 to-cyan-600', title: t.benefits },
     { id: 'team', icon: Users, color: 'from-yellow-500 to-yellow-600', title: t.team },
     { id: 'timeline', icon: Clock, color: 'from-indigo-500 to-indigo-600', title: t.timeline },
     { id: 'faq', icon: HelpCircle, color: 'from-pink-500 to-pink-600', title: t.faq },

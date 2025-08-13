@@ -16,12 +16,17 @@ interface FooterProps {
 
 const translations = {
   ru: {
-    description: 'CodeMastersPRO - современная школа программирования в Павлодаре. Обучаем Python, Golang, JavaScript и аналитике данных.',
+    description: 'CodeMastersPRO - современная школа программирования в Павлодаре. Обучаем школьников и взрослых Python, Golang, JavaScript и аналитике данных.',
     quickLinks: {
       title: 'Быстрые ссылки',
       home: 'Главная',
       courses: 'Курсы',
+      mentorship: 'Менторство',
       about: 'О нас',
+      benefits: 'Преимущества',
+      team: 'Команда',
+      timeline: 'История',
+      faq: 'FAQ',
       contact: 'Контакты'
     },
     courses: {
@@ -47,12 +52,17 @@ const translations = {
     inKazakhstan: 'в Казахстане'
   },
   kk: {
-    description: 'CodeMastersPRO - Павлодардағы заманауи бағдарламалау мектебі. Python, Golang, JavaScript және деректер талдауын оқытамыз.',
+    description: 'CodeMastersPRO - Павлодардағы заманауи бағдарламалау мектебі. Мектеп оқушылары мен ересектерге Python, Golang, JavaScript және деректер талдауын оқытамыз.',
     quickLinks: {
       title: 'Жылдам сілтемелер',
       home: 'Басты бет',
       courses: 'Курстар',
+      mentorship: 'Менторлық',
       about: 'Біз туралы',
+      benefits: 'Артықшылықтар',
+      team: 'Команда',
+      timeline: 'Тарих',
+      faq: 'Сұрақтар',
       contact: 'Байланыс'
     },
     courses: {
@@ -168,10 +178,14 @@ export default function Footer({ language }: FooterProps) {
             >
               <h4 className="text-lg font-semibold mb-6">{t.quickLinks.title}</h4>
               <ul className="space-y-3">
-
                 <li>
                   <a href="#courses" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
                     {t.quickLinks.courses}
+                  </a>
+                </li>
+                <li>
+                  <a href="#mentorship" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
+                    {t.quickLinks.mentorship}
                   </a>
                 </li>
                 <li>
@@ -180,18 +194,23 @@ export default function Footer({ language }: FooterProps) {
                   </a>
                 </li>
                 <li>
+                  <a href="#benefits" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
+                    {t.quickLinks.benefits}
+                  </a>
+                </li>
+                <li>
                   <a href="#team" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
-                    {language === 'ru' ? 'Команда' : 'Команда'}
+                    {t.quickLinks.team}
                   </a>
                 </li>
                 <li>
                   <a href="#timeline" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
-                    {language === 'ru' ? 'История' : 'Тарих'}
+                    {t.quickLinks.timeline}
                   </a>
                 </li>
                 <li>
                   <a href="#faq" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
-                    {language === 'ru' ? 'FAQ' : 'FAQ'}
+                    {t.quickLinks.faq}
                   </a>
                 </li>
                 <li>

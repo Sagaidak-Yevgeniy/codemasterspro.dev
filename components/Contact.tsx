@@ -21,6 +21,7 @@ const translations = {
   ru: {
     title: 'Свяжитесь с нами',
     subtitle: 'Готовы начать обучение? Свяжитесь с нами любым удобным способом',
+    audience: 'Для школьников и взрослых • Подготовка к ЕНТ и карьере в IT • Менторство в информатике',
     contactInfo: {
       title: 'Контактная информация',
       location: 'Павлодар, ул. Е. Бекмаханова 115/2 (угол улиц Назарбаева и Естая)',
@@ -50,6 +51,7 @@ const translations = {
   kk: {
     title: 'Бізбен байланысыңыз',
     subtitle: 'Оқуға бастауға дайынсыз ба? Бізбен ыңғайлы тәсілмен байланысыңыз',
+    audience: 'Мектеп оқушылары және ересектер үшін • ЕНТ-ке және IT-дегі мансапқа дайындық • Информатика бойынша менторлық',
     contactInfo: {
       title: 'Байланыс ақпараты',
       location: 'Павлодар, көш. Е. Бекмаханова 115/2 (Назарбаев және Естая көшелерінің қиылысы)',
@@ -94,8 +96,11 @@ export default function Contact({ language }: ContactProps) {
           <h2 className="text-3xl lg:text-4xl font-bold text-primary-dark mb-4">
             {t.title}
           </h2>
-          <p className="text-lg text-secondary-dark max-w-2xl mx-auto">
+          <p className="text-lg text-secondary-dark max-w-2xl mx-auto mb-2">
             {t.subtitle}
+          </p>
+          <p className="text-sm text-primary-600 dark:text-primary-400 font-medium">
+            {t.audience}
           </p>
         </motion.div>
 

@@ -174,30 +174,144 @@ export default function AnalyticsCourse() {
 
       {/* Hero Section */}
       <section className="py-20 relative overflow-hidden">
-        {/* Animated background elements */}
+        {/* Modern animated background elements */}
+        
+        {/* Floating geometric shapes */}
         <motion.div
           animate={{ 
             rotate: 360,
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ 
-            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-          }}
-          style={{ y: scrollY * 0.5 }}
-          className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-xl"
-        />
-        <motion.div
-          animate={{ 
-            rotate: -360,
-            scale: [1, 1.2, 1]
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3]
           }}
           transition={{ 
             rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-            scale: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }
+            scale: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+          }}
+          style={{ y: scrollY * 0.5 }}
+          className="absolute top-20 right-10 w-40 h-40 bg-gradient-to-br from-purple-400/30 to-pink-400/20 rounded-full blur-xl"
+        />
+        
+        <motion.div
+          animate={{ 
+            rotate: -360,
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.5, 0.2]
+          }}
+          transition={{ 
+            rotate: { duration: 30, repeat: Infinity, ease: "linear" },
+            scale: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 },
+            opacity: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
           }}
           style={{ y: scrollY * 0.3 }}
-          className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-r from-violet-400/20 to-purple-400/20 rounded-full blur-xl"
+          className="absolute bottom-20 left-10 w-32 h-32 bg-gradient-to-tl from-violet-400/25 to-purple-400/15 rounded-full blur-xl"
+        />
+        
+        {/* Additional floating elements */}
+        <motion.div
+          animate={{ 
+            y: [0, -30, 0],
+            x: [0, 15, 0],
+            scale: [1, 1.1, 1],
+            opacity: [0.1, 0.3, 0.1]
+          }}
+          transition={{ 
+            duration: 10, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 2
+          }}
+          style={{ y: scrollY * 0.2 }}
+          className="absolute top-1/3 left-1/4 w-20 h-20 bg-gradient-to-r from-purple-300/20 to-pink-300/10 rounded-lg blur-lg"
+        />
+        
+        <motion.div
+          animate={{ 
+            y: [0, 25, 0],
+            x: [0, -10, 0],
+            scale: [1, 1.05, 1],
+            opacity: [0.15, 0.35, 0.15]
+          }}
+          transition={{ 
+            duration: 12, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 1.5
+          }}
+          style={{ y: scrollY * 0.4 }}
+          className="absolute bottom-1/3 right-1/4 w-16 h-16 bg-gradient-to-l from-pink-300/25 to-purple-300/15 rounded-full blur-md"
+        />
+        
+        {/* Animated lines */}
+        <motion.div
+          animate={{ 
+            scaleX: [0, 1, 0],
+            opacity: [0, 0.4, 0]
+          }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 3
+          }}
+          className="absolute top-1/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-purple-400/30 to-transparent"
+        />
+        
+        <motion.div
+          animate={{ 
+            scaleY: [0, 1, 0],
+            opacity: [0, 0.3, 0]
+          }}
+          transition={{ 
+            duration: 10, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 4
+          }}
+          className="absolute top-0 right-1/3 w-0.5 h-full bg-gradient-to-b from-transparent via-pink-400/25 to-transparent"
+        />
+        
+        {/* Floating particles */}
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+            opacity: [0.2, 0.6, 0.2]
+          }}
+          transition={{ 
+            duration: 6, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 0.5
+          }}
+          className="absolute top-1/2 right-20 w-3 h-3 bg-purple-400/40 rounded-full"
+        />
+        
+        <motion.div
+          animate={{ 
+            y: [0, 15, 0],
+            opacity: [0.15, 0.5, 0.15]
+          }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 1.2
+          }}
+          className="absolute bottom-1/4 left-16 w-2 h-2 bg-pink-400/35 rounded-full"
+        />
+        
+        <motion.div
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.4, 0.1]
+          }}
+          transition={{ 
+            duration: 7, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 2.5
+          }}
+          className="absolute top-1/3 left-1/2 w-4 h-4 bg-violet-400/30 rounded-full"
         />
         
         <div className="container mx-auto px-4 relative z-10">
@@ -300,6 +414,38 @@ export default function AnalyticsCourse() {
                     <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
                   </motion.div>
                 ))}
+              </div>
+            </motion.div>
+
+            {/* Pricing Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mb-8"
+            >
+              <div className="bg-gradient-to-r from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700/30 shadow-lg max-w-md mx-auto">
+                <div className="text-center">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                    {language === 'ru' ? 'Стоимость обучения' : 'Оқу құны'}
+                  </h3>
+                  <div className="flex items-center justify-center space-x-4 mb-4">
+                    <span className="text-2xl text-gray-500 dark:text-gray-400 line-through">
+                      30 000 ₸
+                    </span>
+                    <span className="text-3xl font-bold text-purple-600 dark:text-purple-400">
+                      24 000 ₸
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-center mb-4">
+                    <span className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                      {language === 'ru' ? 'Скидка 20%' : '20% жеңілдік'}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                                            {language === 'ru' ? '/ месяц' : '/ ай'}
+                  </p>
+                </div>
               </div>
             </motion.div>
 

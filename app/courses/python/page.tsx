@@ -33,20 +33,20 @@ export default function PythonCourse() {
     ru: {
       backToCourses: 'Назад к курсам',
       developer: 'разработчик',
-      description: 'Изучите Python с нуля до профессионального уровня. Создавайте веб-приложения, API, автоматизируйте процессы и станьте востребованным разработчиком.',
+      description: 'Идеально для школьников! Изучите Python с нуля - от простых программ до создания веб-сайтов, игр и автоматизации задач. Подходит для ЕНТ по информатике и олимпиад по программированию.',
       months: 'месяцев',
       students: 'студентов',
       success: 'успешность',
       enroll: 'Записаться на курс',
       features: [
-        'Django & Flask фреймворки',
-        'REST API разработка',
-        'Базы данных PostgreSQL',
-        'Автоматизация процессов',
-        'Веб-скрапинг',
-        'Машинное обучение',
-        'Docker контейнеризация',
-        'Git система контроля версий'
+        'Основы программирования',
+        'Создание игр на Python',
+        'Веб-разработка',
+        'Автоматизация задач',
+        'Подготовка к ЕНТ',
+        'Олимпиадное программирование',
+        'Создание проектов',
+        'Портфолио для поступления'
       ],
       whatYouWillLearn: 'Что вы изучите',
       featuresDescription: 'Полный стек технологий для современной Python разработки',
@@ -64,48 +64,48 @@ export default function PythonCourse() {
       readyToBecomeDesc: 'Присоединяйтесь к нашему курсу и начните свой путь в IT уже сегодня',
       curriculumModules: [
         {
-          module: 'Модуль 1: Основы Python',
-          topics: ['Синтаксис и структуры данных', 'Функции и классы', 'Обработка исключений', 'Работа с файлами']
+          module: 'Модуль 1: Основы программирования',
+          topics: ['Переменные и типы данных', 'Условия и циклы', 'Функции и модули', 'Работа с файлами']
         },
         {
-          module: 'Модуль 2: Веб-разработка',
-          topics: ['Django фреймворк', 'Модели и ORM', 'Шаблоны и формы', 'Аутентификация']
+          module: 'Модуль 2: Создание игр и приложений',
+          topics: ['Библиотека Pygame', 'Создание простых игр', 'Графический интерфейс', 'Анимация']
         },
         {
-          module: 'Модуль 3: API и интеграции',
-          topics: ['REST API', 'JSON и XML', 'Внешние API', 'Асинхронное программирование']
+          module: 'Модуль 3: Веб-разработка',
+          topics: ['HTML и CSS', 'Flask фреймворк', 'Создание веб-сайтов', 'Формы и базы данных']
         },
         {
-          module: 'Модуль 4: Базы данных',
-          topics: ['PostgreSQL', 'SQL запросы', 'Миграции', 'Оптимизация']
+          module: 'Модуль 4: Автоматизация',
+          topics: ['Работа с Excel', 'Автоматизация задач', 'Веб-скрапинг', 'Создание ботов']
         },
         {
-          module: 'Модуль 5: DevOps',
-          topics: ['Docker', 'Git', 'CI/CD', 'Деплой на сервер']
+          module: 'Модуль 5: Подготовка к ЕНТ',
+          topics: ['Решение задач ЕНТ', 'Алгоритмы и структуры данных', 'Олимпиадные задачи', 'Практика программирования']
         },
         {
-          module: 'Модуль 6: Проект',
-          topics: ['Полноценное веб-приложение', 'Портфолио', 'Подготовка к трудоустройству']
+          module: 'Модуль 6: Финальный проект',
+          topics: ['Создание собственного проекта', 'Портфолио', 'Подготовка к поступлению в ВУЗ']
         }
       ]
     },
     kk: {
       backToCourses: 'Курстарға қайту',
       developer: 'бағдарламашы',
-      description: 'Python-ды нөлден кәсіби деңгейге дейін үйреніңіз. Веб-қосымшалар, API жасаңыз, процестерді автоматтандырыңыз және сұранысты бағдарламашы болыңыз.',
+      description: 'Мектеп оқушылары үшін тамаша! Python-ды нөлден үйреніңіз - қарапайым бағдарламалардан веб-сайттар, ойындар және тапсырмаларды автоматтандыруға дейін. Информатика бойынша ЕНТ-ке және бағдарламалау олимпиадаларына жарамды.',
       months: 'ай',
       students: 'студент',
       success: 'сәттілік',
       enroll: 'Курсқа тіркелу',
       features: [
-        'Django & Flask фреймворктері',
-        'REST API даму',
-        'PostgreSQL дерекқорлары',
-        'Процестерді автоматтандыру',
-        'Веб-скрапинг',
-        'Машиналық оқыту',
-        'Docker контейнеризация',
-        'Git нұсқаларды басқару жүйесі'
+        'Бағдарламалау негіздері',
+        'Python-да ойындар жасау',
+        'Веб-даму',
+        'Тапсырмаларды автоматтандыру',
+        'ЕНТ-ке дайындық',
+        'Олимпиадалық бағдарламалау',
+        'Жобалар жасау',
+        'Түсуге арналған портфолио'
       ],
       whatYouWillLearn: 'Сіз не үйренесіз',
       featuresDescription: 'Заманауи Python дамуының толық технологиялық стекі',
@@ -123,28 +123,28 @@ export default function PythonCourse() {
       readyToBecomeDesc: 'Біздің курсқа қосылыңыз және IT-дегі жолыңызды бүгін бастаңыз',
       curriculumModules: [
         {
-          module: 'Модуль 1: Python негіздері',
-          topics: ['Синтаксис және деректер құрылымы', 'Функциялар және класстар', 'Ерекше жағдайларды өңдеу', 'Файлдармен жұмыс']
+          module: 'Модуль 1: Бағдарламалау негіздері',
+          topics: ['Айнымалылар және деректер түрлері', 'Шарттар және циклдер', 'Функциялар және модульдер', 'Файлдармен жұмыс']
         },
         {
-          module: 'Модуль 2: Веб-даму',
-          topics: ['Django фреймворк', 'Модельдер және ORM', 'Үлгілер және формалар', 'Аутентификация']
+          module: 'Модуль 2: Ойындар мен қосымшалар жасау',
+          topics: ['Pygame кітапханасы', 'Қарапайым ойындар жасау', 'Графикалық интерфейс', 'Анимация']
         },
         {
-          module: 'Модуль 3: API және интеграциялар',
-          topics: ['REST API', 'JSON және XML', 'Сыртқы API', 'Асинхронды бағдарламалау']
+          module: 'Модуль 3: Веб-даму',
+          topics: ['HTML және CSS', 'Flask фреймворк', 'Веб-сайттар жасау', 'Формалар және дерекқорлар']
         },
         {
-          module: 'Модуль 4: Дерекқорлар',
-          topics: ['PostgreSQL', 'SQL сұраулар', 'Миграциялар', 'Оңтайландыру']
+          module: 'Модуль 4: Автоматтандыру',
+          topics: ['Excel-мен жұмыс', 'Тапсырмаларды автоматтандыру', 'Веб-скрапинг', 'Боттар жасау']
         },
         {
-          module: 'Модуль 5: DevOps',
-          topics: ['Docker', 'Git', 'CI/CD', 'Серверге орналастыру']
+          module: 'Модуль 5: ЕНТ-ке дайындық',
+          topics: ['ЕНТ есептерін шешу', 'Алгоритмдер және деректер құрылымы', 'Олимпиада есептері', 'Бағдарламалау тәжірибесі']
         },
         {
-          module: 'Модуль 6: Жоба',
-          topics: ['Толық веб-қосымша', 'Портфолио', 'Жұмысқа орналасуға дайындық']
+          module: 'Модуль 6: Қорытынды жоба',
+          topics: ['Өз жобаңызды жасау', 'Портфолио', 'ЖОО-ға түсуге дайындық']
         }
       ]
     }
@@ -175,32 +175,241 @@ export default function PythonCourse() {
 
 
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden">
-        {/* Animated background elements */}
+      <section className="py-20 relative overflow-hidden" style={{ perspective: '1000px' }}>
+        {/* Ultra-modern animated background elements */}
+        
+        {/* 3D Gradient Mesh Background */}
         <motion.div
           animate={{ 
-            rotate: 360,
+            rotateX: [0, 5, 0],
+            rotateY: [0, 10, 0],
+            scale: [1, 1.1, 1],
+            opacity: [0.1, 0.3, 0.1]
+          }}
+          transition={{ 
+            rotateX: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+            rotateY: { duration: 25, repeat: Infinity, ease: "easeInOut" },
+            scale: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+          }}
+          style={{ 
+            y: scrollY * 0.1,
+            transformStyle: 'preserve-3d'
+          }}
+          className="absolute inset-0 bg-gradient-to-br from-emerald-400/5 via-teal-400/3 to-green-400/5"
+        />
+        
+        {/* 3D Floating Geometric Shapes */}
+        <motion.div
+          animate={{ 
+            rotateX: [0, 360, 0],
+            rotateY: [0, 180, 0],
+            rotateZ: [0, 90, 0],
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.6, 0.2]
+          }}
+          transition={{ 
+            rotateX: { duration: 30, repeat: Infinity, ease: "linear" },
+            rotateY: { duration: 25, repeat: Infinity, ease: "linear" },
+            rotateZ: { duration: 20, repeat: Infinity, ease: "linear" },
+            scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+          }}
+          style={{ 
+            y: scrollY * 0.5,
+            transformStyle: 'preserve-3d'
+          }}
+          className="absolute top-20 right-10 w-48 h-48 bg-gradient-to-br from-emerald-400/40 to-teal-400/30 rounded-2xl blur-2xl"
+        />
+        
+        <motion.div
+          animate={{ 
+            rotateX: [0, -360, 0],
+            rotateY: [0, -180, 0],
+            scale: [1, 1.4, 1],
+            opacity: [0.15, 0.5, 0.15]
+          }}
+          transition={{ 
+            rotateX: { duration: 35, repeat: Infinity, ease: "linear" },
+            rotateY: { duration: 30, repeat: Infinity, ease: "linear" },
+            scale: { duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 },
+            opacity: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }
+          }}
+          style={{ 
+            y: scrollY * 0.3,
+            transformStyle: 'preserve-3d'
+          }}
+          className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-tl from-green-400/35 to-emerald-400/25 rounded-full blur-2xl"
+        />
+        
+        {/* Morphing Wave Effects */}
+        <motion.div
+          animate={{ 
+            scaleX: [1, 1.2, 0.8, 1],
+            scaleY: [1, 0.8, 1.2, 1],
+            rotate: [0, 5, -5, 0],
+            opacity: [0.1, 0.4, 0.2, 0.1]
+          }}
+          transition={{ 
+            duration: 15, 
+            repeat: Infinity, 
+            ease: "easeInOut"
+          }}
+          style={{ y: scrollY * 0.2 }}
+          className="absolute top-1/3 left-1/4 w-32 h-32 bg-gradient-to-r from-emerald-300/30 to-green-300/20 rounded-full blur-xl"
+        />
+        
+        <motion.div
+          animate={{ 
+            scaleX: [1, 0.8, 1.2, 1],
+            scaleY: [1, 1.2, 0.8, 1],
+            rotate: [0, -8, 8, 0],
+            opacity: [0.2, 0.5, 0.3, 0.2]
+          }}
+          transition={{ 
+            duration: 18, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 3
+          }}
+          style={{ y: scrollY * 0.4 }}
+          className="absolute bottom-1/3 right-1/4 w-28 h-28 bg-gradient-to-l from-teal-300/35 to-emerald-300/25 rounded-full blur-xl"
+        />
+        
+        {/* Dynamic Light Rays */}
+        <motion.div
+          animate={{ 
+            scaleX: [0, 1.5, 0],
+            opacity: [0, 0.6, 0],
+            rotate: [0, 15, 0]
+          }}
+          transition={{ 
+            duration: 12, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute top-1/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent"
+        />
+        
+        <motion.div
+          animate={{ 
+            scaleY: [0, 1.8, 0],
+            opacity: [0, 0.4, 0],
+            rotate: [0, -10, 0]
+          }}
+          transition={{ 
+            duration: 15, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 4
+          }}
+          className="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-transparent via-green-400/40 to-transparent"
+        />
+        
+        {/* Interactive Particle System */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{ 
+              y: [0, -40, 0],
+              x: [0, Math.sin(i) * 20, 0],
+              scale: [1, 1.5, 1],
+              opacity: [0.1, 0.8, 0.1],
+              rotate: [0, 360, 0]
+            }}
+            transition={{ 
+              duration: 8 + i * 0.5, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: i * 0.3
+            }}
+            whileHover={{
+              scale: 2,
+              opacity: 1,
+              transition: { duration: 0.3 }
+            }}
+            className={`absolute w-${2 + (i % 3)} h-${2 + (i % 3)} bg-emerald-400/50 rounded-full cursor-pointer`}
+            style={{
+              top: `${20 + (i * 7) % 60}%`,
+              left: `${10 + (i * 8) % 80}%`,
+              filter: 'blur(1px)'
+            }}
+          />
+        ))}
+        
+        {/* Glowing Orb Effects */}
+        <motion.div
+          animate={{ 
+            scale: [1, 1.8, 1],
+            opacity: [0.05, 0.3, 0.05],
+            filter: ['blur(20px)', 'blur(40px)', 'blur(20px)']
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            ease: "easeInOut"
+          }}
+          style={{ y: scrollY * 0.1 }}
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-emerald-400/20 to-teal-400/10 rounded-full -translate-x-32 -translate-y-32"
+        />
+        
+        <motion.div
+          animate={{ 
+            scale: [1, 1.5, 1],
+            opacity: [0.08, 0.25, 0.08],
+            filter: ['blur(15px)', 'blur(30px)', 'blur(15px)']
+          }}
+          transition={{ 
+            duration: 25, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 5
+          }}
+          style={{ y: scrollY * 0.2 }}
+          className="absolute top-1/4 right-1/4 w-48 h-48 bg-gradient-to-tl from-green-400/15 to-emerald-400/8 rounded-full"
+        />
+        
+        {/* Animated Grid Pattern */}
+        <motion.div
+          animate={{ 
+            opacity: [0.02, 0.08, 0.02],
             scale: [1, 1.1, 1]
           }}
           transition={{ 
-            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            duration: 30, 
+            repeat: Infinity, 
+            ease: "easeInOut"
           }}
-          style={{ y: scrollY * 0.5 }}
-          className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full blur-xl"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(16,185,129,0.1)_1px,transparent_0)] bg-[length:50px_50px]"
         />
+        
+        {/* Floating Code Symbols */}
+        {['<>', '{}', '[]', '()', '//', '&&', '||', '=>'].map((symbol, i) => (
         <motion.div
+            key={symbol}
           animate={{ 
-            rotate: -360,
-            scale: [1, 1.2, 1]
+              y: [0, -30, 0],
+              x: [0, Math.cos(i) * 15, 0],
+              rotate: [0, 180, 360],
+              opacity: [0.1, 0.4, 0.1]
           }}
           transition={{ 
-            rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-            scale: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }
-          }}
-          style={{ y: scrollY * 0.3 }}
-          className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-full blur-xl"
-        />
+              duration: 10 + i, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: i * 0.8
+            }}
+            className="absolute text-emerald-400/30 text-lg font-mono font-bold"
+            style={{
+              top: `${15 + (i * 12) % 70}%`,
+              left: `${5 + (i * 10) % 90}%`,
+              fontSize: `${14 + (i % 3) * 4}px`
+            }}
+          >
+            {symbol}
+          </motion.div>
+        ))}
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -302,6 +511,38 @@ export default function PythonCourse() {
                     <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
                   </motion.div>
                 ))}
+              </div>
+            </motion.div>
+
+            {/* Pricing Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mb-8"
+            >
+              <div className="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-700/30 shadow-lg max-w-md mx-auto">
+                <div className="text-center">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                    {language === 'ru' ? 'Стоимость обучения' : 'Оқу құны'}
+                  </h3>
+                  <div className="flex items-center justify-center space-x-4 mb-4">
+                    <span className="text-2xl text-gray-500 dark:text-gray-400 line-through">
+                      30 000 ₸
+                    </span>
+                    <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">
+                      24 000 ₸
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-center mb-4">
+                    <span className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                      {language === 'ru' ? 'Скидка 20%' : '20% жеңілдік'}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                                            {language === 'ru' ? '/ месяц' : '/ ай'}
+                  </p>
+                </div>
               </div>
             </motion.div>
 

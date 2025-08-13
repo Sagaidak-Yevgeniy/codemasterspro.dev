@@ -173,32 +173,241 @@ export default function GolangCourse() {
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden">
-        {/* Animated background elements */}
+      <section className="py-20 relative overflow-hidden" style={{ perspective: '1000px' }}>
+        {/* Ultra-modern animated background elements */}
+        
+        {/* 3D Gradient Mesh Background */}
         <motion.div
           animate={{ 
-            rotate: 360,
+            rotateX: [0, 5, 0],
+            rotateY: [0, 10, 0],
+            scale: [1, 1.1, 1],
+            opacity: [0.1, 0.3, 0.1]
+          }}
+          transition={{ 
+            rotateX: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+            rotateY: { duration: 25, repeat: Infinity, ease: "easeInOut" },
+            scale: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+          }}
+          style={{ 
+            y: scrollY * 0.1,
+            transformStyle: 'preserve-3d'
+          }}
+          className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 via-blue-400/3 to-indigo-400/5"
+        />
+        
+        {/* 3D Floating Geometric Shapes */}
+        <motion.div
+          animate={{ 
+            rotateX: [0, 360, 0],
+            rotateY: [0, 180, 0],
+            rotateZ: [0, 90, 0],
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.6, 0.2]
+          }}
+          transition={{ 
+            rotateX: { duration: 30, repeat: Infinity, ease: "linear" },
+            rotateY: { duration: 25, repeat: Infinity, ease: "linear" },
+            rotateZ: { duration: 20, repeat: Infinity, ease: "linear" },
+            scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+          }}
+          style={{ 
+            y: scrollY * 0.5,
+            transformStyle: 'preserve-3d'
+          }}
+          className="absolute top-20 right-10 w-48 h-48 bg-gradient-to-br from-cyan-400/40 to-blue-400/30 rounded-2xl blur-2xl"
+        />
+        
+        <motion.div
+          animate={{ 
+            rotateX: [0, -360, 0],
+            rotateY: [0, -180, 0],
+            scale: [1, 1.4, 1],
+            opacity: [0.15, 0.5, 0.15]
+          }}
+          transition={{ 
+            rotateX: { duration: 35, repeat: Infinity, ease: "linear" },
+            rotateY: { duration: 30, repeat: Infinity, ease: "linear" },
+            scale: { duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 },
+            opacity: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }
+          }}
+          style={{ 
+            y: scrollY * 0.3,
+            transformStyle: 'preserve-3d'
+          }}
+          className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-tl from-blue-400/35 to-cyan-400/25 rounded-full blur-2xl"
+        />
+        
+        {/* Morphing Wave Effects */}
+        <motion.div
+          animate={{ 
+            scaleX: [1, 1.2, 0.8, 1],
+            scaleY: [1, 0.8, 1.2, 1],
+            rotate: [0, 5, -5, 0],
+            opacity: [0.1, 0.4, 0.2, 0.1]
+          }}
+          transition={{ 
+            duration: 15, 
+            repeat: Infinity, 
+            ease: "easeInOut"
+          }}
+          style={{ y: scrollY * 0.2 }}
+          className="absolute top-1/3 left-1/4 w-32 h-32 bg-gradient-to-r from-cyan-300/30 to-blue-300/20 rounded-full blur-xl"
+        />
+        
+        <motion.div
+          animate={{ 
+            scaleX: [1, 0.8, 1.2, 1],
+            scaleY: [1, 1.2, 0.8, 1],
+            rotate: [0, -8, 8, 0],
+            opacity: [0.2, 0.5, 0.3, 0.2]
+          }}
+          transition={{ 
+            duration: 18, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 3
+          }}
+          style={{ y: scrollY * 0.4 }}
+          className="absolute bottom-1/3 right-1/4 w-28 h-28 bg-gradient-to-l from-blue-300/35 to-cyan-300/25 rounded-full blur-xl"
+        />
+        
+        {/* Dynamic Light Rays */}
+        <motion.div
+          animate={{ 
+            scaleX: [0, 1.5, 0],
+            opacity: [0, 0.6, 0],
+            rotate: [0, 15, 0]
+          }}
+          transition={{ 
+            duration: 12, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute top-1/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"
+        />
+        
+        <motion.div
+          animate={{ 
+            scaleY: [0, 1.8, 0],
+            opacity: [0, 0.4, 0],
+            rotate: [0, -10, 0]
+          }}
+          transition={{ 
+            duration: 15, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 4
+          }}
+          className="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-transparent via-blue-400/40 to-transparent"
+        />
+        
+        {/* Interactive Particle System */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{ 
+              y: [0, -40, 0],
+              x: [0, Math.sin(i) * 20, 0],
+              scale: [1, 1.5, 1],
+              opacity: [0.1, 0.8, 0.1],
+              rotate: [0, 360, 0]
+            }}
+            transition={{ 
+              duration: 8 + i * 0.5, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: i * 0.3
+            }}
+            whileHover={{
+              scale: 2,
+              opacity: 1,
+              transition: { duration: 0.3 }
+            }}
+            className={`absolute w-${2 + (i % 3)} h-${2 + (i % 3)} bg-cyan-400/50 rounded-full cursor-pointer`}
+            style={{
+              top: `${20 + (i * 7) % 60}%`,
+              left: `${10 + (i * 8) % 80}%`,
+              filter: 'blur(1px)'
+            }}
+          />
+        ))}
+        
+        {/* Glowing Orb Effects */}
+        <motion.div
+          animate={{ 
+            scale: [1, 1.8, 1],
+            opacity: [0.05, 0.3, 0.05],
+            filter: ['blur(20px)', 'blur(40px)', 'blur(20px)']
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            ease: "easeInOut"
+          }}
+          style={{ y: scrollY * 0.1 }}
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-cyan-400/20 to-blue-400/10 rounded-full -translate-x-32 -translate-y-32"
+        />
+        
+        <motion.div
+          animate={{ 
+            scale: [1, 1.5, 1],
+            opacity: [0.08, 0.25, 0.08],
+            filter: ['blur(15px)', 'blur(30px)', 'blur(15px)']
+          }}
+          transition={{ 
+            duration: 25, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 5
+          }}
+          style={{ y: scrollY * 0.2 }}
+          className="absolute top-1/4 right-1/4 w-48 h-48 bg-gradient-to-tl from-blue-400/15 to-cyan-400/8 rounded-full"
+        />
+        
+        {/* Animated Grid Pattern */}
+        <motion.div
+          animate={{ 
+            opacity: [0.02, 0.08, 0.02],
             scale: [1, 1.1, 1]
           }}
           transition={{ 
-            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            duration: 30, 
+            repeat: Infinity, 
+            ease: "easeInOut"
           }}
-          style={{ y: scrollY * 0.5 }}
-          className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-full blur-xl"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.1)_1px,transparent_0)] bg-[length:50px_50px]"
         />
-        <motion.div
-          animate={{ 
-            rotate: -360,
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ 
-            rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-            scale: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }
-          }}
-          style={{ y: scrollY * 0.3 }}
-          className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-xl"
-        />
+        
+        {/* Floating Code Symbols */}
+        {['func', 'var', 'const', 'type', 'struct', 'interface', 'go', 'chan'].map((symbol, i) => (
+          <motion.div
+            key={symbol}
+            animate={{ 
+              y: [0, -30, 0],
+              x: [0, Math.cos(i) * 15, 0],
+              rotate: [0, 180, 360],
+              opacity: [0.1, 0.4, 0.1]
+            }}
+            transition={{ 
+              duration: 10 + i, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: i * 0.8
+            }}
+            className="absolute text-cyan-400/30 text-lg font-mono font-bold"
+            style={{
+              top: `${15 + (i * 12) % 70}%`,
+              left: `${5 + (i * 10) % 90}%`,
+              fontSize: `${12 + (i % 3) * 3}px`
+            }}
+          >
+            {symbol}
+          </motion.div>
+        ))}
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -300,6 +509,38 @@ export default function GolangCourse() {
                     <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
                   </motion.div>
                 ))}
+              </div>
+            </motion.div>
+
+            {/* Pricing Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mb-8"
+            >
+              <div className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-2xl p-6 border border-cyan-200 dark:border-cyan-700/30 shadow-lg max-w-md mx-auto">
+                <div className="text-center">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                    {language === 'ru' ? 'Стоимость обучения' : 'Оқу құны'}
+                  </h3>
+                  <div className="flex items-center justify-center space-x-4 mb-4">
+                    <span className="text-2xl text-gray-500 dark:text-gray-400 line-through">
+                      30 000 ₸
+                    </span>
+                    <span className="text-3xl font-bold text-cyan-600 dark:text-cyan-400">
+                      24 000 ₸
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-center mb-4">
+                    <span className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                      {language === 'ru' ? 'Скидка 20%' : '20% жеңілдік'}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                                            {language === 'ru' ? '/ месяц' : '/ ай'}
+                  </p>
+                </div>
               </div>
             </motion.div>
 

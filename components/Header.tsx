@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Globe } from 'lucide-react'
+import { Menu, X, Globe, LogIn, UserPlus } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
+import AuthModal from './AuthModal'
 
 interface HeaderProps {
   language: 'ru' | 'kk'
@@ -14,13 +15,23 @@ const translations = {
   ru: {
     home: 'Главная',
     courses: 'Курсы',
+    mentorship: 'Менторство',
     about: 'О нас',
+    benefits: 'Преимущества',
+    team: 'Команда',
+    timeline: 'История',
+    faq: 'FAQ',
     contact: 'Контакты',
   },
   kk: {
     home: 'Басты бет',
     courses: 'Курстар',
+    mentorship: 'Менторлық',
     about: 'Біз туралы',
+    benefits: 'Артықшылықтар',
+    team: 'Команда',
+    timeline: 'Тарих',
+    faq: 'Сұрақтар',
     contact: 'Байланыс',
   }
 }
@@ -29,11 +40,33 @@ export default function Header({ language, setLanguage }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [authModalOpen, setAuthModalOpen] = useState(false)
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login')
+  const [activeSection, setActiveSection] = useState('home')
+
+  // Helper function to check if element is in viewport
+  const isInViewport = (element: HTMLElement) => {
+    const rect = element.getBoundingClientRect()
+    return (
+      rect.top <= 100 && // Consider section active when it's near the top
+      rect.bottom >= 100
+    )
+  }
 
   useEffect(() => {
     setMounted(true)
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
+      
+      // Check which section is currently active
+      const sections = ['home', 'courses', 'mentorship', 'about', 'benefits', 'team', 'timeline', 'faq', 'contact']
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element && isInViewport(element)) {
+          setActiveSection(section)
+          break
+        }
+      }
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -136,27 +169,68 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </div>
           </motion.a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-
-            <a href="#courses" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
-              {t.courses}
-            </a>
-            <a href="#about" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
-              {t.about}
-            </a>
-            <a href="#team" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
-              {language === 'ru' ? 'Команда' : 'Команда'}
-            </a>
-            <a href="#timeline" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
-              {language === 'ru' ? 'История' : 'Тарих'}
-            </a>
-            <a href="#faq" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
-              {language === 'ru' ? 'FAQ' : 'FAQ'}
-            </a>
-            <a href="#contact" className="text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors">
-              {t.contact}
-            </a>
+                    {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-1">
+            
+            {/* Ultra Compact Navigation - All Items */}
+            <div className="flex items-center space-x-2">
+              <a href="#courses" className={`px-1.5 py-0.5 font-medium transition-all duration-300 text-xs ${
+                activeSection === 'courses' 
+                  ? 'text-primary-600 dark:text-primary-400' 
+                  : 'text-primary-dark hover:text-primary-600 dark:hover:text-primary-400'
+              }`}>
+                {t.courses}
+              </a>
+              <a href="#mentorship" className={`px-1.5 py-0.5 font-medium transition-all duration-300 text-xs ${
+                activeSection === 'mentorship' 
+                  ? 'text-primary-600 dark:text-primary-400' 
+                  : 'text-primary-dark hover:text-primary-600 dark:hover:text-primary-400'
+              }`}>
+                {t.mentorship}
+              </a>
+              <a href="#about" className={`px-1.5 py-0.5 font-medium transition-all duration-300 text-xs ${
+                activeSection === 'about' 
+                  ? 'text-primary-600 dark:text-primary-400' 
+                  : 'text-primary-dark hover:text-primary-600 dark:hover:text-primary-400'
+              }`}>
+                {t.about}
+              </a>
+              <a href="#benefits" className={`px-1.5 py-0.5 font-medium transition-all duration-300 text-xs ${
+                activeSection === 'benefits' 
+                  ? 'text-primary-600 dark:text-primary-400' 
+                  : 'text-primary-dark hover:text-primary-600 dark:hover:text-primary-400'
+              }`}>
+                {t.benefits}
+              </a>
+              <a href="#team" className={`px-1.5 py-0.5 font-medium transition-all duration-300 text-xs ${
+                activeSection === 'team' 
+                  ? 'text-primary-600 dark:text-primary-400' 
+                  : 'text-primary-dark hover:text-primary-600 dark:hover:text-primary-400'
+              }`}>
+                {t.team}
+              </a>
+              <a href="#timeline" className={`px-1.5 py-0.5 font-medium transition-all duration-300 text-xs ${
+                activeSection === 'timeline' 
+                  ? 'text-primary-600 dark:text-primary-400' 
+                  : 'text-primary-dark hover:text-primary-600 dark:hover:text-primary-400'
+              }`}>
+                {t.timeline}
+              </a>
+              <a href="#faq" className={`px-1.5 py-0.5 font-medium transition-all duration-300 text-xs ${
+                activeSection === 'faq' 
+                  ? 'text-primary-600 dark:text-primary-400' 
+                  : 'text-primary-dark hover:text-primary-600 dark:hover:text-primary-400'
+              }`}>
+                {t.faq}
+              </a>
+              <a href="#contact" className={`px-1.5 py-0.5 font-medium transition-all duration-300 text-xs ${
+                activeSection === 'contact' 
+                  ? 'text-primary-600 dark:text-primary-400' 
+                  : 'text-primary-dark hover:text-primary-600 dark:hover:text-primary-400'
+              }`}>
+                {t.contact}
+              </a>
+            </div>
             
             {/* Language Switcher */}
             <div className="flex items-center space-x-2">
@@ -176,21 +250,34 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             {/* Theme Toggle */}
             <ThemeToggle />
 
-            {/* CTA Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary"
-              onClick={() => {
-                const message = language === 'ru' 
-                  ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                  : 'Сәлем! CMPro-да бағдарламау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
-                const encodedMessage = encodeURIComponent(message);
-                window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
-              }}
-            >
-              {language === 'ru' ? 'Записаться' : 'Тіркелу'}
-            </motion.button>
+            {/* Auth Buttons */}
+            <div className="flex items-center space-x-2">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setAuthMode('login')
+                  setAuthModalOpen(true)
+                }}
+                className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              >
+                <LogIn className="w-4 h-4" />
+                <span>{language === 'ru' ? 'Войти' : 'Кіру'}</span>
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setAuthMode('register')
+                  setAuthModalOpen(true)
+                }}
+                className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium rounded-xl hover:shadow-lg transition-all duration-200"
+              >
+                <UserPlus className="w-4 h-4" />
+                <span>{language === 'ru' ? 'Регистрация' : 'Тіркелу'}</span>
+              </motion.button>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -211,52 +298,97 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-light absolute top-full left-0 right-0 z-50 shadow-lg safe-area-top"
             >
-            <div className="py-4 space-y-2 max-h-[70vh] overflow-y-auto">
-              <a
-                href="#courses"
-                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {t.courses}
-              </a>
-              <a
-                href="#about"
-                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {t.about}
-              </a>
-              <a
-                href="#team"
-                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {language === 'ru' ? 'Команда' : 'Команда'}
-              </a>
-              <a
-                href="#timeline"
-                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {language === 'ru' ? 'История' : 'Тарих'}
-              </a>
-              <a
-                href="#faq"
-                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {language === 'ru' ? 'FAQ' : 'FAQ'}
-              </a>
-              <a
-                href="#contact"
-                className="block px-4 py-3 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {t.contact}
-              </a>
+            <div className="py-4 space-y-1 max-h-[70vh] overflow-y-auto">
+              <div className="grid grid-cols-2 gap-1 px-4">
+                <a
+                  href="#courses"
+                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.courses}
+                </a>
+                <a
+                  href="#mentorship"
+                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.mentorship}
+                </a>
+                <a
+                  href="#about"
+                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.about}
+                </a>
+                <a
+                  href="#benefits"
+                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.benefits}
+                </a>
+                <a
+                  href="#team"
+                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.team}
+                </a>
+                <a
+                  href="#timeline"
+                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.timeline}
+                </a>
+                <a
+                  href="#faq"
+                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.faq}
+                </a>
+                <a
+                  href="#contact"
+                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.contact}
+                </a>
+              </div>
+              
+              {/* Mobile Auth Buttons */}
+              <div className="px-4 py-3 border-t border-light">
+                <div className="flex flex-col space-y-2 mb-3">
+                  <button
+                    onClick={() => {
+                      setAuthMode('login')
+                      setAuthModalOpen(true)
+                      setIsOpen(false)
+                    }}
+                    className="flex items-center justify-center space-x-2 px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 rounded-lg"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    <span>{language === 'ru' ? 'Войти в аккаунт' : 'Есепке кіру'}</span>
+                  </button>
+                  
+                  <button
+                    onClick={() => {
+                      setAuthMode('register')
+                      setAuthModalOpen(true)
+                      setIsOpen(false)
+                    }}
+                    className="flex items-center justify-center space-x-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all duration-200"
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    <span>{language === 'ru' ? 'Создать аккаунт' : 'Есеп жасау'}</span>
+                  </button>
+                </div>
+              </div>
               
               <div className="px-4 py-3 border-t border-light">
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <Globe className="w-4 h-4 text-muted-dark" />
                     <button
@@ -273,25 +405,20 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                   {/* Theme Toggle for Mobile */}
                   <ThemeToggle />
                 </div>
-                <button
-                  className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 text-sm"
-                  onClick={() => {
-                    const message = language === 'ru' 
-                      ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                      : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
-                    const encodedMessage = encodeURIComponent(message);
-                    window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
-                    setIsOpen(false);
-                  }}
-                >
-                  {language === 'ru' ? 'Записаться' : 'Тіркелу'}
-                </button>
               </div>
             </div>
           </motion.div>
         )}
         </AnimatePresence>
       </div>
+      
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        mode={authMode}
+        language={language}
+      />
     </motion.header>
   )
 }

@@ -149,12 +149,12 @@ export default function DiscountPopup({ language, isVisible, onClose }: Discount
 
                 {/* CTA Button */}
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleGetDiscount}
-                  className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 text-sm sm:text-base"
+                  className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold py-2 px-3 rounded-lg hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-2 text-xs"
                 >
-                  <Gift className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                  <Gift className="w-3 h-3 flex-shrink-0" />
                   <span className="truncate">{t.cta}</span>
                 </motion.button>
 

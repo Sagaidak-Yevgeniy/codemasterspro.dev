@@ -7,6 +7,7 @@ import Hero from '@/components/Hero'
 import Courses from '@/components/Courses'
 import About from '@/components/About'
 import Benefits from '@/components/Benefits'
+import Mentorship from '@/components/Mentorship'
 import Contact from '@/components/Contact'
 import FAQ from '@/components/FAQ'
 import Team from '@/components/Team'
@@ -85,7 +86,7 @@ export default function Home() {
       <Courses language={language} />
       <About language={language} />
       <Benefits language={language} />
-
+      <Mentorship language={language} />
       <Team language={language} />
       <Timeline language={language} />
       <FAQ language={language} />
