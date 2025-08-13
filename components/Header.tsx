@@ -76,9 +76,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
   if (!mounted) {
     return (
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg">
+      <header className="fixed top-0 left-0 right-0 z-[9999] bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-xl">
         <div className="container-custom relative">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-20 lg:h-20 px-4 sm:px-0">
             <div className="w-32 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
             <div className="w-24 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
           </div>
@@ -89,16 +89,16 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
+      initial={{ y: 0 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 safe-area-top ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-xl' 
+          : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md'
       }`}
     >
       <div className="container-custom relative">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-20 lg:h-20 px-4 sm:px-0">
           {/* Logo */}
           <motion.a
             href="#home"
@@ -283,7 +283,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm"
           >
             {isOpen ? <X className="w-6 h-6 text-primary-dark" /> : <Menu className="w-6 h-6 text-primary-dark" />}
           </button>
@@ -296,62 +296,62 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-light absolute top-full left-0 right-0 z-50 shadow-lg safe-area-top"
+              className="lg:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 absolute top-full left-0 right-0 z-[9999] shadow-xl"
             >
-            <div className="py-4 space-y-1 max-h-[70vh] overflow-y-auto">
+            <div className="py-4 space-y-1 max-h-[70vh] overflow-y-auto bg-white dark:bg-gray-800">
               <div className="grid grid-cols-2 gap-1 px-4">
                 <a
                   href="#courses"
-                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  className="block px-3 py-2.5 text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.courses}
                 </a>
                 <a
                   href="#mentorship"
-                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  className="block px-3 py-2.5 text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.mentorship}
                 </a>
                 <a
                   href="#about"
-                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  className="block px-3 py-2.5 text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.about}
                 </a>
                 <a
                   href="#benefits"
-                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  className="block px-3 py-2.5 text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.benefits}
                 </a>
                 <a
                   href="#team"
-                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  className="block px-3 py-2.5 text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.team}
                 </a>
                 <a
                   href="#timeline"
-                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  className="block px-3 py-2.5 text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.timeline}
                 </a>
                 <a
                   href="#faq"
-                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  className="block px-3 py-2.5 text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.faq}
                 </a>
                 <a
                   href="#contact"
-                  className="block px-3 py-2.5 text-primary-dark hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
+                  className="block px-3 py-2.5 text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-medium transition-all duration-200 rounded-lg text-sm"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.contact}
@@ -359,7 +359,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               </div>
               
               {/* Mobile Auth Buttons */}
-              <div className="px-4 py-3 border-t border-light">
+              <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex flex-col space-y-2 mb-3">
                   <button
                     onClick={() => {
@@ -387,7 +387,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 </div>
               </div>
               
-              <div className="px-4 py-3 border-t border-light">
+              <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <Globe className="w-4 h-4 text-muted-dark" />

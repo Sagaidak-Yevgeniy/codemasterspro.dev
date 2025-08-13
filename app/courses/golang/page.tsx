@@ -384,15 +384,15 @@ export default function GolangCourse() {
         
         {/* Floating Code Symbols */}
         {['func', 'var', 'const', 'type', 'struct', 'interface', 'go', 'chan'].map((symbol, i) => (
-          <motion.div
+        <motion.div
             key={symbol}
-            animate={{ 
+          animate={{ 
               y: [0, -30, 0],
               x: [0, Math.cos(i) * 15, 0],
               rotate: [0, 180, 360],
               opacity: [0.1, 0.4, 0.1]
-            }}
-            transition={{ 
+          }}
+          transition={{ 
               duration: 10 + i, 
               repeat: Infinity, 
               ease: "easeInOut",

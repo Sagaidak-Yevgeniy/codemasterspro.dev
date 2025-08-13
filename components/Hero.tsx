@@ -92,7 +92,7 @@ export default function Hero({ language }: HeroProps) {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 lg:pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-primary" />
       <div className="absolute top-20 left-4 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary-200 dark:bg-primary-800/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse-slow" />
@@ -159,7 +159,7 @@ export default function Hero({ language }: HeroProps) {
             >
               <motion.div
                 whileHover={{ scale: 1.01, y: -1 }}
-                className="relative overflow-hidden bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 text-white p-3 sm:p-4 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm"
+                className="relative overflow-hidden bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500 text-white p-2 sm:p-3 lg:p-4 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm"
               >
                 {/* Animated background elements */}
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -193,9 +193,9 @@ export default function Hero({ language }: HeroProps) {
                 </div>
 
                 <div className="relative z-10">
-                  <div className="flex flex-col lg:flex-row items-center justify-between space-y-3 lg:space-y-0 lg:space-x-4">
+                  <div className="flex flex-col lg:flex-row items-center justify-between space-y-2 sm:space-y-3 lg:space-y-0 lg:space-x-4">
                     {/* Left side - Main content */}
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 text-center sm:text-left w-full lg:w-auto">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-1.5 sm:space-y-0 sm:space-x-3 text-center sm:text-left w-full lg:w-auto">
                       <motion.div
                         animate={{ 
                           rotate: 360,
@@ -205,23 +205,23 @@ export default function Hero({ language }: HeroProps) {
                           rotate: { duration: 6, repeat: Infinity, ease: "linear" },
                           scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
                         }}
-                        className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
+                        className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-white/20 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
                       >
-                        <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                        <Gift className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
                       </motion.div>
                       
                       <div className="flex-1">
                         <motion.div
                           animate={{ scale: [1, 1.02, 1] }}
                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          className="font-bold text-sm sm:text-base lg:text-lg mb-1"
+                          className="font-bold text-xs sm:text-sm lg:text-base xl:text-lg mb-0.5 sm:mb-1"
                         >
                           {language === 'ru' ? '🎉 Первое занятие БЕСПЛАТНО!' : '🎉 Алғашқы сабақ ТЕГІН!'}
                         </motion.div>
-                        <div className="text-xs opacity-90 mb-1">
+                        <div className="text-xs opacity-90 mb-0.5 sm:mb-1">
                           {language === 'ru' ? 'Для школьников и взрослых' : 'Мектеп оқушылары және ересектер үшін'}
                         </div>
-                        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 text-xs opacity-80">
+                        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1 sm:gap-1.5 text-xs opacity-80">
                           <div className="flex items-center space-x-1">
                             <CheckCircle className="w-2.5 h-2.5 text-green-300" />
                             <span>{language === 'ru' ? 'Практика' : 'Тәжірибе'}</span>
@@ -239,7 +239,7 @@ export default function Hero({ language }: HeroProps) {
                     </div>
 
                     {/* Right side - CTA buttons */}
-                    <div className="flex flex-col gap-1.5 w-full sm:w-auto sm:min-w-[140px]">
+                    <div className="flex flex-col gap-1 sm:gap-1.5 w-full sm:w-auto sm:min-w-[140px]">
                       <motion.button
                         whileHover={{ 
                           scale: 1.01, 
@@ -247,7 +247,7 @@ export default function Hero({ language }: HeroProps) {
                           boxShadow: "0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 4px -2px rgba(0, 0, 0, 0.05)"
                         }}
                         whileTap={{ scale: 0.99 }}
-                        className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white font-medium py-1.5 px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1.5 text-xs w-full sm:w-auto relative overflow-hidden group"
+                        className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white font-medium py-1 sm:py-1.5 px-2 sm:px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1 sm:space-x-1.5 text-xs w-full sm:w-auto relative overflow-hidden group"
                         onClick={handleTrialLesson}
                       >
                         {/* Animated background shine effect */}
@@ -274,7 +274,7 @@ export default function Hero({ language }: HeroProps) {
                           boxShadow: "0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 4px -2px rgba(0, 0, 0, 0.05)"
                         }}
                         whileTap={{ scale: 0.99 }}
-                        className="bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 hover:from-orange-600 hover:via-pink-600 hover:to-rose-600 text-white font-medium py-1.5 px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1.5 text-xs w-full sm:w-auto relative overflow-hidden group"
+                        className="bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 hover:from-orange-600 hover:via-pink-600 hover:to-rose-600 text-white font-medium py-1 sm:py-1.5 px-2 sm:px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1 sm:space-x-1.5 text-xs w-full sm:w-auto relative overflow-hidden group"
                         onClick={handleGetDiscount}
                       >
                         {/* Animated background shine effect */}
@@ -357,7 +357,7 @@ export default function Hero({ language }: HeroProps) {
           >
             <div className="relative card-enhanced-dark rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 lg:p-8 transform rotate-1 sm:rotate-3 hover:rotate-0 transition-transform duration-500">
               {/* Stickers Container */}
-              <div className="absolute -top-8 -right-4 flex flex-col gap-2 z-30">
+              <div className="absolute -top-2 sm:-top-4 lg:-top-8 -right-4 flex flex-row lg:flex-col gap-2 z-30">
                 {/* Best School Sticker */}
                 <div className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
                   <Star className="w-3 h-3 inline mr-1" />
@@ -492,7 +492,7 @@ export default function Hero({ language }: HeroProps) {
                 </div>
                 
                 {/* Directions */}
-                <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-1">
+                <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-1 flex flex-col items-center lg:items-start mt-4 sm:mt-0">
                  <Link href="/courses/python">
                    <motion.div 
                      className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/80 transition-colors duration-300 cursor-pointer"
