@@ -169,7 +169,7 @@ export default function Stats({ language }: StatsProps) {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg transition-all duration-300"
+              className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-2 px-6 rounded-lg hover:shadow-lg transition-all duration-300"
               onClick={() => {
                 const message = language === 'ru' 
                   ? 'Привет! Хочу присоединиться к CodeMastersPRO и начать свой путь в IT'

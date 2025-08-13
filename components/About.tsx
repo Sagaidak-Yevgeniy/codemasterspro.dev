@@ -39,8 +39,8 @@ const translations = {
       },
       {
         icon: Users,
-        title: 'Менторская поддержка',
-        description: 'Персональный ментор сопровождает вас на протяжении всего обучения.',
+        title: 'Менторская поддержка и школьное менторство',
+        description: 'Персональный ментор сопровождает вас на протяжении всего обучения. Индивидуальная помощь в информатике, разбор сложных тем и подготовка к экзаменам.',
         color: 'from-purple-500 to-pink-500'
       },
       {
@@ -48,12 +48,6 @@ const translations = {
         title: 'Целевое обучение',
         description: 'Программа адаптируется под ваши цели: фриланс, работа в компании или стартап.',
         color: 'from-orange-500 to-red-500'
-      },
-      {
-        icon: BookOpen,
-        title: 'Школьное менторство',
-        description: 'Индивидуальная помощь в информатике, разбор сложных тем и подготовка к экзаменам.',
-        color: 'from-purple-500 to-indigo-500'
       }
     ],
     advantages: [
@@ -109,8 +103,8 @@ const translations = {
       },
       {
         icon: Users,
-        title: 'Менторлық қолдау',
-        description: 'Жеке ментор сізді бүкіл оқу барысында қамтамасыз етеді.',
+        title: 'Менторлық қолдау және мектеп менторлығы',
+        description: 'Жеке ментор сізді бүкіл оқу барысында қамтамасыз етеді. Информатикада жеке көмек, күрделі тақырыптарды талдау және емтихандарға дайындық.',
         color: 'from-purple-500 to-pink-500'
       },
       {
@@ -118,12 +112,6 @@ const translations = {
         title: 'Мақсатты оқу',
         description: 'Бағдарлама сіздің мақсаттарыңызға сәйкес бейімделеді: фриланс, компанияда жұмыс немесе стартап.',
         color: 'from-orange-500 to-red-500'
-      },
-      {
-        icon: BookOpen,
-        title: 'Мектеп менторлығы',
-        description: 'Информатикада жеке көмек, күрделі тақырыптарды талдау және емтихандарға дайындық.',
-        color: 'from-purple-500 to-indigo-500'
       }
     ],
     advantages: [
@@ -200,7 +188,7 @@ export default function About({ language }: AboutProps) {
         </motion.div>
 
         {/* Methodology Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
           {t.methodology.map((item, index) => {
             const IconComponent = item.icon
             return (
@@ -375,7 +363,7 @@ export default function About({ language }: AboutProps) {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-purple-600 font-bold text-lg px-8 py-4 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center space-x-3 mx-auto"
+                className="bg-white text-purple-600 font-bold text-base px-6 py-3 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-2 mx-auto"
                 onClick={() => {
                   const message = language === 'ru' 
                     ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'

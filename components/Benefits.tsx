@@ -231,54 +231,110 @@ export default function Benefits({ language }: BenefitsProps) {
 
         {/* Benefits Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
-          {t.benefits.map((benefit, index) => {
-            const IconComponent = benefit.icon
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-                className="group"
-              >
-                <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 h-full overflow-hidden">
-                  {/* Background gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
-                  
-                  {/* Highlight badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs font-bold rounded-full shadow-lg">
-                      {benefit.highlight}
-                    </span>
+          {/* First 8 benefits in 4x2 grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 col-span-full">
+            {t.benefits.slice(0, 8).map((benefit, index) => {
+              const IconComponent = benefit.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8 }}
+                  className="group"
+                >
+                  <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 h-full overflow-hidden">
+                    {/* Background gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+                    
+                    {/* Highlight badge */}
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs font-bold rounded-full shadow-lg">
+                        {benefit.highlight}
+                      </span>
+                    </div>
+                    
+                    {/* Icon */}
+                    <div className={`relative w-14 h-14 bg-gradient-to-r ${benefit.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                      <IconComponent className="w-7 h-7 text-white" />
+                      <div className="absolute inset-0 bg-white/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300" />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="relative">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                        {benefit.title}
+                      </h3>
+                      
+                      <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {benefit.description}
+                      </p>
+                    </div>
+                    
+                    {/* Decorative elements */}
+                    <div className="absolute bottom-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+                      <Star className="w-6 h-6 text-primary-500" />
+                    </div>
                   </div>
-                  
-                  {/* Icon */}
-                  <div className={`relative w-14 h-14 bg-gradient-to-r ${benefit.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <IconComponent className="w-7 h-7 text-white" />
-                    <div className="absolute inset-0 bg-white/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300" />
+                </motion.div>
+              )
+            })}
+          </div>
+          
+          {/* Last 2 benefits centered */}
+          <div className="grid md:grid-cols-2 gap-4 lg:gap-6 col-span-full max-w-2xl mx-auto">
+            {t.benefits.slice(8).map((benefit, index) => {
+              const IconComponent = benefit.icon
+              return (
+                <motion.div
+                  key={index + 8}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: (index + 8) * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8 }}
+                  className="group"
+                >
+                  <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-gray-700 h-full overflow-hidden">
+                    {/* Background gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+                    
+                    {/* Highlight badge */}
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs font-bold rounded-full shadow-lg">
+                        {benefit.highlight}
+                      </span>
+                    </div>
+                    
+                    {/* Icon */}
+                    <div className={`relative w-14 h-14 bg-gradient-to-r ${benefit.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                      <IconComponent className="w-7 h-7 text-white" />
+                      <div className="absolute inset-0 bg-white/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300" />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="relative">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                        {benefit.title}
+                      </h3>
+                      
+                      <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {benefit.description}
+                      </p>
+                    </div>
+                    
+                    {/* Decorative elements */}
+                    <div className="absolute bottom-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+                      <Star className="w-6 h-6 text-primary-500" />
+                    </div>
                   </div>
-                  
-                  {/* Content */}
-                  <div className="relative">
-                                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-                    {benefit.title}
-                  </h3>
-                  
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                  </div>
-                  
-                  {/* Decorative elements */}
-                  <div className="absolute bottom-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-                    <Star className="w-6 h-6 text-primary-500" />
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
+                </motion.div>
+              )
+            })}
+          </div>
+          
         </div>
 
         {/* Equipment Section */}
@@ -315,12 +371,34 @@ export default function Benefits({ language }: BenefitsProps) {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {t.equipmentFeatures.map((feature, index) => (
+              {/* First 3 features in 3-column grid */}
+              {t.equipmentFeatures.slice(0, 3).map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-center space-x-4 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-emerald-100 dark:border-emerald-800/30"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium">
+                    {feature}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Last 2 features centered */}
+            <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mt-6">
+              {t.equipmentFeatures.slice(3).map((feature, index) => (
+                <motion.div
+                  key={index + 3}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
                   viewport={{ once: true }}
                   className="flex items-center space-x-4 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-emerald-100 dark:border-emerald-800/30"
                 >
@@ -369,7 +447,7 @@ export default function Benefits({ language }: BenefitsProps) {
               <motion.button
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-white text-primary-600 font-semibold text-sm px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2 mx-auto"
+                className="bg-white text-primary-600 font-semibold text-sm px-3 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2 mx-auto"
                 onClick={() => {
                   const message = language === 'ru' 
                     ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'

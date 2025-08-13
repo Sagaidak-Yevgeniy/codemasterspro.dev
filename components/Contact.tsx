@@ -190,7 +190,7 @@ export default function Contact({ language }: ContactProps) {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
                   onClick={() => {
                     const message = language === 'ru' 
                       ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
@@ -212,7 +212,7 @@ export default function Contact({ language }: ContactProps) {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
+                  className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-2 px-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
                   onClick={() => {
                     const message = language === 'ru' 
                       ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
@@ -236,7 +236,7 @@ export default function Contact({ language }: ContactProps) {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
+                  className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-2 px-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
                   onClick={() => window.open('https://www.instagram.com/code_masterspro?igsh=M2NxcW4zc2Jhd3l5&utm_source=qr', '_blank')}
                 >
                   <div className="flex items-center space-x-2">
@@ -273,7 +273,7 @@ export default function Contact({ language }: ContactProps) {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-white text-primary-600 font-semibold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 group text-sm"
+                    className="w-full bg-white text-primary-600 font-semibold py-2 px-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 group text-sm"
                     onClick={() => {
                       const message = language === 'ru' 
                         ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'

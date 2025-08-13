@@ -109,7 +109,7 @@ export default function NotFound() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-3 px-6 sm:px-8 rounded-xl hover:shadow-lg transition-all duration-300 flex items-center space-x-2 text-sm sm:text-base"
+              className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold py-2 px-4 sm:px-6 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center space-x-2 text-sm sm:text-base"
               onClick={() => {
                 const message = language === 'ru' 
                   ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
@@ -128,7 +128,7 @@ export default function NotFound() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white dark:bg-gray-800 border-2 border-primary-500 dark:border-primary-400 text-primary-600 dark:text-primary-400 font-semibold py-3 px-6 sm:px-8 rounded-xl hover:bg-primary-50 dark:hover:bg-gray-700 transition-all duration-300 flex items-center space-x-2 text-sm sm:text-base"
+                className="bg-white dark:bg-gray-800 border-2 border-primary-500 dark:border-primary-400 text-primary-600 dark:text-primary-400 font-semibold py-2 px-4 sm:px-6 rounded-lg hover:bg-primary-50 dark:hover:bg-gray-700 transition-all duration-300 flex items-center space-x-2 text-sm sm:text-base"
               >
                 <Home className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>{t.backHome}</span>

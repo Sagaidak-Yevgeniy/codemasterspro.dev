@@ -186,7 +186,7 @@ export default function FAQ({ language }: FAQProps) {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-primary-600 font-semibold py-3 px-8 rounded-xl hover:shadow-lg transition-all duration-300"
+              className="bg-white text-primary-600 font-semibold py-2 px-6 rounded-lg hover:shadow-lg transition-all duration-300"
               onClick={() => {
                 const message = language === 'ru' 
                   ? 'Привет! У меня есть вопросы о курсах CodeMastersPRO'

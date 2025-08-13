@@ -272,7 +272,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                   setAuthMode('register')
                   setAuthModalOpen(true)
                 }}
-                className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium rounded-xl hover:shadow-lg transition-all duration-200"
+                className="flex items-center space-x-2 px-3 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all duration-200"
               >
                 <UserPlus className="w-4 h-4" />
                 <span>{language === 'ru' ? 'Регистрация' : 'Тіркелу'}</span>
@@ -379,7 +379,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                       setAuthModalOpen(true)
                       setIsOpen(false)
                     }}
-                    className="flex items-center justify-center space-x-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all duration-200"
+                    className="flex items-center justify-center space-x-2 px-3 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all duration-200"
                   >
                     <UserPlus className="w-4 h-4" />
                     <span>{language === 'ru' ? 'Создать аккаунт' : 'Есеп жасау'}</span>
