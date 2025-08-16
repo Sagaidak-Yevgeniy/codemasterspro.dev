@@ -473,7 +473,7 @@ export default function GolangCourse() {
               <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
                 {[
                   { value: '5', label: t.months },
-                  { value: '10+', label: t.students },
+                  { value: '15+', label: t.students },
                   { value: '95%', label: t.success }
                 ].map((stat, index) => (
                   <motion.div

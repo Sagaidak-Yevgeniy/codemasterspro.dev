@@ -84,8 +84,8 @@ export default function AnalyticsCourse() {
           topics: ['Scikit-learn', 'Алгоритмы ML', 'Валидация моделей', 'Feature Engineering']
         },
         {
-          module: 'Модуль 6: Проект',
-          topics: ['Полный анализ данных', 'Портфолио проектов', 'Подготовка к работе', 'Презентация результатов']
+          module: 'Модуль 6: Практика и закрепление',
+          topics: ['Практические задания', 'Код-ревью', 'Оптимизация кода']
         }
       ]
     },
@@ -143,8 +143,8 @@ export default function AnalyticsCourse() {
           topics: ['Scikit-learn', 'ML алгоритмдері', 'Модельдерді тексеру', 'Feature Engineering']
         },
         {
-          module: 'Модуль 6: Жоба',
-          topics: ['Толық деректер талдауы', 'Жобалар портфолиосы', 'Жұмысқа дайындық', 'Нәтижелерді көрсету']
+          module: 'Модуль 6: Тәжірибе және бекіту',
+          topics: ['Практикалық тапсырмалар', 'Код-ревью', 'Код оңтайландыру']
         }
       ]
     }
@@ -378,7 +378,7 @@ export default function AnalyticsCourse() {
               <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
                 {[
                   { value: '6', label: t.months },
-                  { value: '20+', label: t.students },
+                  { value: '25+', label: t.students },
                   { value: '95%', label: t.success }
                 ].map((stat, index) => (
                   <motion.div

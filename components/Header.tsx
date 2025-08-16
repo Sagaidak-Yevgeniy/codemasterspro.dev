@@ -114,6 +114,8 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 src="/images/Logo.png" 
                 alt="CodeMasters PRO Logo" 
                 className="w-full h-full object-contain"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
             <div className="relative">

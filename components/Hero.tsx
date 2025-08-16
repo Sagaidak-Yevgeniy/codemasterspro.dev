@@ -69,6 +69,8 @@ export default function Hero({ language }: HeroProps) {
             className="w-32 h-32"
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            loading="eager"
+            fetchPriority="high"
           />
         </div>
       </section>
@@ -515,7 +517,7 @@ export default function Hero({ language }: HeroProps) {
                    </motion.div>
                    <div className="flex-1">
                      <h3 className="font-semibold text-primary-dark text-xs sm:text-sm md:text-base">Python</h3>
-                     <p className="text-xs text-secondary-dark mb-1">{language === 'ru' ? 'Веб-разработка' : 'Веб-даму'}</p>
+                     <p className="text-xs text-secondary-dark mb-1">{language === 'ru' ? 'Автоматизация' : 'Автоматтандыру'}</p>
                      <div className="flex items-center space-x-2">
                        <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">24 000 ₸</span>
                        <span className="text-xs text-gray-400 dark:text-gray-500 line-through">30 000 ₸</span>
@@ -579,7 +581,7 @@ export default function Hero({ language }: HeroProps) {
                    </motion.div>
                    <div className="flex-1">
                      <h3 className="font-semibold text-primary-dark text-xs sm:text-sm md:text-base">JavaScript</h3>
-                     <p className="text-xs text-secondary-dark mb-1">{language === 'ru' ? 'Фронтенд разработка' : 'Фронтенд даму'}</p>
+                                           <p className="text-xs text-secondary-dark mb-1">{language === 'ru' ? 'Веб-разработка' : 'Веб-даму'}</p>
                      <div className="flex items-center space-x-2">
                        <span className="text-xs font-bold text-yellow-600 dark:text-yellow-400">24 000 ₸</span>
                        <span className="text-xs text-gray-400 dark:text-gray-500 line-through">30 000 ₸</span>

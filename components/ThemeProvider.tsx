@@ -24,13 +24,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (savedTheme) {
       // User has manually set a preference
       setTheme(savedTheme)
-      console.log('Theme loaded from localStorage:', savedTheme)
     } else {
       // Check system preference
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
       const systemTheme = mediaQuery.matches ? 'dark' : 'light'
       setTheme(systemTheme)
-      console.log('System theme detected:', systemTheme, 'Media query matches:', mediaQuery.matches)
     }
   }, [])
 
@@ -39,16 +37,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = document.documentElement
     if (theme === 'dark') {
       root.classList.add('dark')
-      console.log('Dark theme applied to document')
     } else {
       root.classList.remove('dark')
-      console.log('Light theme applied to document')
     }
     
     // Save to localStorage only if mounted to avoid hydration issues
     if (mounted) {
       localStorage.setItem('theme', theme)
-      console.log('Theme saved to localStorage:', theme)
     }
   }, [theme, mounted])
 
@@ -61,9 +56,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       if (!localStorage.getItem('theme')) {
         const newTheme = e.matches ? 'dark' : 'light'
         setTheme(newTheme)
-        console.log('System theme changed to:', newTheme, 'Media query matches:', e.matches)
-      } else {
-        console.log('System theme changed but user preference exists, keeping:', localStorage.getItem('theme'))
       }
     }
     
@@ -74,7 +66,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggleTheme = () => {
     setTheme(prev => {
       const newTheme = prev === 'light' ? 'dark' : 'light'
-      console.log('Theme manually toggled to:', newTheme)
       return newTheme
     })
   }

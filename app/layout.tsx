@@ -24,7 +24,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/images/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/images/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
     shortcut: '/images/favicon-32x32.png',
     apple: '/images/favicon-32x32.png',
@@ -37,7 +36,7 @@ export const metadata: Metadata = {
     siteName: 'CodeMastersPRO',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/images/Logo.png',
         width: 1200,
         height: 630,
         alt: 'CodeMastersPRO - Школа программирования',
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'CodeMastersPRO - Школа программирования в Павлодаре',
     description: 'Обучаем Python, Golang, JavaScript и аналитике данных. Офлайн занятия в Павлодаре.',
-    images: ['/images/og-image.jpg'],
+    images: ['/images/Logo.png'],
     creator: '@codemasterspro',
   },
   robots: {
@@ -151,6 +150,10 @@ export default function RootLayout({
         {/* DNS prefetch */}
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        
+        {/* Preload critical resources */}
+        <link rel="preload" href="/images/Logo.png" as="image" type="image/png" />
+        <link rel="preload" href="/images/favicon-32x32.png" as="image" type="image/png" />
       </head>
                      <body className="antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <ThemeProvider>

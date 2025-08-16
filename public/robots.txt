@@ -8,5 +8,15 @@ Sitemap: https://cmpro.kz/sitemap.xml
 Disallow: /admin/
 Disallow: /api/
 
-# Crawl-delay
+# Optimize crawling
 Crawl-delay: 1
+
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /

@@ -105,7 +105,6 @@ export default function AuthModal({ isOpen, onClose, mode, language }: AuthModal
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Здесь будет логика авторизации/регистрации
-    console.log('Form submitted:', formData)
   }
 
   const handleInputChange = (field: string, value: string) => {
