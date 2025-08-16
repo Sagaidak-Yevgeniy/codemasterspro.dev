@@ -7,8 +7,10 @@ import {
   MapPin, 
   Phone, 
   Mail,
-  Heart
+  Heart,
+  FileText
 } from 'lucide-react'
+import Link from 'next/link'
 
 interface FooterProps {
   language: 'ru' | 'kk'
@@ -27,7 +29,8 @@ const translations = {
       team: 'Команда',
       timeline: 'История',
       faq: 'FAQ',
-      contact: 'Контакты'
+      contact: 'Контакты',
+      documents: 'Документы'
     },
     courses: {
       title: 'Направления',
@@ -63,7 +66,8 @@ const translations = {
       team: 'Команда',
       timeline: 'Тарих',
       faq: 'Сұрақтар',
-      contact: 'Байланыс'
+      contact: 'Байланыс',
+      documents: 'Құжаттар'
     },
     courses: {
       title: 'Бағыттар',
@@ -217,6 +221,12 @@ export default function Footer({ language }: FooterProps) {
                   <a href="#contact" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">
                     {t.quickLinks.contact}
                   </a>
+                </li>
+                <li>
+                  <Link href="/documents" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300 flex items-center">
+                    <FileText className="w-4 h-4 mr-2" />
+                    {t.quickLinks.documents}
+                  </Link>
                 </li>
               </ul>
             </motion.div>

@@ -143,14 +143,36 @@ export default function Hero({ language }: HeroProps) {
               {t.subtitle}
             </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-sm sm:text-base text-primary-600 dark:text-primary-400 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 font-medium"
-            >
-              {t.audience}
-            </motion.p>
+                         <motion.p
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.5, duration: 0.8 }}
+               className="text-sm sm:text-base text-primary-600 dark:text-primary-400 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 font-medium"
+             >
+               <span className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group" onClick={() => window.open(`/${language}/audience`, '_blank')}>
+                 {language === 'ru' ? 'Для школьников и взрослых' : 'Мектеп оқушылары және ересектер үшін'}
+                 <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+                   {language === 'ru' ? 'Подробнее о целевой аудитории' : 'Мақсатты аудитория туралы толығырақ'}
+                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+                 </div>
+               </span>
+               {' • '}
+               <span className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group" onClick={() => window.open(`/${language}/ent-preparation`, '_blank')}>
+                 {language === 'ru' ? 'Подготовка к ЕНТ' : 'ЕНТ-ке дайындық'}
+                 <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+                   {language === 'ru' ? 'Подробнее о подготовке к ЕНТ' : 'ЕНТ-ке дайындық туралы толығырақ'}
+                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+                 </div>
+               </span>
+               {' • '}
+               <span className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group" onClick={() => window.open(`/${language}/career-it`, '_blank')}>
+                 {language === 'ru' ? 'Карьера в IT' : 'IT-дегі мансап'}
+                 <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+                   {language === 'ru' ? 'Подробнее о карьере в IT' : 'IT-дегі мансап туралы толығырақ'}
+                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+                 </div>
+               </span>
+             </motion.p>
 
             {/* Modern Free Trial Banner */}
             <motion.div
@@ -358,25 +380,37 @@ export default function Hero({ language }: HeroProps) {
             className="relative"
           >
             <div className="relative card-enhanced-dark rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 lg:p-8 transform rotate-1 sm:rotate-3 hover:rotate-0 transition-transform duration-500">
-              {/* Stickers Container */}
-              <div className="absolute -top-2 sm:-top-4 lg:-top-8 -right-4 flex flex-row lg:flex-col gap-2 z-30">
-                {/* Best School Sticker */}
-                <div className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-                  <Star className="w-3 h-3 inline mr-1" />
-                  {language === 'ru' ? 'Лучшая школа' : 'Үздік мектеп'}
-                </div>
-                
-                {/* Pavlodar Sticker */}
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-                  <div className="w-2 h-2 bg-white rounded-full inline mr-1" />
-                  {language === 'ru' ? '📍 Павлодар' : '📍 Павлодар'}
-                </div>
-                
-                {/* Offline Sticker */}
-                <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-                  <Users className="w-3 h-3 inline mr-1" />
-                  {language === 'ru' ? '💻 Офлайн' : '💻 Офлайн'}
-                </div>
+                                          {/* Elegant Stickers Container */}
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 sm:top-0 sm:left-auto sm:right-0 sm:transform-none lg:-top-12 lg:-right-8 flex flex-row sm:flex-col gap-1 sm:gap-1.5 lg:gap-2 z-50">
+                                 {/* Best School Sticker */}
+                 <div className="bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform -rotate-3 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out">
+                   <div className="flex items-center space-x-1 sm:space-x-2">
+                     <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
+                     <span className="font-bold text-[10px] sm:text-sm lg:text-sm tracking-wide">
+                       {language === 'ru' ? 'ЛУЧШАЯ' : 'ҮЗДІК'}
+                     </span>
+                   </div>
+                 </div>
+                 
+                 {/* Pavlodar Sticker */}
+                 <div className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform rotate-2 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out">
+                   <div className="flex items-center space-x-1 sm:space-x-2">
+                     <div className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-white rounded-full" />
+                     <span className="font-bold text-[10px] sm:text-sm lg:text-sm tracking-wide">
+                       {language === 'ru' ? 'ПАВЛОДАР' : 'ПАВЛОДАР'}
+                     </span>
+                   </div>
+                 </div>
+                 
+                 {/* Offline Sticker */}
+                 <div className="bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-600 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform -rotate-1 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out">
+                   <div className="flex items-center space-x-1 sm:space-x-2">
+                     <Users className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
+                     <span className="font-bold text-[10px] sm:text-sm lg:text-sm tracking-wide">
+                       {language === 'ru' ? 'ОФЛАЙН' : 'ОФЛАЙН'}
+                     </span>
+                   </div>
+                 </div>
               </div>
               
               <div className="relative">
@@ -493,8 +527,8 @@ export default function Hero({ language }: HeroProps) {
                   </div>
                 </div>
                 
-                {/* Directions */}
-                <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-1 flex flex-col items-center lg:items-start mt-4 sm:mt-0">
+                                 {/* Directions */}
+                 <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-1 flex flex-col items-center lg:items-start mt-4 sm:mt-0 pr-8 sm:pr-12 lg:pr-0">
                  <Link href="/courses/python">
                    <motion.div 
                      className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/80 transition-colors duration-300 cursor-pointer"

@@ -4,6 +4,7 @@ import Analytics from '@/components/Analytics'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import ProgressBar from '@/components/ProgressBar'
 import { NavigationProvider } from '@/components/NavigationContext'
+import PWAInstall from '@/components/PWAInstall'
 
 export const metadata: Metadata = {
   title: 'CodeMastersPRO - Школа программирования в Павлодаре',
@@ -24,11 +25,33 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/images/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
     shortcut: '/images/favicon-32x32.png',
-    apple: '/images/favicon-32x32.png',
+    apple: [
+      { url: '/images/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/Logo.png', sizes: '192x192', type: 'image/png' },
+    ],
+    other: [
+      { url: '/images/Logo.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/Logo.png', sizes: '512x512', type: 'image/png' },
+    ],
   },
   manifest: '/manifest.json',
+  themeColor: '#3b82f6',
+  colorScheme: 'light dark',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'CodeMastersPRO',
+  },
+  applicationName: 'CodeMastersPRO',
   openGraph: {
     title: 'CodeMastersPRO - Школа программирования в Павлодаре',
     description: 'Обучаем Python, Golang, JavaScript и аналитике данных. Офлайн занятия в Павлодаре. Стань профессионалом в IT!',
@@ -161,6 +184,7 @@ export default function RootLayout({
             {children}
             <Analytics />
             <ProgressBar />
+            <PWAInstall />
           </NavigationProvider>
         </ThemeProvider>
       </body>
