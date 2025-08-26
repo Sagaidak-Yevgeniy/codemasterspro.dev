@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Home, BookOpen, Target, MessageCircle, ArrowUp, Code, Sparkles } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface CourseFloatingNavProps {
@@ -16,6 +16,7 @@ export default function CourseFloatingNav({ language, courseColor, courseName }:
   const [isExpanded, setIsExpanded] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +44,23 @@ export default function CourseFloatingNav({ language, courseColor, courseName }:
     window.scrollTo({ top: 0, behavior: 'smooth' })
     setIsExpanded(false)
   }
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsExpanded(false)
+      }
+    }
+
+    if (isExpanded) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isExpanded])
 
   const navItems = [
     { id: 'home', icon: Home, label: language === 'ru' ? 'Главная' : 'Басты бет' },
@@ -84,6 +102,7 @@ export default function CourseFloatingNav({ language, courseColor, courseName }:
     <AnimatePresence>
       {isVisible && (
         <motion.div
+          ref={navRef}
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}

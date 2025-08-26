@@ -72,6 +72,39 @@ export default function Header({ language, setLanguage }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      const mobileMenu = document.querySelector('[data-mobile-menu]')
+      const mobileMenuButton = document.querySelector('[data-mobile-menu-button]')
+      
+      if (isOpen && mobileMenu && mobileMenuButton) {
+        // Check if click is outside both the menu and the button
+        if (!mobileMenu.contains(target) && !mobileMenuButton.contains(target)) {
+          setIsOpen(false)
+        }
+      }
+    }
+
+    // Close menu when pressing Escape key
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('keydown', handleEscapeKey)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscapeKey)
+    }
+  }, [isOpen])
+
   const t = translations[language]
 
   if (!mounted) {
@@ -284,6 +317,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
+            data-mobile-menu-button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm"
           >
@@ -295,6 +329,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
         <AnimatePresence>
           {isOpen && (
             <motion.div
+              data-mobile-menu
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}

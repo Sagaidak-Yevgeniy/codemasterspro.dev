@@ -146,7 +146,7 @@ export default function ExitIntentPopup({ language }: ExitIntentPopupProps) {
               <div className="bg-gradient-to-r from-primary-500 to-secondary-500 p-3 sm:p-6 text-white relative">
                 <button
                   onClick={handleClose}
-                  className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-gray-200 transition-colors"
+                  className="absolute top-2 right-2 sm:top-4 sm:right-4 z-[80] text-white hover:text-gray-200 transition-colors bg-black/20 rounded-full p-1 backdrop-blur-sm"
                 >
                   <X className="w-4 h-4 sm:w-6 sm:h-6" />
                 </button>

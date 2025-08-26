@@ -46,8 +46,8 @@ export default function DiscountPopup({ language, isVisible, onClose }: Discount
 
   const handleGetDiscount = () => {
     const message = language === 'ru' 
-      ? 'Привет! Хочу получить скидку 20% на обучение программированию в CMPro. Можете рассказать подробнее?'
-      : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға 20% жеңілдік алғым келеді. Толығырақ айта аласыз ба?';
+                      ? 'Привет! Хочу получить скидку 20% на обучение программированию в CodeMastersPRO. Можете рассказать подробнее?'
+                : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға 20% жеңілдік алғым келеді. Толығырақ айта аласыз ба?';
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
     onClose();
@@ -92,7 +92,7 @@ export default function DiscountPopup({ language, isVisible, onClose }: Discount
               <div className="bg-gradient-to-r from-yellow-500 to-orange-500 p-3 sm:p-4 text-white relative">
                 <button
                   onClick={onClose}
-                  className="absolute top-2 right-2 sm:top-3 sm:right-3 text-white hover:text-gray-200 transition-colors"
+                  className="absolute top-2 right-2 sm:top-3 sm:right-3 z-[80] text-white hover:text-gray-200 transition-colors bg-black/20 rounded-full p-1 backdrop-blur-sm"
                 >
                   <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>

@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
     ru: {
       title: 'Политика конфиденциальности',
       subtitle: 'Как мы защищаем и используем ваши персональные данные',
-      backToHome: 'Вернуться на главную',
+      backToHome: 'Назад',
       lastUpdated: 'Последнее обновление: 1 января 2024',
       sections: {
         introduction: {
@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
     kk: {
       title: 'Құпиялылық саясаты',
       subtitle: 'Біз сіздің жеке деректеріңізді қалай қорғаймыз және пайдаланамыз',
-      backToHome: 'Басты бетке оралу',
+      backToHome: 'Артқа',
       lastUpdated: 'Соңғы жаңарту: 1 қаңтар 2024',
       sections: {
         introduction: {
@@ -117,20 +117,22 @@ export default function PrivacyPolicyPage() {
       <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link 
-              href="/"
-              className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            <button 
+              onClick={() => window.history.back()}
+              className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
               {t.backToHome}
-            </Link>
+            </button>
             
             <div className="flex items-center space-x-4">
-              <img 
-                src="/images/Logo.png" 
-                alt="CMPro Logo" 
-                className="w-8 h-8"
-              />
+              <Link href="/" className="hover:opacity-80 transition-opacity">
+                <img 
+                  src="/images/Logo.png" 
+                  alt="CodeMastersPRO Logo" 
+                  className="w-8 h-8 cursor-pointer"
+                />
+              </Link>
             </div>
           </div>
         </div>

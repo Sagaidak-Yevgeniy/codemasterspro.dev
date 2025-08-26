@@ -31,7 +31,7 @@ export default function JavaScriptCourse() {
 
   const translations = {
     ru: {
-      backToCourses: 'Назад к курсам',
+      backToCourses: 'Назад',
       developer: 'разработчик',
       description: 'Создавайте крутые веб-сайты и приложения! Изучите JavaScript для веб-разработки и создания интерактивных сайтов. Отлично для школьников!',
       months: 'месяцев',
@@ -86,7 +86,7 @@ export default function JavaScriptCourse() {
       ]
     },
     kk: {
-      backToCourses: 'Курстарға қайту',
+      backToCourses: 'Артқа',
       developer: 'бағдарламашы',
       description: 'Керемет веб-сайттар мен қосымшалар жасаңыз! Веб-даму және интерактивті сайттар жасау үшін JavaScript үйреніңіз. Мектеп оқушылары үшін өте жақсы!',
       months: 'ай',
@@ -156,10 +156,13 @@ export default function JavaScriptCourse() {
       <nav className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm shadow-lg border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-end">
-            <Link href="/" className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+            <button 
+              onClick={() => window.history.back()} 
+              className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
+            >
               <ArrowLeft className="w-5 h-5 mr-2" />
               {t.backToCourses}
-            </Link>
+            </button>
           </div>
         </div>
       </nav>

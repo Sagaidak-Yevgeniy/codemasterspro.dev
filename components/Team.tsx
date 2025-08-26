@@ -16,9 +16,17 @@ const translations = {
         name: 'Сагайдак Евгений Александрович',
         position: 'Senior Full-Stack разработчик',
         experience: '10+ лет опыта',
-                 description: 'Опытный разработчик и преподаватель с глубокими знаниями в Python, JavaScript, Go и современных веб-технологиях. Создал множество успешных проектов и обучил сотни школьников и взрослых. Специализируется на обучении программированию с нуля, подготовке к ЕНТ по информатике и развитии практических навыков разработки.',
+                 description: 'Опытный разработчик и преподаватель с глубокими знаниями в Python, JavaScript, Go и современных веб-технологиях. Создал множество успешных проектов и обучил сотни школьников и взрослых. Специализируется на обучении программирования с нуля, подготовке к ЕНТ по информатике и развитии практических навыков разработки.',
          skills: ['Python', 'JavaScript', 'Go', 'React', 'Django', 'Node.js', 'SQL', 'Next.js'],
         image: '/images/Sagaidak.jpeg.jpg'
+      },
+      {
+        name: 'Кодбек',
+        position: 'IT-Наставник & Представитель школы',
+        experience: 'Онлайн 24/7',
+        description: 'Дружелюбный AI-помощник и официальный представитель школы CodeMastersPRO. Помогает студентам в обучении, делится советами, направляет на правильный путь в IT-индустрии. Ведет рубрики в Instagram, создает полезный контент и вдохновляет на изучение программирования.',
+        skills: ['Обучение', 'Консультации', 'Мотивация', 'Instagram', 'IT-советы', 'Наставничество'],
+        image: '/images/Kodebek1.png'
       }
     ]
   },
@@ -34,6 +42,14 @@ const translations = {
                  description: 'Python, JavaScript, Go және заманауи веб-технологиялар бойынша терең білімі бар тәжірибелі дамушы және оқытушы. Көптеген сәтті жобалар жасаған және жүздеген мектеп оқушысы мен ересек оқытқан. Нөлден бағдарламалауды оқыту, информатика бойынша ЕНТ-ке дайындық және дамудың практикалық дағдыларын дамыту бойынша маманданған.',
          skills: ['Python', 'JavaScript', 'Go', 'React', 'Django', 'Node.js', 'SQL', 'Next.js'],
         image: '/images/Sagaidak.jpeg.jpg'
+      },
+      {
+        name: 'Кодбек',
+        position: 'IT-Жол көрсетуші & Мектеп өкілі',
+        experience: 'Онлайн 24/7',
+        description: 'CodeMastersPRO мектебінің досқан AI-көмекшісі және ресми өкілі. Студенттерді оқуға көмектеседі, кеңестерді бөліседі, IT-индустриясындағы дұрыс жолға бағыттайды. Instagram-да рубрикалар жүргізеді, пайдалы контент жасайды және бағдарламалауды оқуға шабыттандырады.',
+        skills: ['Оқыту', 'Кеңесшілік', 'Мотивация', 'Instagram', 'IT-кеңестер', 'Жол көрсету'],
+        image: '/images/Kodebek1.png'
       }
     ]
   }
@@ -66,9 +82,9 @@ export default function Team({ language }: TeamProps) {
 
 
         {/* Team Members */}
-        <div className="flex justify-center">
-          <div className="max-w-md">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {t.team.map((member, index) => (
+            <div key={index} className="max-w-md mx-auto">
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -82,7 +98,9 @@ export default function Team({ language }: TeamProps) {
                 <img 
                   src={member.image} 
                   alt={member.name}
-                  className="w-64 h-64 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg hover:scale-105 transition-transform duration-300"
+                  className={`w-64 h-64 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg hover:scale-105 transition-transform duration-300 ${
+                    member.name === 'Кодбек' ? 'object-top' : 'object-center'
+                  }`}
                 />
               </div>
 
@@ -108,8 +126,8 @@ export default function Team({ language }: TeamProps) {
 
               </div>
             </motion.div>
+            </div>
           ))}
-          </div>
         </div>
 
         {/* CTA Section */}

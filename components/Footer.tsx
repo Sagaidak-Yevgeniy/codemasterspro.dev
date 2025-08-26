@@ -154,8 +154,8 @@ export default function Footer({ language }: FooterProps) {
                   className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-300"
                   onClick={() => {
                 const message = language === 'ru' 
-                  ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                  : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                                  ? 'Привет! Хочу записаться на обучение программированию в CodeMastersPRO. Можете рассказать подробнее о курсах?'
+                : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
                 const encodedMessage = encodeURIComponent(message);
                 window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
               }}
@@ -301,6 +301,9 @@ export default function Footer({ language }: FooterProps) {
             </motion.div>
           </div>
         </div>
+
+        {/* Кодбек Footer Section */}
+        
 
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 dark:border-gray-700 py-6 sm:py-8">

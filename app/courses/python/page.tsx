@@ -31,7 +31,7 @@ export default function PythonCourse() {
 
   const translations = {
     ru: {
-      backToCourses: 'Назад к курсам',
+      backToCourses: 'Назад',
       developer: 'разработчик',
       description: 'Идеально для школьников! Изучите Python с нуля - от простых программ до создания веб-сайтов и автоматизации задач. Подходит для ЕНТ по информатике и олимпиад по программированию.',
       months: 'месяцев',
@@ -87,7 +87,7 @@ export default function PythonCourse() {
       ]
     },
     kk: {
-      backToCourses: 'Курстарға қайту',
+      backToCourses: 'Артқа',
       developer: 'бағдарламашы',
       description: 'Мектеп оқушылары үшін тамаша! Python-ды нөлден үйреніңіз - қарапайым бағдарламалардан веб-сайттар және тапсырмаларды автоматтандыруға дейін. Информатика бойынша ЕНТ-ке және бағдарламалау олимпиадаларына жарамды.',
       months: 'ай',
@@ -158,10 +158,13 @@ export default function PythonCourse() {
       <nav className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm shadow-lg border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-end">
-            <Link href="/" className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+            <button 
+              onClick={() => window.history.back()} 
+              className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+            >
               <ArrowLeft className="w-5 h-5 mr-2" />
               {t.backToCourses}
-            </Link>
+            </button>
           </div>
         </div>
       </nav>

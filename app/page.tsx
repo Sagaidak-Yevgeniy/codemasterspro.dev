@@ -15,9 +15,10 @@ import Timeline from '@/components/Timeline'
 import Footer from '@/components/Footer'
 import { ToastContainer, useToast } from '@/components/Toast'
 import MainFloatingNav from '@/components/MainFloatingNav'
-
 import ExitIntentPopup from '@/components/ExitIntentPopup'
 import ChatSupport from '@/components/ChatSupport'
+import KodebekSection from '@/components/KodebekSection'
+import Certificate from '@/components/Certificate'
 
 
 
@@ -84,6 +85,8 @@ export default function Home() {
       <Header language={language} setLanguage={handleLanguageChange} />
       <Hero language={language} />
       <Courses language={language} />
+      <KodebekSection language={language} />
+      <Certificate language={language} />
       <About language={language} />
       <Benefits language={language} />
       <Mentorship language={language} />
@@ -99,14 +102,11 @@ export default function Home() {
       {/* Floating Navigation */}
       <MainFloatingNav language={language} />
       
-      {/* Mobile Navigation */}
-      
+            {/* Chat Support */}
+      <ChatSupport language={language} />
       
       {/* Exit Intent Popup */}
       <ExitIntentPopup language={language} />
-      
-      {/* Chat Support */}
-      <ChatSupport language={language} />
     </div>
   )
 }

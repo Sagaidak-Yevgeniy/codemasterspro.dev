@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronUp, Home, BookOpen, Users, Award, MessageCircle, HelpCircle, Clock, Menu, X, Sparkles } from 'lucide-react'
 import { useNavigation } from './NavigationContext'
@@ -13,6 +13,7 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
   const { isNavigationVisible } = useNavigation()
   const [isExpanded, setIsExpanded] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const navRef = useRef<HTMLDivElement>(null)
 
   const translations = {
     ru: {
@@ -72,6 +73,23 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
     setIsExpanded(false)
   }
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsExpanded(false)
+      }
+    }
+
+    if (isExpanded) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isExpanded])
+
   // Auto-hide on mobile when scrolling
   useEffect(() => {
     let timeoutId: NodeJS.Timeout
@@ -95,6 +113,7 @@ export default function MainFloatingNav({ language }: MainFloatingNavProps) {
     <AnimatePresence>
       {isNavigationVisible && (
         <motion.div
+          ref={navRef}
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}

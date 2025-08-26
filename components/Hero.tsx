@@ -5,6 +5,7 @@ import { ArrowRight, Play, Star, Users, Award, Gift, CheckCircle, Database } fro
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import DiscountPopup from './DiscountPopup'
+import KodebekImage from './KodebekImage'
 
 interface HeroProps {
   language: 'ru' | 'kk'
@@ -65,7 +66,7 @@ export default function Hero({ language }: HeroProps) {
         <div className="text-center">
           <motion.img 
             src="/images/Logo.png" 
-            alt="CMPro Logo" 
+                            alt="CodeMastersPRO Logo" 
             className="w-32 h-32"
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -87,8 +88,8 @@ export default function Hero({ language }: HeroProps) {
 
   const handleTrialLesson = () => {
     const message = language === 'ru' 
-      ? 'Привет! Хочу записаться на пробное занятие по программированию в CMPro. Можете рассказать подробнее?'
-      : 'Сәлем! CMPro-да бағдарламалау бойынша сынақ сабағына тіркелгім келеді. Толығырақ айта аласыз ба?';
+                      ? 'Привет! Хочу записаться на пробное занятие по программированию в CodeMastersPRO. Можете рассказать подробнее?'
+                : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша сынақ сабағына тіркелгім келеді. Толығырақ айта аласыз ба?';
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
   }
@@ -149,29 +150,29 @@ export default function Hero({ language }: HeroProps) {
                transition={{ delay: 0.5, duration: 0.8 }}
                className="text-sm sm:text-base text-primary-600 dark:text-primary-400 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 font-medium"
              >
-               <span className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group" onClick={() => window.open(`/${language}/audience`, '_blank')}>
+               <Link href={`/${language}/audience`} className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group">
                  {language === 'ru' ? 'Для школьников и взрослых' : 'Мектеп оқушылары және ересектер үшін'}
                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
                    {language === 'ru' ? 'Подробнее о целевой аудитории' : 'Мақсатты аудитория туралы толығырақ'}
                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
                  </div>
-               </span>
+               </Link>
                {' • '}
-               <span className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group" onClick={() => window.open(`/${language}/ent-preparation`, '_blank')}>
+               <Link href={`/${language}/ent-preparation`} className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group">
                  {language === 'ru' ? 'Подготовка к ЕНТ' : 'ЕНТ-ке дайындық'}
                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
                    {language === 'ru' ? 'Подробнее о подготовке к ЕНТ' : 'ЕНТ-ке дайындық туралы толығырақ'}
                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
                  </div>
-               </span>
+               </Link>
                {' • '}
-               <span className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group" onClick={() => window.open(`/${language}/career-it`, '_blank')}>
+               <Link href={`/${language}/career-it`} className="cursor-pointer hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 relative group">
                  {language === 'ru' ? 'Карьера в IT' : 'IT-дегі мансап'}
                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
                    {language === 'ru' ? 'Подробнее о карьере в IT' : 'IT-дегі мансап туралы толығырақ'}
                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
                  </div>
-               </span>
+               </Link>
              </motion.p>
 
             {/* Modern Free Trial Banner */}
@@ -383,38 +384,219 @@ export default function Hero({ language }: HeroProps) {
                                           {/* Elegant Stickers Container */}
               <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 sm:top-0 sm:left-auto sm:right-0 sm:transform-none lg:-top-12 lg:-right-8 flex flex-row sm:flex-col gap-1 sm:gap-1.5 lg:gap-2 z-50">
                                  {/* Best School Sticker */}
-                 <div className="bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform -rotate-3 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out">
+                 <motion.div 
+                   className="bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform -rotate-3 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out"
+                   animate={{
+                     background: [
+                       "linear-gradient(to right, #fbbf24, #f97316, #ef4444)",
+                       "linear-gradient(to right, #f59e0b, #ea580c, #dc2626)",
+                       "linear-gradient(to right, #fbbf24, #f97316, #ef4444)"
+                     ]
+                   }}
+                   transition={{
+                     duration: 4,
+                     repeat: Infinity,
+                     ease: "easeInOut",
+                     delay: 0
+                   }}
+                 >
                    <div className="flex items-center space-x-1 sm:space-x-2">
-                     <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
+                     <motion.div
+                       animate={{ rotate: [0, 360] }}
+                       transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                     >
+                       <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
+                     </motion.div>
                      <span className="font-bold text-[10px] sm:text-sm lg:text-sm tracking-wide">
                        {language === 'ru' ? 'ЛУЧШАЯ' : 'ҮЗДІК'}
                      </span>
                    </div>
-                 </div>
+                 </motion.div>
                  
                  {/* Pavlodar Sticker */}
-                 <div className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform rotate-2 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out">
+                 <motion.div 
+                   className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform rotate-2 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out"
+                   animate={{
+                     background: [
+                       "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6)",
+                       "linear-gradient(to right, #1d4ed8, #4f46e5, #7c3aed)",
+                       "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6)"
+                     ]
+                   }}
+                   transition={{
+                     duration: 4,
+                     repeat: Infinity,
+                     ease: "easeInOut",
+                     delay: 1.3
+                   }}
+                 >
                    <div className="flex items-center space-x-1 sm:space-x-2">
-                     <div className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-white rounded-full" />
+                     <motion.div
+                       animate={{ 
+                         scale: [1, 1.2, 1],
+                         opacity: [0.8, 1, 0.8]
+                       }}
+                       transition={{ 
+                         duration: 2, 
+                         repeat: Infinity, 
+                         ease: "easeInOut" 
+                       }}
+                       className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 bg-white rounded-full"
+                     />
                      <span className="font-bold text-[10px] sm:text-sm lg:text-sm tracking-wide">
                        {language === 'ru' ? 'ПАВЛОДАР' : 'ПАВЛОДАР'}
                      </span>
                    </div>
-                 </div>
+                 </motion.div>
                  
                  {/* Offline Sticker */}
-                 <div className="bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-600 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform -rotate-1 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out">
+                 <motion.div 
+                   className="bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-600 text-white px-1.5 sm:px-2.5 lg:px-3 py-1 sm:py-2 lg:py-2 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm transform -rotate-1 hover:rotate-0 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-out"
+                   animate={{
+                     background: [
+                       "linear-gradient(to right, #34d399, #14b8a6, #0891b2)",
+                       "linear-gradient(to right, #10b981, #0d9488, #0e7490)",
+                       "linear-gradient(to right, #34d399, #14b8a6, #0891b2)"
+                     ]
+                   }}
+                   transition={{
+                     duration: 4,
+                     repeat: Infinity,
+                     ease: "easeInOut",
+                     delay: 2.6
+                   }}
+                 >
                    <div className="flex items-center space-x-1 sm:space-x-2">
-                     <Users className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
+                     <motion.div
+                       animate={{ 
+                         y: [0, -2, 0],
+                         scale: [1, 1.1, 1]
+                       }}
+                       transition={{ 
+                         duration: 2, 
+                         repeat: Infinity, 
+                         ease: "easeInOut" 
+                       }}
+                     >
+                       <Users className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4" />
+                     </motion.div>
                      <span className="font-bold text-[10px] sm:text-sm lg:text-sm tracking-wide">
                        {language === 'ru' ? 'ОФЛАЙН' : 'ОФЛАЙН'}
                      </span>
                    </div>
-                 </div>
+                 </motion.div>
               </div>
               
               <div className="relative">
-                {/* Background Logo */}
+                {/* Кодбек Image positioned in right column */}
+                <div className="absolute -bottom-16 -right-8 z-50">
+                  <KodebekImage />
+                </div>
+
+
+                                 
+                                  {/* Кодбек Welcome Message */}
+                 <motion.div
+                   initial={{ opacity: 0, scale: 0.8, y: 20, x: 30 }}
+                   animate={{ 
+                     opacity: 1, 
+                     scale: 1, 
+                     y: 0,
+                     x: 0,
+                     rotate: [0, 1, -1, 0]
+                   }}
+                   transition={{ 
+                     delay: 1.2, 
+                     duration: 0.8,
+                     rotate: {
+                       duration: 4,
+                       repeat: Infinity,
+                       ease: "easeInOut"
+                     }
+                   }}
+                   whileHover={{ 
+                     scale: 1.05,
+                     rotate: [0, 2, -2, 0]
+                   }}
+                   className="absolute top-32 left-auto -right-2.5 transform translate-y-10 sm:top-80 sm:left-auto sm:-right-2.5 sm:translate-y-2.5 sm:transform-none lg:top-80 lg:left-auto lg:right-20 lg:translate-y-2.5 lg:translate-x-48 xl:top-80 xl:left-auto xl:right-20 xl:translate-y-2.5 xl:translate-x-48 z-50 max-w-[80px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[180px]"
+                 >
+                   <motion.div 
+                     className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-lg p-2 sm:p-3 shadow-xl border border-gray-200/50 dark:border-gray-600/50"
+                     animate={{
+                       boxShadow: [
+                         "0 10px 25px rgba(0, 0, 0, 0.1)",
+                         "0 20px 40px rgba(0, 0, 0, 0.15)",
+                         "0 10px 25px rgba(0, 0, 0, 0.1)"
+                       ]
+                     }}
+                     transition={{
+                       duration: 3,
+                       repeat: Infinity,
+                       ease: "easeInOut"
+                     }}
+                   >
+                     {/* Speech bubble tail pointing right from message */}
+                     <div className="absolute top-1/2 -right-1.5 transform -translate-y-1/2 w-2 h-2 sm:w-3 sm:h-3 bg-white/90 dark:bg-gray-800/90 border-r border-t border-gray-200/50 dark:border-gray-600/50 transform rotate-45"></div>
+                     
+                     {/* Content */}
+                     <div className="flex-1 min-w-0">
+                                               <div className="text-[9px] sm:text-sm font-medium text-gray-800 dark:text-gray-200 mb-0.5 sm:mb-1">
+                          {language === 'ru' ? 'Привет! Я Кодбек' : 'Сәлем! Мен Кодбек'}
+                        </div>
+                        <div className="text-[8px] sm:text-xs text-gray-600 dark:text-gray-300 leading-tight">
+                          {language === 'ru' 
+                            ? 'ваш IT-наставник из CodeMastersPRO! 👋'
+                            : 'CodeMastersPRO-дан сіздің IT-жол көрсетушіңіз! 👋'
+                          }
+                        </div>
+                     </div>
+                     
+                     {/* Animated dots */}
+                     <div className="flex space-x-1 sm:space-x-1.5 mt-1.5 sm:mt-1.5">
+                       <motion.div
+                         animate={{ 
+                           opacity: [0.3, 1, 0.3],
+                           scale: [0.8, 1.2, 0.8]
+                         }}
+                         transition={{ 
+                           duration: 2, 
+                           repeat: Infinity, 
+                           delay: 0,
+                           ease: "easeInOut"
+                         }}
+                         className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-500 rounded-full"
+                       />
+                       <motion.div
+                         animate={{ 
+                           opacity: [0.3, 1, 0.3],
+                           scale: [0.8, 1.2, 0.8]
+                         }}
+                         transition={{ 
+                           duration: 2, 
+                           repeat: Infinity, 
+                           delay: 0.3,
+                           ease: "easeInOut"
+                         }}
+                         className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-purple-500 rounded-full"
+                       />
+                       <motion.div
+                         animate={{ 
+                           opacity: [0.3, 1, 0.3],
+                           scale: [0.8, 1.2, 0.8]
+                         }}
+                         transition={{ 
+                           duration: 2, 
+                           repeat: Infinity, 
+                           delay: 0.6,
+                           ease: "easeInOut"
+                         }}
+                         className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-pink-500 rounded-full"
+                       />
+                     </div>
+                                        </motion.div>
+                   </motion.div>
+                 
+                 {/* Background Logo */}
                 <div className="absolute top-1/2 right-0 transform -translate-y-1/2 hidden md:block z-30">
                   {/* Modern trending logo animation */}
                   <div className="relative">
@@ -434,7 +616,7 @@ export default function Hero({ language }: HeroProps) {
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-lg animate-pulse"></div>
                       <img 
                         src="/images/Logo.png" 
-                        alt="CMPro Logo" 
+                        alt="CodeMastersPRO Logo" 
                         className="w-32 h-32 lg:w-64 lg:h-64 object-contain relative z-10 drop-shadow-lg"
                         loading="lazy"
                       />
@@ -526,6 +708,8 @@ export default function Hero({ language }: HeroProps) {
 
                   </div>
                 </div>
+                
+                
                 
                                  {/* Directions */}
                  <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-1 flex flex-col items-center lg:items-start mt-4 sm:mt-0 pr-8 sm:pr-12 lg:pr-0">
@@ -655,6 +839,7 @@ export default function Hero({ language }: HeroProps) {
                </div>
               </div>
               
+
 
             </div>
           </motion.div>

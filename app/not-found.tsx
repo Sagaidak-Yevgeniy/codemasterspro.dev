@@ -124,16 +124,15 @@ export default function NotFound() {
 
             <div className="text-gray-500 dark:text-gray-400">{t.or}</div>
 
-            <Link href="/">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white dark:bg-gray-800 border-2 border-primary-500 dark:border-primary-400 text-primary-600 dark:text-primary-400 font-semibold py-2 px-4 sm:px-6 rounded-lg hover:bg-primary-50 dark:hover:bg-gray-700 transition-all duration-300 flex items-center space-x-2 text-sm sm:text-base"
-              >
-                <Home className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>{t.backHome}</span>
-              </motion.button>
-            </Link>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.history.back()}
+              className="bg-white dark:bg-gray-800 border-2 border-primary-500 dark:border-primary-400 text-primary-600 dark:text-primary-400 font-semibold py-2 px-4 sm:px-6 rounded-lg hover:bg-primary-50 dark:hover:bg-gray-700 transition-all duration-300 flex items-center space-x-2 text-sm sm:text-base cursor-pointer"
+            >
+              <Home className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span>{t.backHome}</span>
+            </motion.button>
           </motion.div>
 
           {/* Decorative Elements */}

@@ -465,8 +465,8 @@ export default function Courses({ language }: CoursesProps) {
                           e.stopPropagation();
                           const courseName = course.title;
                           const message = language === 'ru' 
-                            ? `Привет! Хочу записаться на курс "${courseName}" в CMPro. Можете рассказать подробнее об этом направлении?`
-                            : `Сәлем! CMPro-да "${courseName}" курсына тіркелгім келеді. Бұл бағыт туралы толығырақ айта аласыз ба?`;
+                                            ? `Привет! Хочу записаться на курс "${courseName}" в CodeMastersPRO. Можете рассказать подробнее об этом направлении?`
+                : `Сәлем! CodeMastersPRO-да "${courseName}" курсына тіркелгім келеді. Бұл бағыт туралы толығырақ айта аласыз ба?`;
                           const encodedMessage = encodeURIComponent(message);
                           window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
                         }}

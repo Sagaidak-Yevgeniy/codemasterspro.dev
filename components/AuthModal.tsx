@@ -339,12 +339,12 @@ export default function AuthModal({ isOpen, onClose, mode, language }: AuthModal
               />
             </div>
 
-            {/* Close button */}
+            {/* Close button - Absolute position within modal */}
             <motion.button
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
               onClick={onClose}
-              className="absolute top-3 right-3 z-20 w-8 h-8 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer"
+              className="absolute top-3 right-3 z-50 w-8 h-8 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer shadow-lg"
             >
               <X className="w-4 h-4" />
             </motion.button>
@@ -371,7 +371,7 @@ export default function AuthModal({ isOpen, onClose, mode, language }: AuthModal
                 <div className="w-10 h-10 flex items-center justify-center mx-auto mb-2">
                   <img 
                     src="/images/Logo.png" 
-                    alt="CMPro Logo" 
+                    alt="CodeMastersPRO Logo" 
                     className="w-full h-full object-contain"
                   />
                 </div>

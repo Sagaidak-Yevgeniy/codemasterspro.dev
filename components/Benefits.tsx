@@ -22,7 +22,7 @@ interface BenefitsProps {
 
 const translations = {
   ru: {
-    title: 'Почему выбирают CMPro',
+    title: 'Почему выбирают CodeMastersPRO',
     subtitle: 'Современный подход к обучению программированию для школьников и взрослых',
     benefits: [
       {
@@ -108,7 +108,7 @@ const translations = {
     ]
   },
   kk: {
-    title: 'Неге CMPro-ны таңдайды',
+    title: 'Неге CodeMastersPRO-ны таңдайды',
     subtitle: 'Мектеп оқушылары және ересектер үшін бағдарламалау бойынша заманауи оқу тәсілі',
     benefits: [
       {
@@ -440,8 +440,8 @@ export default function Benefits({ language }: BenefitsProps) {
               </h3>
               <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
                 {language === 'ru'
-                  ? 'Присоединяйтесь к CMPro и станьте востребованным IT-специалистом'
-                  : 'CMPro-ға қосылыңыз және сұранысты IT-маманға айналыңыз'
+                                ? 'Присоединяйтесь к CodeMastersPRO и станьте востребованным IT-специалистом'
+              : 'CodeMastersPRO-ға қосылыңыз және сұранысты IT-маманға айналыңыз'
                 }
               </p>
               <motion.button
@@ -450,8 +450,8 @@ export default function Benefits({ language }: BenefitsProps) {
                 className="bg-white text-primary-600 font-semibold text-sm px-3 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2 mx-auto"
                 onClick={() => {
                   const message = language === 'ru' 
-                    ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                    : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                                    ? 'Привет! Хочу записаться на обучение программированию в CodeMastersPRO. Можете рассказать подробнее о курсах?'
+                : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
                   const encodedMessage = encodeURIComponent(message);
                   window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
                 }}

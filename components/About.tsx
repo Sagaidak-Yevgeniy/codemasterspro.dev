@@ -75,12 +75,12 @@ const translations = {
     stats: {
       success: '95%',
       successText: 'студентов находят работу',
-      speed: '3-6',
-      speedText: 'месяцев до первой работы',
+      speed: '2-4',
+      speedText: 'недели до первых результатов',
       projects: '15+',
       projectsText: 'проектов в портфолио',
-      salary: '2-5x',
-      salaryText: 'рост зарплаты после курса'
+      salary: '24/7',
+      salaryText: 'поддержка менторов'
     },
     cta: 'Начать обучение'
   },
@@ -139,12 +139,12 @@ const translations = {
     stats: {
       success: '95%',
       successText: 'студенттер жұмыс табады',
-      speed: '3-6',
-      speedText: 'ай бірінші жұмысқа дейін',
+      speed: '2-4',
+      speedText: 'апта алғашқы нәтижелерге дейін',
       projects: '15+',
       projectsText: 'портфолиодағы жоба',
-      salary: '2-5x',
-      salaryText: 'курс кейінгі жалақы өсуі'
+      salary: '24/7',
+      salaryText: 'менторлардың қолдауы'
     },
     cta: 'Оқуға бастау'
   }
@@ -356,8 +356,8 @@ export default function About({ language }: AboutProps) {
               </h3>
               <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
                 {language === 'ru'
-                  ? 'Присоединяйтесь к CMPro и станьте востребованным IT-специалистом'
-                  : 'CMPro-ға қосылыңыз және сұранысты IT-маманға айналыңыз'
+                                ? 'Присоединяйтесь к CodeMastersPRO и станьте востребованным IT-специалистом'
+              : 'CodeMastersPRO-ға қосылыңыз және сұранысты IT-маманға айналыңыз'
                 }
               </p>
               <motion.button
@@ -366,8 +366,8 @@ export default function About({ language }: AboutProps) {
                 className="bg-white text-purple-600 font-bold text-base px-6 py-3 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-2 mx-auto"
                 onClick={() => {
                   const message = language === 'ru' 
-                    ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                    : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                                    ? 'Привет! Хочу записаться на обучение программирования в CodeMastersPRO. Можете рассказать подробнее о курсах?'
+                : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
                   const encodedMessage = encodeURIComponent(message);
                   window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
                 }}

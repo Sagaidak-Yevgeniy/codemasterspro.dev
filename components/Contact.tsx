@@ -21,7 +21,6 @@ const translations = {
   ru: {
     title: 'Свяжитесь с нами',
     subtitle: 'Готовы начать обучение? Свяжитесь с нами любым удобным способом',
-    audience: 'Для школьников и взрослых • Подготовка к ЕНТ и карьере в IT • Менторство в информатике',
     contactInfo: {
       title: 'Контактная информация',
       location: 'г. Павлодар, ул. Е. Бекмаханова 115/2 (угол улиц Назарбаева и Естая)',
@@ -51,7 +50,6 @@ const translations = {
   kk: {
     title: 'Бізбен байланысыңыз',
     subtitle: 'Оқуға бастауға дайынсыз ба? Бізбен ыңғайлы тәсілмен байланысыңыз',
-    audience: 'Мектеп оқушылары және ересектер үшін • ЕНТ-ке және IT-дегі мансапқа дайындық • Информатика бойынша менторлық',
     contactInfo: {
       title: 'Байланыс ақпараты',
       location: 'к. Павлодар, көш. Е. Бекмаханова 115/2 (Назарбаев және Естая көшелерінің қиылысы)',
@@ -99,9 +97,28 @@ export default function Contact({ language }: ContactProps) {
           <p className="text-lg text-secondary-dark max-w-2xl mx-auto mb-2">
             {t.subtitle}
           </p>
-          <p className="text-sm text-primary-600 dark:text-primary-400 font-medium">
-            {t.audience}
-          </p>
+          <div className="flex flex-wrap justify-center gap-2 text-sm">
+            <a 
+              href={language === 'ru' ? '/ru/audience' : '/kk/audience'} 
+              className="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium transition-colors duration-300 cursor-pointer"
+            >
+              {language === 'ru' ? 'Для школьников и взрослых' : 'Мектеп оқушылары және ересектер үшін'}
+            </a>
+            <span className="text-primary-600 dark:text-primary-400">•</span>
+            <a 
+              href={language === 'ru' ? '/ru/ent-preparation' : '/kk/ent-preparation'} 
+              className="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium transition-colors duration-300 cursor-pointer"
+            >
+              {language === 'ru' ? 'Подготовка к ЕНТ и карьере в IT' : 'ЕНТ-ке және IT-дегі мансапқа дайындық'}
+            </a>
+            <span className="text-primary-600 dark:text-primary-400">•</span>
+            <a 
+              href={language === 'ru' ? '/ru/career-it' : '/kk/career-it'} 
+              className="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium transition-colors duration-300 cursor-pointer"
+            >
+              {language === 'ru' ? 'Менторство в информатике' : 'Информатика бойынша менторлық'}
+            </a>
+          </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -193,8 +210,8 @@ export default function Contact({ language }: ContactProps) {
                   className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 px-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
                   onClick={() => {
                     const message = language === 'ru' 
-                      ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                      : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                      ? 'Привет! Хочу записаться на обучение программированию в CodeMastersPRO. Можете рассказать подробнее о курсах?'
+                      : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
                     const encodedMessage = encodeURIComponent(message);
                     window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
                   }}
@@ -215,8 +232,8 @@ export default function Contact({ language }: ContactProps) {
                   className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-2 px-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-between group text-sm"
                   onClick={() => {
                     const message = language === 'ru' 
-                      ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                      : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                      ? 'Привет! Хочу записаться на обучение программированию в CodeMastersPRO. Можете рассказать подробнее о курсах?'
+                      : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
                     const encodedMessage = encodeURIComponent(message);
                     window.open(`https://t.me/+77773323676?text=${encodedMessage}`, '_blank');
                   }}
@@ -276,8 +293,8 @@ export default function Contact({ language }: ContactProps) {
                     className="w-full bg-white text-primary-600 font-semibold py-2 px-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 group text-sm"
                     onClick={() => {
                       const message = language === 'ru' 
-                        ? 'Привет! Хочу записаться на обучение программированию в CMPro. Можете рассказать подробнее о курсах?'
-                        : 'Сәлем! CMPro-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                        ? 'Привет! Хочу записаться на обучение программированию в CodeMastersPRO. Можете рассказать подробнее о курсах?'
+                        : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
                       const encodedMessage = encodeURIComponent(message);
                       window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
                     }}

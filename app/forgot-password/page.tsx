@@ -65,13 +65,13 @@ export default function ForgotPasswordPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <Link 
-            href="/"
-            className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          <button 
+            onClick={() => window.history.back()}
+            className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             {t.backToLogin}
-          </Link>
+          </button>
         </motion.div>
 
         {/* Main Card */}
@@ -88,11 +88,13 @@ export default function ForgotPasswordPage() {
             transition={{ delay: 0.2 }}
             className="w-16 h-16 mx-auto mb-6"
           >
-            <img 
-              src="/images/Logo.png" 
-              alt="CMPro Logo" 
-              className="w-full h-full object-contain"
-            />
+            <Link href="/" className="hover:opacity-80 transition-opacity">
+              <img 
+                src="/images/Logo.png" 
+                alt="CodeMastersPRO Logo" 
+                className="w-full h-full object-contain cursor-pointer"
+              />
+            </Link>
           </motion.div>
 
           {/* Content */}

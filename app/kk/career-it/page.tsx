@@ -131,10 +131,13 @@ export default function CareerItPage() {
       {/* Header */}
       <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
         <div className="container-custom px-4 py-4">
-          <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors">
+          <button 
+            onClick={() => window.history.back()} 
+            className="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
+          >
             <ArrowLeft className="w-5 h-5 mr-2" />
             <span>{t.backButton}</span>
-          </Link>
+          </button>
         </div>
       </div>
 
