@@ -8,7 +8,8 @@ import {
   Phone, 
   Mail,
   Heart,
-  FileText
+  FileText,
+  Bot
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -169,6 +170,20 @@ export default function Footer({ language }: FooterProps) {
                   onClick={() => window.open('https://www.instagram.com/code_masterspro?igsh=M2NxcW4zc2Jhd3l5&utm_source=qr', '_blank')}
                 >
                   <Instagram className="w-5 h-5" />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                  onClick={() => {
+                    const message = language === 'ru' 
+                      ? 'Привет! Хочу подключить Telegram бота CodeMastersPRO для управления обучением. Можете помочь?'
+                      : 'Сәлем! CodeMastersPRO Telegram ботын оқу басқару үшін қосқым келеді. Көмектесе аласыз ба?';
+                    const encodedMessage = encodeURIComponent(message);
+                    window.open(`https://t.me/CodeMastersPRO_bot?start=${encodedMessage}`, '_blank');
+                  }}
+                >
+                  <Bot className="w-5 h-5" />
                 </motion.button>
               </div>
             </motion.div>

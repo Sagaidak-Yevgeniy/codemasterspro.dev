@@ -444,21 +444,47 @@ export default function Benefits({ language }: BenefitsProps) {
               : 'CodeMastersPRO-ға қосылыңыз және сұранысты IT-маманға айналыңыз'
                 }
               </p>
-              <motion.button
-                whileHover={{ scale: 1.02, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-white text-primary-600 font-semibold text-sm px-3 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2 mx-auto"
-                onClick={() => {
-                  const message = language === 'ru' 
-                                    ? 'Привет! Хочу записаться на обучение программированию в CodeMastersPRO. Можете рассказать подробнее о курсах?'
-                : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
-                  const encodedMessage = encodeURIComponent(message);
-                  window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
-                }}
-              >
-                <Zap className="w-3 h-3" />
-                <span>{language === 'ru' ? 'Начать обучение сейчас' : 'Қазір оқуға бастау'}</span>
-              </motion.button>
+              <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
+                <motion.button
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-white text-primary-600 font-semibold text-sm px-3 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
+                  onClick={() => {
+                    const message = language === 'ru' 
+                                      ? 'Привет! Хочу записаться на обучение программированию в CodeMastersPRO. Можете рассказать подробнее о курсах?'
+                  : 'Сәлем! CodeMastersPRO-да бағдарламалау бойынша оқуға тіркелгім келеді. Курстар туралы толығырақ айта аласыз ба?';
+                    const encodedMessage = encodeURIComponent(message);
+                    window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                  }}
+                >
+                  <Zap className="w-3 h-3" />
+                  <span>{language === 'ru' ? 'Начать обучение сейчас' : 'Қазір оқуға бастау'}</span>
+                </motion.button>
+
+                {/* Telegram Bot Button */}
+                <motion.button
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-700 text-white font-semibold text-sm px-3 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
+                  onClick={() => {
+                    const message = language === 'ru' 
+                      ? 'Привет! Хочу подключить Telegram бота CodeMastersPRO для управления обучением. Можете помочь?'
+                      : 'Сәлем! CodeMastersPRO Telegram ботын оқу басқару үшін қосқым келеді. Көмектесе аласыз ба?';
+                    const encodedMessage = encodeURIComponent(message);
+                    window.open(`https://t.me/CodeMastersPRO_bot?start=${encodedMessage}`, '_blank');
+                  }}
+                >
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  >
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                  </motion.div>
+                  <span>{language === 'ru' ? '🤖 Telegram бот' : '🤖 Telegram бот'}</span>
+                </motion.button>
+              </div>
             </div>
           </div>
         </motion.div>

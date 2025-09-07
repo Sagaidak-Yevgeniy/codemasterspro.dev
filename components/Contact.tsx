@@ -12,6 +12,7 @@ import {
   Send,
   Star
 } from 'lucide-react'
+import TelegramBotCTA from './TelegramBotCTA'
 
 interface ContactProps {
   language: 'ru' | 'kk'
@@ -312,15 +313,23 @@ export default function Contact({ language }: ContactProps) {
         </div>
 
         {/* Bottom Section */}
-        <div className="grid md:grid-cols-2 gap-6 mt-6">
+        <div className="grid md:grid-cols-3 gap-6 mt-6">
+          {/* Telegram Bot CTA */}
+          <TelegramBotCTA 
+            language={language} 
+            variant="contact"
+            className="md:col-span-1"
+          />
+
           {/* Reviews CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
+            className="md:col-span-1"
           >
-            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl p-6 text-white text-center">
+            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl p-6 text-white text-center h-full flex flex-col justify-center">
               <div className="flex items-center justify-center space-x-3 mb-3">
                 <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                   <MessageCircle className="w-4 h-4" />
@@ -355,6 +364,7 @@ export default function Contact({ language }: ContactProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
+            className="md:col-span-1"
           >
             <div className="bg-gradient-to-r from-accent-50 to-orange-50 dark:from-accent-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-accent-200 dark:border-accent-700 h-full flex flex-col justify-center">
               <div className="flex items-center space-x-3 mb-3">

@@ -224,39 +224,77 @@ export default function Courses({ language }: CoursesProps) {
                     </div>
                   </div>
 
-                  {/* Right side - CTA button */}
-                  <motion.button
-                    whileHover={{ 
-                      scale: 1.01, 
-                      y: -1,
-                      boxShadow: "0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 4px -2px rgba(0, 0, 0, 0.05)"
-                    }}
-                    whileTap={{ scale: 0.99 }}
-                    className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white font-medium py-1.5 px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1.5 text-xs w-full sm:w-auto sm:min-w-[140px] relative overflow-hidden group"
-                    onClick={() => {
-                      const message = language === 'ru' 
-                        ? 'Привет! Хочу записаться на бесплатное пробное занятие'
-                        : 'Сәлем! Тегін сынақ сабағына жазылғым келеді';
-                      const encodedMessage = encodeURIComponent(message);
-                      window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
-                    }}
-                  >
-                    {/* Animated background shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                    
-                    <motion.div
-                      animate={{ rotate: [0, 3, -3, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  {/* Right side - CTA buttons */}
+                  <div className="flex flex-col gap-1.5 w-full sm:w-auto sm:min-w-[140px]">
+                    <motion.button
+                      whileHover={{ 
+                        scale: 1.01, 
+                        y: -1,
+                        boxShadow: "0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 4px -2px rgba(0, 0, 0, 0.05)"
+                      }}
+                      whileTap={{ scale: 0.99 }}
+                      className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white font-medium py-1.5 px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1.5 text-xs w-full sm:w-auto relative overflow-hidden group"
+                      onClick={() => {
+                        const message = language === 'ru' 
+                          ? 'Привет! Хочу записаться на бесплатное пробное занятие'
+                          : 'Сәлем! Тегін сынақ сабағына жазылғым келеді';
+                        const encodedMessage = encodeURIComponent(message);
+                        window.open(`https://wa.me/77773323676?text=${encodedMessage}`, '_blank');
+                      }}
                     >
-                      <Play className="w-2.5 h-2.5" />
-                    </motion.div>
-                    <motion.span
-                      animate={{ x: [0, 0.5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      {/* Animated background shine effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                      
+                      <motion.div
+                        animate={{ rotate: [0, 3, -3, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <Play className="w-2.5 h-2.5" />
+                      </motion.div>
+                      <motion.span
+                        animate={{ x: [0, 0.5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        {language === 'ru' ? 'Попробовать бесплатно' : 'Тегін сынап көріңіз'}
+                      </motion.span>
+                    </motion.button>
+
+                    {/* Telegram Bot Button */}
+                    <motion.button
+                      whileHover={{ 
+                        scale: 1.01, 
+                        y: -1,
+                        boxShadow: "0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 4px -2px rgba(0, 0, 0, 0.05)"
+                      }}
+                      whileTap={{ scale: 0.99 }}
+                      className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 hover:from-blue-600 hover:via-purple-600 hover:to-indigo-700 text-white font-medium py-1.5 px-2.5 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center space-x-1.5 text-xs w-full sm:w-auto relative overflow-hidden group"
+                      onClick={() => {
+                        const message = language === 'ru' 
+                          ? 'Привет! Хочу подключить Telegram бота CodeMastersPRO для управления обучением. Можете помочь?'
+                          : 'Сәлем! CodeMastersPRO Telegram ботын оқу басқару үшін қосқым келеді. Көмектесе аласыз ба?';
+                        const encodedMessage = encodeURIComponent(message);
+                        window.open(`https://t.me/CodeMastersPRO_bot?start=${encodedMessage}`, '_blank');
+                      }}
                     >
-                      {language === 'ru' ? 'Попробовать бесплатно' : 'Тегін сынап көріңіз'}
-                    </motion.span>
-                  </motion.button>
+                      {/* Animated background shine effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                      
+                      <motion.div
+                        animate={{ rotate: [0, 360] }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                      >
+                        <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                      </motion.div>
+                      <motion.span
+                        animate={{ x: [0, 0.5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        {language === 'ru' ? '🤖 Telegram бот' : '🤖 Telegram бот'}
+                      </motion.span>
+                    </motion.button>
+                  </div>
                 </div>
               </div>
 
